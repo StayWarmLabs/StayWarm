@@ -1,0 +1,264 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "node_modules/@latticexyz/world/src/modules/core/types.sol",
+    "id": 132049,
+    "exportedSymbols": {
+      "ResourceId": [
+        66533
+      ],
+      "SystemCallData": [
+        132036
+      ],
+      "SystemCallFromData": [
+        132048
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:878:125",
+    "nodes": [
+      {
+        "id": 132025,
+        "nodeType": "PragmaDirective",
+        "src": "32:25:125",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".21"
+        ]
+      },
+      {
+        "id": 132027,
+        "nodeType": "ImportDirective",
+        "src": "59:66:125",
+        "nodes": [],
+        "absolutePath": "node_modules/@latticexyz/store/src/ResourceId.sol",
+        "file": "@latticexyz/store/src/ResourceId.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 132049,
+        "sourceUnit": 66605,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 132026,
+              "name": "ResourceId",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 66533,
+              "src": "68:10:125",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 132036,
+        "nodeType": "StructDefinition",
+        "src": "301:164:125",
+        "nodes": [],
+        "canonicalName": "SystemCallData",
+        "documentation": {
+          "id": 132028,
+          "nodeType": "StructuredDocumentation",
+          "src": "127:173:125",
+          "text": " @title System Call Data Structure\n @notice Holds data for making system calls.\n @dev Used to represent a call to a specific system identified by a ResourceId."
+        },
+        "members": [
+          {
+            "constant": false,
+            "id": 132032,
+            "mutability": "mutable",
+            "name": "systemId",
+            "nameLocation": "379:8:125",
+            "nodeType": "VariableDeclaration",
+            "scope": 132036,
+            "src": "368:19:125",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+              "typeString": "ResourceId"
+            },
+            "typeName": {
+              "id": 132031,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 132030,
+                "name": "ResourceId",
+                "nameLocations": [
+                  "368:10:125"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 66533,
+                "src": "368:10:125"
+              },
+              "referencedDeclaration": 66533,
+              "src": "368:10:125",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                "typeString": "ResourceId"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 132035,
+            "mutability": "mutable",
+            "name": "callData",
+            "nameLocation": "454:8:125",
+            "nodeType": "VariableDeclaration",
+            "scope": 132036,
+            "src": "448:14:125",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes_storage_ptr",
+              "typeString": "bytes"
+            },
+            "typeName": {
+              "id": 132034,
+              "name": "bytes",
+              "nodeType": "ElementaryTypeName",
+              "src": "448:5:125",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes_storage_ptr",
+                "typeString": "bytes"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "name": "SystemCallData",
+        "nameLocation": "308:14:125",
+        "scope": 132049,
+        "visibility": "public"
+      },
+      {
+        "id": 132048,
+        "nodeType": "StructDefinition",
+        "src": "666:243:125",
+        "nodes": [],
+        "canonicalName": "SystemCallFromData",
+        "documentation": {
+          "id": 132037,
+          "nodeType": "StructuredDocumentation",
+          "src": "467:198:125",
+          "text": " @title System Call From Data Structure\n @notice Holds data for making system calls with a specific sender.\n @dev Used to represent a call from a specific address to a specific system."
+        },
+        "members": [
+          {
+            "constant": false,
+            "id": 132040,
+            "mutability": "mutable",
+            "name": "from",
+            "nameLocation": "763:4:125",
+            "nodeType": "VariableDeclaration",
+            "scope": 132048,
+            "src": "755:12:125",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 132039,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "755:7:125",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 132044,
+            "mutability": "mutable",
+            "name": "systemId",
+            "nameLocation": "823:8:125",
+            "nodeType": "VariableDeclaration",
+            "scope": 132048,
+            "src": "812:19:125",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+              "typeString": "ResourceId"
+            },
+            "typeName": {
+              "id": 132043,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 132042,
+                "name": "ResourceId",
+                "nameLocations": [
+                  "812:10:125"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 66533,
+                "src": "812:10:125"
+              },
+              "referencedDeclaration": 66533,
+              "src": "812:10:125",
+              "typeDescriptions": {
+                "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                "typeString": "ResourceId"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 132047,
+            "mutability": "mutable",
+            "name": "callData",
+            "nameLocation": "898:8:125",
+            "nodeType": "VariableDeclaration",
+            "scope": 132048,
+            "src": "892:14:125",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes_storage_ptr",
+              "typeString": "bytes"
+            },
+            "typeName": {
+              "id": 132046,
+              "name": "bytes",
+              "nodeType": "ElementaryTypeName",
+              "src": "892:5:125",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes_storage_ptr",
+                "typeString": "bytes"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "name": "SystemCallFromData",
+        "nameLocation": "673:18:125",
+        "scope": 132049,
+        "visibility": "public"
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 125
+}

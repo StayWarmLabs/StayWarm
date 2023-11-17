@@ -1,0 +1,3139 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "StoreHook_NotImplemented",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "ResourceId",
+          "name": "tableId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "keyTuple",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "FieldLayout",
+          "name": "fieldLayout",
+          "type": "bytes32"
+        }
+      ],
+      "name": "onAfterDeleteRecord",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "ResourceId",
+          "name": "tableId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "keyTuple",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "bytes",
+          "name": "staticData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "PackedCounter",
+          "name": "encodedLengths",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "dynamicData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "FieldLayout",
+          "name": "fieldLayout",
+          "type": "bytes32"
+        }
+      ],
+      "name": "onAfterSetRecord",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "ResourceId",
+          "name": "tableId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "keyTuple",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "uint8",
+          "name": "dynamicFieldIndex",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint40",
+          "name": "startWithinField",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint40",
+          "name": "deleteCount",
+          "type": "uint40"
+        },
+        {
+          "internalType": "PackedCounter",
+          "name": "encodedLengths",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onAfterSpliceDynamicData",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "ResourceId",
+          "name": "tableId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "keyTuple",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "uint48",
+          "name": "start",
+          "type": "uint48"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onAfterSpliceStaticData",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "ResourceId",
+          "name": "tableId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "keyTuple",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "FieldLayout",
+          "name": "fieldLayout",
+          "type": "bytes32"
+        }
+      ],
+      "name": "onBeforeDeleteRecord",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "ResourceId",
+          "name": "tableId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "keyTuple",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "bytes",
+          "name": "staticData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "PackedCounter",
+          "name": "encodedLengths",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "dynamicData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "FieldLayout",
+          "name": "fieldLayout",
+          "type": "bytes32"
+        }
+      ],
+      "name": "onBeforeSetRecord",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "ResourceId",
+          "name": "tableId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "keyTuple",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "uint8",
+          "name": "dynamicFieldIndex",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint40",
+          "name": "startWithinField",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint40",
+          "name": "deleteCount",
+          "type": "uint40"
+        },
+        {
+          "internalType": "PackedCounter",
+          "name": "encodedLengths",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onBeforeSpliceDynamicData",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "ResourceId",
+          "name": "tableId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "keyTuple",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "uint48",
+          "name": "start",
+          "type": "uint48"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onBeforeSpliceStaticData",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceID",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "onAfterDeleteRecord(bytes32,bytes32[],bytes32)": "83b5c95b",
+    "onAfterSetRecord(bytes32,bytes32[],bytes,bytes32,bytes,bytes32)": "5b28cdaf",
+    "onAfterSpliceDynamicData(bytes32,bytes32[],uint8,uint40,uint40,bytes32,bytes)": "63584533",
+    "onAfterSpliceStaticData(bytes32,bytes32[],uint48,bytes)": "a8ba8721",
+    "onBeforeDeleteRecord(bytes32,bytes32[],bytes32)": "9faeaf45",
+    "onBeforeSetRecord(bytes32,bytes32[],bytes,bytes32,bytes,bytes32)": "57066c9c",
+    "onBeforeSpliceDynamicData(bytes32,bytes32[],uint8,uint40,uint40,bytes32,bytes)": "55eb5a28",
+    "onBeforeSpliceStaticData(bytes32,bytes32[],uint48,bytes)": "964f667d",
+    "supportsInterface(bytes4)": "01ffc9a7"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"StoreHook_NotImplemented\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"ResourceId\",\"name\":\"tableId\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[]\",\"name\":\"keyTuple\",\"type\":\"bytes32[]\"},{\"internalType\":\"FieldLayout\",\"name\":\"fieldLayout\",\"type\":\"bytes32\"}],\"name\":\"onAfterDeleteRecord\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"ResourceId\",\"name\":\"tableId\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[]\",\"name\":\"keyTuple\",\"type\":\"bytes32[]\"},{\"internalType\":\"bytes\",\"name\":\"staticData\",\"type\":\"bytes\"},{\"internalType\":\"PackedCounter\",\"name\":\"encodedLengths\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"dynamicData\",\"type\":\"bytes\"},{\"internalType\":\"FieldLayout\",\"name\":\"fieldLayout\",\"type\":\"bytes32\"}],\"name\":\"onAfterSetRecord\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"ResourceId\",\"name\":\"tableId\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[]\",\"name\":\"keyTuple\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint8\",\"name\":\"dynamicFieldIndex\",\"type\":\"uint8\"},{\"internalType\":\"uint40\",\"name\":\"startWithinField\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"deleteCount\",\"type\":\"uint40\"},{\"internalType\":\"PackedCounter\",\"name\":\"encodedLengths\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onAfterSpliceDynamicData\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"ResourceId\",\"name\":\"tableId\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[]\",\"name\":\"keyTuple\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint48\",\"name\":\"start\",\"type\":\"uint48\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onAfterSpliceStaticData\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"ResourceId\",\"name\":\"tableId\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[]\",\"name\":\"keyTuple\",\"type\":\"bytes32[]\"},{\"internalType\":\"FieldLayout\",\"name\":\"fieldLayout\",\"type\":\"bytes32\"}],\"name\":\"onBeforeDeleteRecord\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"ResourceId\",\"name\":\"tableId\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[]\",\"name\":\"keyTuple\",\"type\":\"bytes32[]\"},{\"internalType\":\"bytes\",\"name\":\"staticData\",\"type\":\"bytes\"},{\"internalType\":\"PackedCounter\",\"name\":\"encodedLengths\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"dynamicData\",\"type\":\"bytes\"},{\"internalType\":\"FieldLayout\",\"name\":\"fieldLayout\",\"type\":\"bytes32\"}],\"name\":\"onBeforeSetRecord\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"ResourceId\",\"name\":\"tableId\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[]\",\"name\":\"keyTuple\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint8\",\"name\":\"dynamicFieldIndex\",\"type\":\"uint8\"},{\"internalType\":\"uint40\",\"name\":\"startWithinField\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"deleteCount\",\"type\":\"uint40\"},{\"internalType\":\"PackedCounter\",\"name\":\"encodedLengths\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onBeforeSpliceDynamicData\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"ResourceId\",\"name\":\"tableId\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[]\",\"name\":\"keyTuple\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint48\",\"name\":\"start\",\"type\":\"uint48\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onBeforeSpliceStaticData\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceID\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"onAfterDeleteRecord(bytes32,bytes32[],bytes32)\":{\"params\":{\"fieldLayout\":\"The layout of the field, see FieldLayout.sol.\",\"keyTuple\":\"An array representing the composite key for the record.\",\"tableId\":\"The ID of the table where the record was deleted.\"}},\"onAfterSetRecord(bytes32,bytes32[],bytes,bytes32,bytes,bytes32)\":{\"params\":{\"dynamicData\":\"The dynamic data of the record.\",\"encodedLengths\":\"The encoded lengths of the dynamic data of the record.\",\"fieldLayout\":\"The layout of the field, see FieldLayout.sol.\",\"keyTuple\":\"An array representing the composite key for the record.\",\"staticData\":\"The static data of the record.\",\"tableId\":\"The ID of the table where the record was set.\"}},\"onAfterSpliceDynamicData(bytes32,bytes32[],uint8,uint40,uint40,bytes32,bytes)\":{\"details\":\"Splice operations in dynamic data always reach the end of the dynamic data to avoid shifting data after the inserted or deleted data.\",\"params\":{\"data\":\"The data inserted into the dynamic data of the record at the start byte.\",\"deleteCount\":\"The number of bytes deleted in the dynamic data of the record.\",\"dynamicFieldIndex\":\"The index of the dynamic field.\",\"encodedLengths\":\"The encoded lengths of the dynamic data of the record.\",\"keyTuple\":\"An array representing the composite key for the record.\",\"startWithinField\":\"The start byte position within the field for splicing.\",\"tableId\":\"The ID of the table where the data was spliced.\"}},\"onAfterSpliceStaticData(bytes32,bytes32[],uint48,bytes)\":{\"details\":\"Splice operations in static data always overwrite data starting at the start position, so the total length of the data remains the same and no data is shifted.\",\"params\":{\"data\":\"The data written to the static data of the record at the start byte.\",\"keyTuple\":\"An array representing the composite key for the record.\",\"start\":\"The start byte position for splicing.\",\"tableId\":\"The ID of the table where the data was spliced.\"}},\"onBeforeDeleteRecord(bytes32,bytes32[],bytes32)\":{\"params\":{\"fieldLayout\":\"The layout of the field, see FieldLayout.sol.\",\"keyTuple\":\"An array representing the composite key for the record.\",\"tableId\":\"The ID of the table where the record is to be deleted.\"}},\"onBeforeSetRecord(bytes32,bytes32[],bytes,bytes32,bytes,bytes32)\":{\"params\":{\"dynamicData\":\"The dynamic data of the record.\",\"encodedLengths\":\"The encoded lengths of the dynamic data of the record.\",\"fieldLayout\":\"The layout of the field, see FieldLayout.sol.\",\"keyTuple\":\"An array representing the composite key for the record.\",\"staticData\":\"The static data of the record.\",\"tableId\":\"The ID of the table where the record is to be set.\"}},\"onBeforeSpliceDynamicData(bytes32,bytes32[],uint8,uint40,uint40,bytes32,bytes)\":{\"details\":\"Splice operations in dynamic data always reach the end of the dynamic data to avoid shifting data after the inserted or deleted data.\",\"params\":{\"data\":\"The data to be inserted into the dynamic data of the record at the start byte.\",\"deleteCount\":\"The number of bytes to delete in the dynamic data of the record.\",\"dynamicFieldIndex\":\"The index of the dynamic field.\",\"encodedLengths\":\"The encoded lengths of the dynamic data of the record.\",\"keyTuple\":\"An array representing the composite key for the record.\",\"startWithinField\":\"The start byte position within the field for splicing.\",\"tableId\":\"The ID of the table where the data is to be spliced.\"}},\"onBeforeSpliceStaticData(bytes32,bytes32[],uint48,bytes)\":{\"details\":\"Splice operations in static data always overwrite data starting at the start position, so the total length of the data remains the same and no data is shifted.\",\"params\":{\"data\":\"The data to be written to the static data of the record at the start byte.\",\"keyTuple\":\"An array representing the composite key for the record.\",\"start\":\"The start byte position for splicing.\",\"tableId\":\"The ID of the table where the data is to be spliced.\"}},\"supportsInterface(bytes4)\":{\"details\":\"Interface identification is specified in ERC-165. This function uses less than 30,000 gas.\",\"params\":{\"interfaceID\":\"The interface identifier, as specified in ERC-165\"},\"returns\":{\"_0\":\"`true` if the contract implements `interfaceID` and `interfaceID` is not 0xffffffff, `false` otherwise\"}}},\"version\":1},\"userdoc\":{\"errors\":{\"StoreHook_NotImplemented()\":[{\"notice\":\"Error emitted when a function is not implemented.\"}]},\"kind\":\"user\",\"methods\":{\"onAfterDeleteRecord(bytes32,bytes32[],bytes32)\":{\"notice\":\"Called after deleting a record from the store.\"},\"onAfterSetRecord(bytes32,bytes32[],bytes,bytes32,bytes,bytes32)\":{\"notice\":\"Called after setting a record in the store.\"},\"onAfterSpliceDynamicData(bytes32,bytes32[],uint8,uint40,uint40,bytes32,bytes)\":{\"notice\":\"Called after splicing dynamic data in the store.\"},\"onAfterSpliceStaticData(bytes32,bytes32[],uint48,bytes)\":{\"notice\":\"Called after splicing static data in the store.\"},\"onBeforeDeleteRecord(bytes32,bytes32[],bytes32)\":{\"notice\":\"Called before deleting a record from the store.\"},\"onBeforeSetRecord(bytes32,bytes32[],bytes,bytes32,bytes,bytes32)\":{\"notice\":\"Called before setting a record in the store.\"},\"onBeforeSpliceDynamicData(bytes32,bytes32[],uint8,uint40,uint40,bytes32,bytes)\":{\"notice\":\"Called before splicing dynamic data in the store.\"},\"onBeforeSpliceStaticData(bytes32,bytes32[],uint48,bytes)\":{\"notice\":\"Called before splicing static data in the store.\"},\"supportsInterface(bytes4)\":{\"notice\":\"Query if a contract implements an interface\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"node_modules/@latticexyz/store/src/IStoreHook.sol\":\"IStoreHook\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":3000},\"remappings\":[\":@latticexyz/=node_modules/@latticexyz/\",\":ds-test/=node_modules/ds-test/src/\",\":forge-std/=node_modules/forge-std/src/\"]},\"sources\":{\"node_modules/@latticexyz/store/src/FieldLayout.sol\":{\"keccak256\":\"0x2a0536cd6cecc479d0b81d5aad6380231f4d6873beadc54814d801c2036b02c0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e07c041e19146a9ec258cc700a450b4d49440202895eb12f3bb17508427c23ba\",\"dweb:/ipfs/QmXoqrCGDSkuFgNSMURRFdjokjREL78nLDzNaUi6rjefy9\"]},\"node_modules/@latticexyz/store/src/IERC165.sol\":{\"keccak256\":\"0x2bbc3c43400c15a91a5cb35430a91309cb64a4d13a0a170eacec71dcf334feaf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f44dfc9605067de539de07a76a34bf469faa9e6dad8c192abafc2e05860c7dd2\",\"dweb:/ipfs/QmX8xgG6XWokM7YFwFZvmMhuh1uhkSjxCMD2oTHjUVdapb\"]},\"node_modules/@latticexyz/store/src/IStoreHook.sol\":{\"keccak256\":\"0xa6777c7868333996ad9c61a94457dcac702d8d7445a104dfdc86543d25e7470e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6268a16449d7529a94746d0103670dd0e38faf5117bf914fb01da9947ab44c2e\",\"dweb:/ipfs/QmaSfbx1QRA3jw2K8bGkQTw4CTGPUzNqnCJW7LwaFUJCXy\"]},\"node_modules/@latticexyz/store/src/PackedCounter.sol\":{\"keccak256\":\"0x44ddfa9eb8a861462c550f0a9d66c40c68acdb347a61fa765949608407a2c7fb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://47ee957f4b19cab9e20bf5fc569c015eca13852fb3351f2a105a8be9c48204c0\",\"dweb:/ipfs/QmNkyzDobVQLoq9BtQ8HtgsPLiqnmi97EZx1wsu6wp8nKH\"]},\"node_modules/@latticexyz/store/src/ResourceId.sol\":{\"keccak256\":\"0x40983c580b8958e55db4520095934a535e98544ffe8228327e598973eb6647ed\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://839d658fa2bb2b1f09a08149d2bf0c26a26c301ad2dda8154fc99458085a695d\",\"dweb:/ipfs/Qmd5jHHYrgqraPqF8bjzT4xyjsoPk8K7pkxXLLfz6MRT6d\"]},\"node_modules/@latticexyz/store/src/constants.sol\":{\"keccak256\":\"0x9e37c64c119ef07ad914bc589ee3f6d67946ab95877978c1ee3e2c1ffae07076\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3fad47e542025382aa28e8171253e34f93b2f149434b67a26989542d70218793\",\"dweb:/ipfs/QmW6JsKNwPc6oAMrgcikgR2EPwMUtQANiuZSQSGCd29HHC\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.21+commit.d9974bed"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "StoreHook_NotImplemented"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "ResourceId",
+              "name": "tableId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "keyTuple",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "FieldLayout",
+              "name": "fieldLayout",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "onAfterDeleteRecord"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "ResourceId",
+              "name": "tableId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "keyTuple",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "bytes",
+              "name": "staticData",
+              "type": "bytes"
+            },
+            {
+              "internalType": "PackedCounter",
+              "name": "encodedLengths",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "dynamicData",
+              "type": "bytes"
+            },
+            {
+              "internalType": "FieldLayout",
+              "name": "fieldLayout",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "onAfterSetRecord"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "ResourceId",
+              "name": "tableId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "keyTuple",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "uint8",
+              "name": "dynamicFieldIndex",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint40",
+              "name": "startWithinField",
+              "type": "uint40"
+            },
+            {
+              "internalType": "uint40",
+              "name": "deleteCount",
+              "type": "uint40"
+            },
+            {
+              "internalType": "PackedCounter",
+              "name": "encodedLengths",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "onAfterSpliceDynamicData"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "ResourceId",
+              "name": "tableId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "keyTuple",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "uint48",
+              "name": "start",
+              "type": "uint48"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "onAfterSpliceStaticData"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "ResourceId",
+              "name": "tableId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "keyTuple",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "FieldLayout",
+              "name": "fieldLayout",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "onBeforeDeleteRecord"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "ResourceId",
+              "name": "tableId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "keyTuple",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "bytes",
+              "name": "staticData",
+              "type": "bytes"
+            },
+            {
+              "internalType": "PackedCounter",
+              "name": "encodedLengths",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "dynamicData",
+              "type": "bytes"
+            },
+            {
+              "internalType": "FieldLayout",
+              "name": "fieldLayout",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "onBeforeSetRecord"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "ResourceId",
+              "name": "tableId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "keyTuple",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "uint8",
+              "name": "dynamicFieldIndex",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint40",
+              "name": "startWithinField",
+              "type": "uint40"
+            },
+            {
+              "internalType": "uint40",
+              "name": "deleteCount",
+              "type": "uint40"
+            },
+            {
+              "internalType": "PackedCounter",
+              "name": "encodedLengths",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "onBeforeSpliceDynamicData"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "ResourceId",
+              "name": "tableId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "keyTuple",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "uint48",
+              "name": "start",
+              "type": "uint48"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "onBeforeSpliceStaticData"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes4",
+              "name": "interfaceID",
+              "type": "bytes4"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "supportsInterface",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "onAfterDeleteRecord(bytes32,bytes32[],bytes32)": {
+            "params": {
+              "fieldLayout": "The layout of the field, see FieldLayout.sol.",
+              "keyTuple": "An array representing the composite key for the record.",
+              "tableId": "The ID of the table where the record was deleted."
+            }
+          },
+          "onAfterSetRecord(bytes32,bytes32[],bytes,bytes32,bytes,bytes32)": {
+            "params": {
+              "dynamicData": "The dynamic data of the record.",
+              "encodedLengths": "The encoded lengths of the dynamic data of the record.",
+              "fieldLayout": "The layout of the field, see FieldLayout.sol.",
+              "keyTuple": "An array representing the composite key for the record.",
+              "staticData": "The static data of the record.",
+              "tableId": "The ID of the table where the record was set."
+            }
+          },
+          "onAfterSpliceDynamicData(bytes32,bytes32[],uint8,uint40,uint40,bytes32,bytes)": {
+            "details": "Splice operations in dynamic data always reach the end of the dynamic data to avoid shifting data after the inserted or deleted data.",
+            "params": {
+              "data": "The data inserted into the dynamic data of the record at the start byte.",
+              "deleteCount": "The number of bytes deleted in the dynamic data of the record.",
+              "dynamicFieldIndex": "The index of the dynamic field.",
+              "encodedLengths": "The encoded lengths of the dynamic data of the record.",
+              "keyTuple": "An array representing the composite key for the record.",
+              "startWithinField": "The start byte position within the field for splicing.",
+              "tableId": "The ID of the table where the data was spliced."
+            }
+          },
+          "onAfterSpliceStaticData(bytes32,bytes32[],uint48,bytes)": {
+            "details": "Splice operations in static data always overwrite data starting at the start position, so the total length of the data remains the same and no data is shifted.",
+            "params": {
+              "data": "The data written to the static data of the record at the start byte.",
+              "keyTuple": "An array representing the composite key for the record.",
+              "start": "The start byte position for splicing.",
+              "tableId": "The ID of the table where the data was spliced."
+            }
+          },
+          "onBeforeDeleteRecord(bytes32,bytes32[],bytes32)": {
+            "params": {
+              "fieldLayout": "The layout of the field, see FieldLayout.sol.",
+              "keyTuple": "An array representing the composite key for the record.",
+              "tableId": "The ID of the table where the record is to be deleted."
+            }
+          },
+          "onBeforeSetRecord(bytes32,bytes32[],bytes,bytes32,bytes,bytes32)": {
+            "params": {
+              "dynamicData": "The dynamic data of the record.",
+              "encodedLengths": "The encoded lengths of the dynamic data of the record.",
+              "fieldLayout": "The layout of the field, see FieldLayout.sol.",
+              "keyTuple": "An array representing the composite key for the record.",
+              "staticData": "The static data of the record.",
+              "tableId": "The ID of the table where the record is to be set."
+            }
+          },
+          "onBeforeSpliceDynamicData(bytes32,bytes32[],uint8,uint40,uint40,bytes32,bytes)": {
+            "details": "Splice operations in dynamic data always reach the end of the dynamic data to avoid shifting data after the inserted or deleted data.",
+            "params": {
+              "data": "The data to be inserted into the dynamic data of the record at the start byte.",
+              "deleteCount": "The number of bytes to delete in the dynamic data of the record.",
+              "dynamicFieldIndex": "The index of the dynamic field.",
+              "encodedLengths": "The encoded lengths of the dynamic data of the record.",
+              "keyTuple": "An array representing the composite key for the record.",
+              "startWithinField": "The start byte position within the field for splicing.",
+              "tableId": "The ID of the table where the data is to be spliced."
+            }
+          },
+          "onBeforeSpliceStaticData(bytes32,bytes32[],uint48,bytes)": {
+            "details": "Splice operations in static data always overwrite data starting at the start position, so the total length of the data remains the same and no data is shifted.",
+            "params": {
+              "data": "The data to be written to the static data of the record at the start byte.",
+              "keyTuple": "An array representing the composite key for the record.",
+              "start": "The start byte position for splicing.",
+              "tableId": "The ID of the table where the data is to be spliced."
+            }
+          },
+          "supportsInterface(bytes4)": {
+            "details": "Interface identification is specified in ERC-165. This function uses less than 30,000 gas.",
+            "params": {
+              "interfaceID": "The interface identifier, as specified in ERC-165"
+            },
+            "returns": {
+              "_0": "`true` if the contract implements `interfaceID` and `interfaceID` is not 0xffffffff, `false` otherwise"
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "onAfterDeleteRecord(bytes32,bytes32[],bytes32)": {
+            "notice": "Called after deleting a record from the store."
+          },
+          "onAfterSetRecord(bytes32,bytes32[],bytes,bytes32,bytes,bytes32)": {
+            "notice": "Called after setting a record in the store."
+          },
+          "onAfterSpliceDynamicData(bytes32,bytes32[],uint8,uint40,uint40,bytes32,bytes)": {
+            "notice": "Called after splicing dynamic data in the store."
+          },
+          "onAfterSpliceStaticData(bytes32,bytes32[],uint48,bytes)": {
+            "notice": "Called after splicing static data in the store."
+          },
+          "onBeforeDeleteRecord(bytes32,bytes32[],bytes32)": {
+            "notice": "Called before deleting a record from the store."
+          },
+          "onBeforeSetRecord(bytes32,bytes32[],bytes,bytes32,bytes,bytes32)": {
+            "notice": "Called before setting a record in the store."
+          },
+          "onBeforeSpliceDynamicData(bytes32,bytes32[],uint8,uint40,uint40,bytes32,bytes)": {
+            "notice": "Called before splicing dynamic data in the store."
+          },
+          "onBeforeSpliceStaticData(bytes32,bytes32[],uint48,bytes)": {
+            "notice": "Called before splicing static data in the store."
+          },
+          "supportsInterface(bytes4)": {
+            "notice": "Query if a contract implements an interface"
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        "@latticexyz/=node_modules/@latticexyz/",
+        "ds-test/=node_modules/ds-test/src/",
+        "forge-std/=node_modules/forge-std/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 3000
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "node_modules/@latticexyz/store/src/IStoreHook.sol": "IStoreHook"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "node_modules/@latticexyz/store/src/FieldLayout.sol": {
+        "keccak256": "0x2a0536cd6cecc479d0b81d5aad6380231f4d6873beadc54814d801c2036b02c0",
+        "urls": [
+          "bzz-raw://e07c041e19146a9ec258cc700a450b4d49440202895eb12f3bb17508427c23ba",
+          "dweb:/ipfs/QmXoqrCGDSkuFgNSMURRFdjokjREL78nLDzNaUi6rjefy9"
+        ],
+        "license": "MIT"
+      },
+      "node_modules/@latticexyz/store/src/IERC165.sol": {
+        "keccak256": "0x2bbc3c43400c15a91a5cb35430a91309cb64a4d13a0a170eacec71dcf334feaf",
+        "urls": [
+          "bzz-raw://f44dfc9605067de539de07a76a34bf469faa9e6dad8c192abafc2e05860c7dd2",
+          "dweb:/ipfs/QmX8xgG6XWokM7YFwFZvmMhuh1uhkSjxCMD2oTHjUVdapb"
+        ],
+        "license": "MIT"
+      },
+      "node_modules/@latticexyz/store/src/IStoreHook.sol": {
+        "keccak256": "0xa6777c7868333996ad9c61a94457dcac702d8d7445a104dfdc86543d25e7470e",
+        "urls": [
+          "bzz-raw://6268a16449d7529a94746d0103670dd0e38faf5117bf914fb01da9947ab44c2e",
+          "dweb:/ipfs/QmaSfbx1QRA3jw2K8bGkQTw4CTGPUzNqnCJW7LwaFUJCXy"
+        ],
+        "license": "MIT"
+      },
+      "node_modules/@latticexyz/store/src/PackedCounter.sol": {
+        "keccak256": "0x44ddfa9eb8a861462c550f0a9d66c40c68acdb347a61fa765949608407a2c7fb",
+        "urls": [
+          "bzz-raw://47ee957f4b19cab9e20bf5fc569c015eca13852fb3351f2a105a8be9c48204c0",
+          "dweb:/ipfs/QmNkyzDobVQLoq9BtQ8HtgsPLiqnmi97EZx1wsu6wp8nKH"
+        ],
+        "license": "MIT"
+      },
+      "node_modules/@latticexyz/store/src/ResourceId.sol": {
+        "keccak256": "0x40983c580b8958e55db4520095934a535e98544ffe8228327e598973eb6647ed",
+        "urls": [
+          "bzz-raw://839d658fa2bb2b1f09a08149d2bf0c26a26c301ad2dda8154fc99458085a695d",
+          "dweb:/ipfs/Qmd5jHHYrgqraPqF8bjzT4xyjsoPk8K7pkxXLLfz6MRT6d"
+        ],
+        "license": "MIT"
+      },
+      "node_modules/@latticexyz/store/src/constants.sol": {
+        "keccak256": "0x9e37c64c119ef07ad914bc589ee3f6d67946ab95877978c1ee3e2c1ffae07076",
+        "urls": [
+          "bzz-raw://3fad47e542025382aa28e8171253e34f93b2f149434b67a26989542d70218793",
+          "dweb:/ipfs/QmW6JsKNwPc6oAMrgcikgR2EPwMUtQANiuZSQSGCd29HHC"
+        ],
+        "license": "MIT"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "node_modules/@latticexyz/store/src/IStoreHook.sol",
+    "id": 88115,
+    "exportedSymbols": {
+      "ERC165_INTERFACE_ID": [
+        129276
+      ],
+      "FieldLayout": [
+        65410
+      ],
+      "IERC165": [
+        129285
+      ],
+      "IStoreHook": [
+        88114
+      ],
+      "PackedCounter": [
+        65906
+      ],
+      "ResourceId": [
+        66533
+      ],
+      "STORE_HOOK_INTERFACE_ID": [
+        87972
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:6510:79",
+    "nodes": [
+      {
+        "id": 87928,
+        "nodeType": "PragmaDirective",
+        "src": "32:25:79",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".21"
+        ]
+      },
+      {
+        "id": 87930,
+        "nodeType": "ImportDirective",
+        "src": "59:48:79",
+        "nodes": [],
+        "absolutePath": "node_modules/@latticexyz/store/src/FieldLayout.sol",
+        "file": "./FieldLayout.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 88115,
+        "sourceUnit": 65830,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 87929,
+              "name": "FieldLayout",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 65410,
+              "src": "68:11:79",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 87933,
+        "nodeType": "ImportDirective",
+        "src": "108:61:79",
+        "nodes": [],
+        "absolutePath": "node_modules/@latticexyz/store/src/IERC165.sol",
+        "file": "./IERC165.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 88115,
+        "sourceUnit": 129286,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 87931,
+              "name": "IERC165",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 129285,
+              "src": "117:7:79",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 87932,
+              "name": "ERC165_INTERFACE_ID",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 129276,
+              "src": "126:19:79",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 87935,
+        "nodeType": "ImportDirective",
+        "src": "170:52:79",
+        "nodes": [],
+        "absolutePath": "node_modules/@latticexyz/store/src/PackedCounter.sol",
+        "file": "./PackedCounter.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 88115,
+        "sourceUnit": 66530,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 87934,
+              "name": "PackedCounter",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 65906,
+              "src": "179:13:79",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 87937,
+        "nodeType": "ImportDirective",
+        "src": "223:46:79",
+        "nodes": [],
+        "absolutePath": "node_modules/@latticexyz/store/src/ResourceId.sol",
+        "file": "./ResourceId.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 88115,
+        "sourceUnit": 66605,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 87936,
+              "name": "ResourceId",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 66533,
+              "src": "232:10:79",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 87972,
+        "nodeType": "VariableDeclaration",
+        "src": "340:429:79",
+        "nodes": [],
+        "constant": true,
+        "mutability": "constant",
+        "name": "STORE_HOOK_INTERFACE_ID",
+        "nameLocation": "356:23:79",
+        "scope": 88115,
+        "stateVariable": false,
+        "storageLocation": "default",
+        "typeDescriptions": {
+          "typeIdentifier": "t_bytes4",
+          "typeString": "bytes4"
+        },
+        "typeName": {
+          "id": 87938,
+          "name": "bytes4",
+          "nodeType": "ElementaryTypeName",
+          "src": "340:6:79",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes4",
+            "typeString": "bytes4"
+          }
+        },
+        "value": {
+          "commonType": {
+            "typeIdentifier": "t_bytes4",
+            "typeString": "bytes4"
+          },
+          "id": 87971,
+          "isConstant": false,
+          "isLValue": false,
+          "isPure": true,
+          "lValueRequested": false,
+          "leftExpression": {
+            "commonType": {
+              "typeIdentifier": "t_bytes4",
+              "typeString": "bytes4"
+            },
+            "id": 87969,
+            "isConstant": false,
+            "isLValue": false,
+            "isPure": true,
+            "lValueRequested": false,
+            "leftExpression": {
+              "commonType": {
+                "typeIdentifier": "t_bytes4",
+                "typeString": "bytes4"
+              },
+              "id": 87965,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "lValueRequested": false,
+              "leftExpression": {
+                "commonType": {
+                  "typeIdentifier": "t_bytes4",
+                  "typeString": "bytes4"
+                },
+                "id": 87961,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "lValueRequested": false,
+                "leftExpression": {
+                  "commonType": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "id": 87957,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "leftExpression": {
+                    "commonType": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    },
+                    "id": 87953,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      },
+                      "id": 87949,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "commonType": {
+                          "typeIdentifier": "t_bytes4",
+                          "typeString": "bytes4"
+                        },
+                        "id": 87945,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "expression": {
+                              "id": 87939,
+                              "name": "IStoreHook",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 88114,
+                              "src": "382:10:79",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_contract$_IStoreHook_$88114_$",
+                                "typeString": "type(contract IStoreHook)"
+                              }
+                            },
+                            "id": 87940,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberLocation": "393:17:79",
+                            "memberName": "onBeforeSetRecord",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 87997,
+                            "src": "382:28:79",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_declaration_nonpayable$_t_userDefinedValueType$_ResourceId_$66533_$_t_array$_t_bytes32_$dyn_memory_ptr_$_t_bytes_memory_ptr_$_t_userDefinedValueType$_PackedCounter_$65906_$_t_bytes_memory_ptr_$_t_userDefinedValueType$_FieldLayout_$65410_$returns$__$",
+                              "typeString": "function IStoreHook.onBeforeSetRecord(ResourceId,bytes32[] memory,bytes memory,PackedCounter,bytes memory,FieldLayout)"
+                            }
+                          },
+                          "id": 87941,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberLocation": "411:8:79",
+                          "memberName": "selector",
+                          "nodeType": "MemberAccess",
+                          "src": "382:37:79",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes4",
+                            "typeString": "bytes4"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "^",
+                        "rightExpression": {
+                          "expression": {
+                            "expression": {
+                              "id": 87942,
+                              "name": "IStoreHook",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 88114,
+                              "src": "424:10:79",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_contract$_IStoreHook_$88114_$",
+                                "typeString": "type(contract IStoreHook)"
+                              }
+                            },
+                            "id": 87943,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberLocation": "435:16:79",
+                            "memberName": "onAfterSetRecord",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 88017,
+                            "src": "424:27:79",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_declaration_nonpayable$_t_userDefinedValueType$_ResourceId_$66533_$_t_array$_t_bytes32_$dyn_memory_ptr_$_t_bytes_memory_ptr_$_t_userDefinedValueType$_PackedCounter_$65906_$_t_bytes_memory_ptr_$_t_userDefinedValueType$_FieldLayout_$65410_$returns$__$",
+                              "typeString": "function IStoreHook.onAfterSetRecord(ResourceId,bytes32[] memory,bytes memory,PackedCounter,bytes memory,FieldLayout)"
+                            }
+                          },
+                          "id": 87944,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberLocation": "452:8:79",
+                          "memberName": "selector",
+                          "nodeType": "MemberAccess",
+                          "src": "424:36:79",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes4",
+                            "typeString": "bytes4"
+                          }
+                        },
+                        "src": "382:78:79",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes4",
+                          "typeString": "bytes4"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "^",
+                      "rightExpression": {
+                        "expression": {
+                          "expression": {
+                            "id": 87946,
+                            "name": "IStoreHook",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 88114,
+                            "src": "465:10:79",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_IStoreHook_$88114_$",
+                              "typeString": "type(contract IStoreHook)"
+                            }
+                          },
+                          "id": 87947,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberLocation": "476:24:79",
+                          "memberName": "onBeforeSpliceStaticData",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 88031,
+                          "src": "465:35:79",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_declaration_nonpayable$_t_userDefinedValueType$_ResourceId_$66533_$_t_array$_t_bytes32_$dyn_memory_ptr_$_t_uint48_$_t_bytes_memory_ptr_$returns$__$",
+                            "typeString": "function IStoreHook.onBeforeSpliceStaticData(ResourceId,bytes32[] memory,uint48,bytes memory)"
+                          }
+                        },
+                        "id": 87948,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "memberLocation": "501:8:79",
+                        "memberName": "selector",
+                        "nodeType": "MemberAccess",
+                        "src": "465:44:79",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes4",
+                          "typeString": "bytes4"
+                        }
+                      },
+                      "src": "382:127:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "^",
+                    "rightExpression": {
+                      "expression": {
+                        "expression": {
+                          "id": 87950,
+                          "name": "IStoreHook",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 88114,
+                          "src": "514:10:79",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IStoreHook_$88114_$",
+                            "typeString": "type(contract IStoreHook)"
+                          }
+                        },
+                        "id": 87951,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "memberLocation": "525:23:79",
+                        "memberName": "onAfterSpliceStaticData",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 88045,
+                        "src": "514:34:79",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_declaration_nonpayable$_t_userDefinedValueType$_ResourceId_$66533_$_t_array$_t_bytes32_$dyn_memory_ptr_$_t_uint48_$_t_bytes_memory_ptr_$returns$__$",
+                          "typeString": "function IStoreHook.onAfterSpliceStaticData(ResourceId,bytes32[] memory,uint48,bytes memory)"
+                        }
+                      },
+                      "id": 87952,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberLocation": "549:8:79",
+                      "memberName": "selector",
+                      "nodeType": "MemberAccess",
+                      "src": "514:43:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes4",
+                        "typeString": "bytes4"
+                      }
+                    },
+                    "src": "382:175:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "nodeType": "BinaryOperation",
+                  "operator": "^",
+                  "rightExpression": {
+                    "expression": {
+                      "expression": {
+                        "id": 87954,
+                        "name": "IStoreHook",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 88114,
+                        "src": "562:10:79",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_IStoreHook_$88114_$",
+                          "typeString": "type(contract IStoreHook)"
+                        }
+                      },
+                      "id": 87955,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberLocation": "573:25:79",
+                      "memberName": "onBeforeSpliceDynamicData",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 88066,
+                      "src": "562:36:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_declaration_nonpayable$_t_userDefinedValueType$_ResourceId_$66533_$_t_array$_t_bytes32_$dyn_memory_ptr_$_t_uint8_$_t_uint40_$_t_uint40_$_t_userDefinedValueType$_PackedCounter_$65906_$_t_bytes_memory_ptr_$returns$__$",
+                        "typeString": "function IStoreHook.onBeforeSpliceDynamicData(ResourceId,bytes32[] memory,uint8,uint40,uint40,PackedCounter,bytes memory)"
+                      }
+                    },
+                    "id": 87956,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "memberLocation": "599:8:79",
+                    "memberName": "selector",
+                    "nodeType": "MemberAccess",
+                    "src": "562:45:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "src": "382:225:79",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  }
+                },
+                "nodeType": "BinaryOperation",
+                "operator": "^",
+                "rightExpression": {
+                  "expression": {
+                    "expression": {
+                      "id": 87958,
+                      "name": "IStoreHook",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 88114,
+                      "src": "612:10:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IStoreHook_$88114_$",
+                        "typeString": "type(contract IStoreHook)"
+                      }
+                    },
+                    "id": 87959,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "memberLocation": "623:24:79",
+                    "memberName": "onAfterSpliceDynamicData",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 88087,
+                    "src": "612:35:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_declaration_nonpayable$_t_userDefinedValueType$_ResourceId_$66533_$_t_array$_t_bytes32_$dyn_memory_ptr_$_t_uint8_$_t_uint40_$_t_uint40_$_t_userDefinedValueType$_PackedCounter_$65906_$_t_bytes_memory_ptr_$returns$__$",
+                      "typeString": "function IStoreHook.onAfterSpliceDynamicData(ResourceId,bytes32[] memory,uint8,uint40,uint40,PackedCounter,bytes memory)"
+                    }
+                  },
+                  "id": 87960,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "memberLocation": "648:8:79",
+                  "memberName": "selector",
+                  "nodeType": "MemberAccess",
+                  "src": "612:44:79",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  }
+                },
+                "src": "382:274:79",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes4",
+                  "typeString": "bytes4"
+                }
+              },
+              "nodeType": "BinaryOperation",
+              "operator": "^",
+              "rightExpression": {
+                "expression": {
+                  "expression": {
+                    "id": 87962,
+                    "name": "IStoreHook",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 88114,
+                    "src": "661:10:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_type$_t_contract$_IStoreHook_$88114_$",
+                      "typeString": "type(contract IStoreHook)"
+                    }
+                  },
+                  "id": 87963,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "memberLocation": "672:20:79",
+                  "memberName": "onBeforeDeleteRecord",
+                  "nodeType": "MemberAccess",
+                  "referencedDeclaration": 88100,
+                  "src": "661:31:79",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_function_declaration_nonpayable$_t_userDefinedValueType$_ResourceId_$66533_$_t_array$_t_bytes32_$dyn_memory_ptr_$_t_userDefinedValueType$_FieldLayout_$65410_$returns$__$",
+                    "typeString": "function IStoreHook.onBeforeDeleteRecord(ResourceId,bytes32[] memory,FieldLayout)"
+                  }
+                },
+                "id": 87964,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "lValueRequested": false,
+                "memberLocation": "693:8:79",
+                "memberName": "selector",
+                "nodeType": "MemberAccess",
+                "src": "661:40:79",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes4",
+                  "typeString": "bytes4"
+                }
+              },
+              "src": "382:319:79",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes4",
+                "typeString": "bytes4"
+              }
+            },
+            "nodeType": "BinaryOperation",
+            "operator": "^",
+            "rightExpression": {
+              "expression": {
+                "expression": {
+                  "id": 87966,
+                  "name": "IStoreHook",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 88114,
+                  "src": "706:10:79",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_IStoreHook_$88114_$",
+                    "typeString": "type(contract IStoreHook)"
+                  }
+                },
+                "id": 87967,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "lValueRequested": false,
+                "memberLocation": "717:19:79",
+                "memberName": "onAfterDeleteRecord",
+                "nodeType": "MemberAccess",
+                "referencedDeclaration": 88113,
+                "src": "706:30:79",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_function_declaration_nonpayable$_t_userDefinedValueType$_ResourceId_$66533_$_t_array$_t_bytes32_$dyn_memory_ptr_$_t_userDefinedValueType$_FieldLayout_$65410_$returns$__$",
+                  "typeString": "function IStoreHook.onAfterDeleteRecord(ResourceId,bytes32[] memory,FieldLayout)"
+                }
+              },
+              "id": 87968,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "lValueRequested": false,
+              "memberLocation": "737:8:79",
+              "memberName": "selector",
+              "nodeType": "MemberAccess",
+              "src": "706:39:79",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes4",
+                "typeString": "bytes4"
+              }
+            },
+            "src": "382:363:79",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes4",
+              "typeString": "bytes4"
+            }
+          },
+          "nodeType": "BinaryOperation",
+          "operator": "^",
+          "rightExpression": {
+            "id": 87970,
+            "name": "ERC165_INTERFACE_ID",
+            "nodeType": "Identifier",
+            "overloadedDeclarations": [],
+            "referencedDeclaration": 129276,
+            "src": "750:19:79",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes4",
+              "typeString": "bytes4"
+            }
+          },
+          "src": "382:387:79",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes4",
+            "typeString": "bytes4"
+          }
+        },
+        "visibility": "internal"
+      },
+      {
+        "id": 88114,
+        "nodeType": "ContractDefinition",
+        "src": "772:5769:79",
+        "nodes": [
+          {
+            "id": 87977,
+            "nodeType": "ErrorDefinition",
+            "src": "872:33:79",
+            "nodes": [],
+            "documentation": {
+              "id": 87975,
+              "nodeType": "StructuredDocumentation",
+              "src": "808:61:79",
+              "text": "@notice Error emitted when a function is not implemented."
+            },
+            "errorSelector": "cfd7320c",
+            "name": "StoreHook_NotImplemented",
+            "nameLocation": "878:24:79",
+            "parameters": {
+              "id": 87976,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "902:2:79"
+            }
+          },
+          {
+            "id": 87997,
+            "nodeType": "FunctionDefinition",
+            "src": "1389:217:79",
+            "nodes": [],
+            "documentation": {
+              "id": 87978,
+              "nodeType": "StructuredDocumentation",
+              "src": "909:477:79",
+              "text": " @notice Called before setting a record in the store.\n @param tableId The ID of the table where the record is to be set.\n @param keyTuple An array representing the composite key for the record.\n @param staticData The static data of the record.\n @param encodedLengths The encoded lengths of the dynamic data of the record.\n @param dynamicData The dynamic data of the record.\n @param fieldLayout The layout of the field, see FieldLayout.sol."
+            },
+            "functionSelector": "57066c9c",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onBeforeSetRecord",
+            "nameLocation": "1398:17:79",
+            "parameters": {
+              "id": 87995,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 87981,
+                  "mutability": "mutable",
+                  "name": "tableId",
+                  "nameLocation": "1432:7:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 87997,
+                  "src": "1421:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                    "typeString": "ResourceId"
+                  },
+                  "typeName": {
+                    "id": 87980,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 87979,
+                      "name": "ResourceId",
+                      "nameLocations": [
+                        "1421:10:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 66533,
+                      "src": "1421:10:79"
+                    },
+                    "referencedDeclaration": 66533,
+                    "src": "1421:10:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                      "typeString": "ResourceId"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 87984,
+                  "mutability": "mutable",
+                  "name": "keyTuple",
+                  "nameLocation": "1462:8:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 87997,
+                  "src": "1445:25:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_memory_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 87982,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1445:7:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 87983,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1445:9:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 87986,
+                  "mutability": "mutable",
+                  "name": "staticData",
+                  "nameLocation": "1489:10:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 87997,
+                  "src": "1476:23:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 87985,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1476:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 87989,
+                  "mutability": "mutable",
+                  "name": "encodedLengths",
+                  "nameLocation": "1519:14:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 87997,
+                  "src": "1505:28:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_PackedCounter_$65906",
+                    "typeString": "PackedCounter"
+                  },
+                  "typeName": {
+                    "id": 87988,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 87987,
+                      "name": "PackedCounter",
+                      "nameLocations": [
+                        "1505:13:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 65906,
+                      "src": "1505:13:79"
+                    },
+                    "referencedDeclaration": 65906,
+                    "src": "1505:13:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_PackedCounter_$65906",
+                      "typeString": "PackedCounter"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 87991,
+                  "mutability": "mutable",
+                  "name": "dynamicData",
+                  "nameLocation": "1552:11:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 87997,
+                  "src": "1539:24:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 87990,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1539:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 87994,
+                  "mutability": "mutable",
+                  "name": "fieldLayout",
+                  "nameLocation": "1581:11:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 87997,
+                  "src": "1569:23:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_FieldLayout_$65410",
+                    "typeString": "FieldLayout"
+                  },
+                  "typeName": {
+                    "id": 87993,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 87992,
+                      "name": "FieldLayout",
+                      "nameLocations": [
+                        "1569:11:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 65410,
+                      "src": "1569:11:79"
+                    },
+                    "referencedDeclaration": 65410,
+                    "src": "1569:11:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_FieldLayout_$65410",
+                      "typeString": "FieldLayout"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1415:181:79"
+            },
+            "returnParameters": {
+              "id": 87996,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1605:0:79"
+            },
+            "scope": 88114,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 88017,
+            "nodeType": "FunctionDefinition",
+            "src": "2084:216:79",
+            "nodes": [],
+            "documentation": {
+              "id": 87998,
+              "nodeType": "StructuredDocumentation",
+              "src": "1610:471:79",
+              "text": " @notice Called after setting a record in the store.\n @param tableId The ID of the table where the record was set.\n @param keyTuple An array representing the composite key for the record.\n @param staticData The static data of the record.\n @param encodedLengths The encoded lengths of the dynamic data of the record.\n @param dynamicData The dynamic data of the record.\n @param fieldLayout The layout of the field, see FieldLayout.sol."
+            },
+            "functionSelector": "5b28cdaf",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onAfterSetRecord",
+            "nameLocation": "2093:16:79",
+            "parameters": {
+              "id": 88015,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 88001,
+                  "mutability": "mutable",
+                  "name": "tableId",
+                  "nameLocation": "2126:7:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88017,
+                  "src": "2115:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                    "typeString": "ResourceId"
+                  },
+                  "typeName": {
+                    "id": 88000,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 87999,
+                      "name": "ResourceId",
+                      "nameLocations": [
+                        "2115:10:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 66533,
+                      "src": "2115:10:79"
+                    },
+                    "referencedDeclaration": 66533,
+                    "src": "2115:10:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                      "typeString": "ResourceId"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88004,
+                  "mutability": "mutable",
+                  "name": "keyTuple",
+                  "nameLocation": "2156:8:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88017,
+                  "src": "2139:25:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_memory_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 88002,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2139:7:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 88003,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2139:9:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88006,
+                  "mutability": "mutable",
+                  "name": "staticData",
+                  "nameLocation": "2183:10:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88017,
+                  "src": "2170:23:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 88005,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2170:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88009,
+                  "mutability": "mutable",
+                  "name": "encodedLengths",
+                  "nameLocation": "2213:14:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88017,
+                  "src": "2199:28:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_PackedCounter_$65906",
+                    "typeString": "PackedCounter"
+                  },
+                  "typeName": {
+                    "id": 88008,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88007,
+                      "name": "PackedCounter",
+                      "nameLocations": [
+                        "2199:13:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 65906,
+                      "src": "2199:13:79"
+                    },
+                    "referencedDeclaration": 65906,
+                    "src": "2199:13:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_PackedCounter_$65906",
+                      "typeString": "PackedCounter"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88011,
+                  "mutability": "mutable",
+                  "name": "dynamicData",
+                  "nameLocation": "2246:11:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88017,
+                  "src": "2233:24:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 88010,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2233:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88014,
+                  "mutability": "mutable",
+                  "name": "fieldLayout",
+                  "nameLocation": "2275:11:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88017,
+                  "src": "2263:23:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_FieldLayout_$65410",
+                    "typeString": "FieldLayout"
+                  },
+                  "typeName": {
+                    "id": 88013,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88012,
+                      "name": "FieldLayout",
+                      "nameLocations": [
+                        "2263:11:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 65410,
+                      "src": "2263:11:79"
+                    },
+                    "referencedDeclaration": 65410,
+                    "src": "2263:11:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_FieldLayout_$65410",
+                      "typeString": "FieldLayout"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2109:181:79"
+            },
+            "returnParameters": {
+              "id": 88016,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2299:0:79"
+            },
+            "scope": 88114,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 88031,
+            "nodeType": "FunctionDefinition",
+            "src": "2851:143:79",
+            "nodes": [],
+            "documentation": {
+              "id": 88018,
+              "nodeType": "StructuredDocumentation",
+              "src": "2304:544:79",
+              "text": " @notice Called before splicing static data in the store.\n @dev Splice operations in static data always overwrite data starting at the start position,\n so the total length of the data remains the same and no data is shifted.\n @param tableId The ID of the table where the data is to be spliced.\n @param keyTuple An array representing the composite key for the record.\n @param start The start byte position for splicing.\n @param data The data to be written to the static data of the record at the start byte."
+            },
+            "functionSelector": "964f667d",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onBeforeSpliceStaticData",
+            "nameLocation": "2860:24:79",
+            "parameters": {
+              "id": 88029,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 88021,
+                  "mutability": "mutable",
+                  "name": "tableId",
+                  "nameLocation": "2901:7:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88031,
+                  "src": "2890:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                    "typeString": "ResourceId"
+                  },
+                  "typeName": {
+                    "id": 88020,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88019,
+                      "name": "ResourceId",
+                      "nameLocations": [
+                        "2890:10:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 66533,
+                      "src": "2890:10:79"
+                    },
+                    "referencedDeclaration": 66533,
+                    "src": "2890:10:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                      "typeString": "ResourceId"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88024,
+                  "mutability": "mutable",
+                  "name": "keyTuple",
+                  "nameLocation": "2931:8:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88031,
+                  "src": "2914:25:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_memory_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 88022,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2914:7:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 88023,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2914:9:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88026,
+                  "mutability": "mutable",
+                  "name": "start",
+                  "nameLocation": "2952:5:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88031,
+                  "src": "2945:12:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  },
+                  "typeName": {
+                    "id": 88025,
+                    "name": "uint48",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2945:6:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint48",
+                      "typeString": "uint48"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88028,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "2976:4:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88031,
+                  "src": "2963:17:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 88027,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2963:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2884:100:79"
+            },
+            "returnParameters": {
+              "id": 88030,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2993:0:79"
+            },
+            "scope": 88114,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 88045,
+            "nodeType": "FunctionDefinition",
+            "src": "3533:142:79",
+            "nodes": [],
+            "documentation": {
+              "id": 88032,
+              "nodeType": "StructuredDocumentation",
+              "src": "2998:532:79",
+              "text": " @notice Called after splicing static data in the store.\n @dev Splice operations in static data always overwrite data starting at the start position,\n so the total length of the data remains the same and no data is shifted.\n @param tableId The ID of the table where the data was spliced.\n @param keyTuple An array representing the composite key for the record.\n @param start The start byte position for splicing.\n @param data The data written to the static data of the record at the start byte."
+            },
+            "functionSelector": "a8ba8721",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onAfterSpliceStaticData",
+            "nameLocation": "3542:23:79",
+            "parameters": {
+              "id": 88043,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 88035,
+                  "mutability": "mutable",
+                  "name": "tableId",
+                  "nameLocation": "3582:7:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88045,
+                  "src": "3571:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                    "typeString": "ResourceId"
+                  },
+                  "typeName": {
+                    "id": 88034,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88033,
+                      "name": "ResourceId",
+                      "nameLocations": [
+                        "3571:10:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 66533,
+                      "src": "3571:10:79"
+                    },
+                    "referencedDeclaration": 66533,
+                    "src": "3571:10:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                      "typeString": "ResourceId"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88038,
+                  "mutability": "mutable",
+                  "name": "keyTuple",
+                  "nameLocation": "3612:8:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88045,
+                  "src": "3595:25:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_memory_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 88036,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "3595:7:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 88037,
+                    "nodeType": "ArrayTypeName",
+                    "src": "3595:9:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88040,
+                  "mutability": "mutable",
+                  "name": "start",
+                  "nameLocation": "3633:5:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88045,
+                  "src": "3626:12:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  },
+                  "typeName": {
+                    "id": 88039,
+                    "name": "uint48",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3626:6:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint48",
+                      "typeString": "uint48"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88042,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "3657:4:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88045,
+                  "src": "3644:17:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 88041,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3644:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3565:100:79"
+            },
+            "returnParameters": {
+              "id": 88044,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3674:0:79"
+            },
+            "scope": 88114,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 88066,
+            "nodeType": "FunctionDefinition",
+            "src": "4466:242:79",
+            "nodes": [],
+            "documentation": {
+              "id": 88046,
+              "nodeType": "StructuredDocumentation",
+              "src": "3679:784:79",
+              "text": " @notice Called before splicing dynamic data in the store.\n @dev Splice operations in dynamic data always reach the end of the dynamic data\n to avoid shifting data after the inserted or deleted data.\n @param tableId The ID of the table where the data is to be spliced.\n @param keyTuple An array representing the composite key for the record.\n @param dynamicFieldIndex The index of the dynamic field.\n @param startWithinField The start byte position within the field for splicing.\n @param deleteCount The number of bytes to delete in the dynamic data of the record.\n @param encodedLengths The encoded lengths of the dynamic data of the record.\n @param data The data to be inserted into the dynamic data of the record at the start byte."
+            },
+            "functionSelector": "55eb5a28",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onBeforeSpliceDynamicData",
+            "nameLocation": "4475:25:79",
+            "parameters": {
+              "id": 88064,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 88049,
+                  "mutability": "mutable",
+                  "name": "tableId",
+                  "nameLocation": "4517:7:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88066,
+                  "src": "4506:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                    "typeString": "ResourceId"
+                  },
+                  "typeName": {
+                    "id": 88048,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88047,
+                      "name": "ResourceId",
+                      "nameLocations": [
+                        "4506:10:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 66533,
+                      "src": "4506:10:79"
+                    },
+                    "referencedDeclaration": 66533,
+                    "src": "4506:10:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                      "typeString": "ResourceId"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88052,
+                  "mutability": "mutable",
+                  "name": "keyTuple",
+                  "nameLocation": "4547:8:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88066,
+                  "src": "4530:25:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_memory_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 88050,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "4530:7:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 88051,
+                    "nodeType": "ArrayTypeName",
+                    "src": "4530:9:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88054,
+                  "mutability": "mutable",
+                  "name": "dynamicFieldIndex",
+                  "nameLocation": "4567:17:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88066,
+                  "src": "4561:23:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 88053,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4561:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88056,
+                  "mutability": "mutable",
+                  "name": "startWithinField",
+                  "nameLocation": "4597:16:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88066,
+                  "src": "4590:23:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  },
+                  "typeName": {
+                    "id": 88055,
+                    "name": "uint40",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4590:6:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint40",
+                      "typeString": "uint40"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88058,
+                  "mutability": "mutable",
+                  "name": "deleteCount",
+                  "nameLocation": "4626:11:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88066,
+                  "src": "4619:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  },
+                  "typeName": {
+                    "id": 88057,
+                    "name": "uint40",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4619:6:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint40",
+                      "typeString": "uint40"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88061,
+                  "mutability": "mutable",
+                  "name": "encodedLengths",
+                  "nameLocation": "4657:14:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88066,
+                  "src": "4643:28:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_PackedCounter_$65906",
+                    "typeString": "PackedCounter"
+                  },
+                  "typeName": {
+                    "id": 88060,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88059,
+                      "name": "PackedCounter",
+                      "nameLocations": [
+                        "4643:13:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 65906,
+                      "src": "4643:13:79"
+                    },
+                    "referencedDeclaration": 65906,
+                    "src": "4643:13:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_PackedCounter_$65906",
+                      "typeString": "PackedCounter"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88063,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "4690:4:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88066,
+                  "src": "4677:17:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 88062,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4677:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4500:198:79"
+            },
+            "returnParameters": {
+              "id": 88065,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4707:0:79"
+            },
+            "scope": 88114,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 88087,
+            "nodeType": "FunctionDefinition",
+            "src": "5485:241:79",
+            "nodes": [],
+            "documentation": {
+              "id": 88067,
+              "nodeType": "StructuredDocumentation",
+              "src": "4712:770:79",
+              "text": " @notice Called after splicing dynamic data in the store.\n @dev Splice operations in dynamic data always reach the end of the dynamic data\n to avoid shifting data after the inserted or deleted data.\n @param tableId The ID of the table where the data was spliced.\n @param keyTuple An array representing the composite key for the record.\n @param dynamicFieldIndex The index of the dynamic field.\n @param startWithinField The start byte position within the field for splicing.\n @param deleteCount The number of bytes deleted in the dynamic data of the record.\n @param encodedLengths The encoded lengths of the dynamic data of the record.\n @param data The data inserted into the dynamic data of the record at the start byte."
+            },
+            "functionSelector": "63584533",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onAfterSpliceDynamicData",
+            "nameLocation": "5494:24:79",
+            "parameters": {
+              "id": 88085,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 88070,
+                  "mutability": "mutable",
+                  "name": "tableId",
+                  "nameLocation": "5535:7:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88087,
+                  "src": "5524:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                    "typeString": "ResourceId"
+                  },
+                  "typeName": {
+                    "id": 88069,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88068,
+                      "name": "ResourceId",
+                      "nameLocations": [
+                        "5524:10:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 66533,
+                      "src": "5524:10:79"
+                    },
+                    "referencedDeclaration": 66533,
+                    "src": "5524:10:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                      "typeString": "ResourceId"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88073,
+                  "mutability": "mutable",
+                  "name": "keyTuple",
+                  "nameLocation": "5565:8:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88087,
+                  "src": "5548:25:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_memory_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 88071,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "5548:7:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 88072,
+                    "nodeType": "ArrayTypeName",
+                    "src": "5548:9:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88075,
+                  "mutability": "mutable",
+                  "name": "dynamicFieldIndex",
+                  "nameLocation": "5585:17:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88087,
+                  "src": "5579:23:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 88074,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5579:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88077,
+                  "mutability": "mutable",
+                  "name": "startWithinField",
+                  "nameLocation": "5615:16:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88087,
+                  "src": "5608:23:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  },
+                  "typeName": {
+                    "id": 88076,
+                    "name": "uint40",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5608:6:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint40",
+                      "typeString": "uint40"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88079,
+                  "mutability": "mutable",
+                  "name": "deleteCount",
+                  "nameLocation": "5644:11:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88087,
+                  "src": "5637:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  },
+                  "typeName": {
+                    "id": 88078,
+                    "name": "uint40",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5637:6:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint40",
+                      "typeString": "uint40"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88082,
+                  "mutability": "mutable",
+                  "name": "encodedLengths",
+                  "nameLocation": "5675:14:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88087,
+                  "src": "5661:28:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_PackedCounter_$65906",
+                    "typeString": "PackedCounter"
+                  },
+                  "typeName": {
+                    "id": 88081,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88080,
+                      "name": "PackedCounter",
+                      "nameLocations": [
+                        "5661:13:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 65906,
+                      "src": "5661:13:79"
+                    },
+                    "referencedDeclaration": 65906,
+                    "src": "5661:13:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_PackedCounter_$65906",
+                      "typeString": "PackedCounter"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88084,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "5708:4:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88087,
+                  "src": "5695:17:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 88083,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5695:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5518:198:79"
+            },
+            "returnParameters": {
+              "id": 88086,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5725:0:79"
+            },
+            "scope": 88114,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 88100,
+            "nodeType": "FunctionDefinition",
+            "src": "6025:111:79",
+            "nodes": [],
+            "documentation": {
+              "id": 88088,
+              "nodeType": "StructuredDocumentation",
+              "src": "5730:292:79",
+              "text": " @notice Called before deleting a record from the store.\n @param tableId The ID of the table where the record is to be deleted.\n @param keyTuple An array representing the composite key for the record.\n @param fieldLayout The layout of the field, see FieldLayout.sol."
+            },
+            "functionSelector": "9faeaf45",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onBeforeDeleteRecord",
+            "nameLocation": "6034:20:79",
+            "parameters": {
+              "id": 88098,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 88091,
+                  "mutability": "mutable",
+                  "name": "tableId",
+                  "nameLocation": "6066:7:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88100,
+                  "src": "6055:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                    "typeString": "ResourceId"
+                  },
+                  "typeName": {
+                    "id": 88090,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88089,
+                      "name": "ResourceId",
+                      "nameLocations": [
+                        "6055:10:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 66533,
+                      "src": "6055:10:79"
+                    },
+                    "referencedDeclaration": 66533,
+                    "src": "6055:10:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                      "typeString": "ResourceId"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88094,
+                  "mutability": "mutable",
+                  "name": "keyTuple",
+                  "nameLocation": "6092:8:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88100,
+                  "src": "6075:25:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_memory_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 88092,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "6075:7:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 88093,
+                    "nodeType": "ArrayTypeName",
+                    "src": "6075:9:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88097,
+                  "mutability": "mutable",
+                  "name": "fieldLayout",
+                  "nameLocation": "6114:11:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88100,
+                  "src": "6102:23:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_FieldLayout_$65410",
+                    "typeString": "FieldLayout"
+                  },
+                  "typeName": {
+                    "id": 88096,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88095,
+                      "name": "FieldLayout",
+                      "nameLocations": [
+                        "6102:11:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 65410,
+                      "src": "6102:11:79"
+                    },
+                    "referencedDeclaration": 65410,
+                    "src": "6102:11:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_FieldLayout_$65410",
+                      "typeString": "FieldLayout"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6054:72:79"
+            },
+            "returnParameters": {
+              "id": 88099,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6135:0:79"
+            },
+            "scope": 88114,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 88113,
+            "nodeType": "FunctionDefinition",
+            "src": "6429:110:79",
+            "nodes": [],
+            "documentation": {
+              "id": 88101,
+              "nodeType": "StructuredDocumentation",
+              "src": "6140:286:79",
+              "text": " @notice Called after deleting a record from the store.\n @param tableId The ID of the table where the record was deleted.\n @param keyTuple An array representing the composite key for the record.\n @param fieldLayout The layout of the field, see FieldLayout.sol."
+            },
+            "functionSelector": "83b5c95b",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onAfterDeleteRecord",
+            "nameLocation": "6438:19:79",
+            "parameters": {
+              "id": 88111,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 88104,
+                  "mutability": "mutable",
+                  "name": "tableId",
+                  "nameLocation": "6469:7:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88113,
+                  "src": "6458:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                    "typeString": "ResourceId"
+                  },
+                  "typeName": {
+                    "id": 88103,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88102,
+                      "name": "ResourceId",
+                      "nameLocations": [
+                        "6458:10:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 66533,
+                      "src": "6458:10:79"
+                    },
+                    "referencedDeclaration": 66533,
+                    "src": "6458:10:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                      "typeString": "ResourceId"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88107,
+                  "mutability": "mutable",
+                  "name": "keyTuple",
+                  "nameLocation": "6495:8:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88113,
+                  "src": "6478:25:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_memory_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 88105,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "6478:7:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 88106,
+                    "nodeType": "ArrayTypeName",
+                    "src": "6478:9:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 88110,
+                  "mutability": "mutable",
+                  "name": "fieldLayout",
+                  "nameLocation": "6517:11:79",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 88113,
+                  "src": "6505:23:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_FieldLayout_$65410",
+                    "typeString": "FieldLayout"
+                  },
+                  "typeName": {
+                    "id": 88109,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 88108,
+                      "name": "FieldLayout",
+                      "nameLocations": [
+                        "6505:11:79"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 65410,
+                      "src": "6505:11:79"
+                    },
+                    "referencedDeclaration": 65410,
+                    "src": "6505:11:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_FieldLayout_$65410",
+                      "typeString": "FieldLayout"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6457:72:79"
+            },
+            "returnParameters": {
+              "id": 88112,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6538:0:79"
+            },
+            "scope": 88114,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 87973,
+              "name": "IERC165",
+              "nameLocations": [
+                "796:7:79"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 129285,
+              "src": "796:7:79"
+            },
+            "id": 87974,
+            "nodeType": "InheritanceSpecifier",
+            "src": "796:7:79"
+          }
+        ],
+        "canonicalName": "IStoreHook",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          88114,
+          129285
+        ],
+        "name": "IStoreHook",
+        "nameLocation": "782:10:79",
+        "scope": 88115,
+        "usedErrors": [
+          87977
+        ],
+        "usedEvents": []
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 79
+}

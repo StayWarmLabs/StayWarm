@@ -1,0 +1,484 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "node_modules/@latticexyz/world/src/worldResourceTypes.sol",
+    "id": 73884,
+    "exportedSymbols": {
+      "MASK_RESOURCE_MODULE": [
+        73877
+      ],
+      "MASK_RESOURCE_NAMESPACE": [
+        73871
+      ],
+      "MASK_RESOURCE_SYSTEM": [
+        73883
+      ],
+      "RESOURCE_MODULE": [
+        73862
+      ],
+      "RESOURCE_NAMESPACE": [
+        73859
+      ],
+      "RESOURCE_OFFCHAIN_TABLE": [
+        71028
+      ],
+      "RESOURCE_SYSTEM": [
+        73865
+      ],
+      "RESOURCE_TABLE": [
+        71024
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:1200:127",
+    "nodes": [
+      {
+        "id": 73852,
+        "nodeType": "PragmaDirective",
+        "src": "32:25:127",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".21"
+        ]
+      },
+      {
+        "id": 73855,
+        "nodeType": "ImportDirective",
+        "src": "59:103:127",
+        "nodes": [],
+        "absolutePath": "node_modules/@latticexyz/store/src/storeResourceTypes.sol",
+        "file": "@latticexyz/store/src/storeResourceTypes.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 73884,
+        "sourceUnit": 71029,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 73853,
+              "name": "RESOURCE_TABLE",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 71024,
+              "src": "68:14:127",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 73854,
+              "name": "RESOURCE_OFFCHAIN_TABLE",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 71028,
+              "src": "84:23:127",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "id": 73859,
+        "nodeType": "VariableDeclaration",
+        "src": "541:41:127",
+        "nodes": [],
+        "constant": true,
+        "mutability": "constant",
+        "name": "RESOURCE_NAMESPACE",
+        "nameLocation": "557:18:127",
+        "scope": 73884,
+        "stateVariable": false,
+        "storageLocation": "default",
+        "typeDescriptions": {
+          "typeIdentifier": "t_bytes2",
+          "typeString": "bytes2"
+        },
+        "typeName": {
+          "id": 73857,
+          "name": "bytes2",
+          "nodeType": "ElementaryTypeName",
+          "src": "541:6:127",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes2",
+            "typeString": "bytes2"
+          }
+        },
+        "value": {
+          "hexValue": "6e73",
+          "id": 73858,
+          "isConstant": false,
+          "isLValue": false,
+          "isPure": true,
+          "kind": "string",
+          "lValueRequested": false,
+          "nodeType": "Literal",
+          "src": "578:4:127",
+          "typeDescriptions": {
+            "typeIdentifier": "t_stringliteral_a2988854b91401f98206dff94028e22dce27feb5fbfdc2843bbe299db9660d49",
+            "typeString": "literal_string \"ns\""
+          },
+          "value": "ns"
+        },
+        "visibility": "internal"
+      },
+      {
+        "id": 73862,
+        "nodeType": "VariableDeclaration",
+        "src": "806:38:127",
+        "nodes": [],
+        "constant": true,
+        "mutability": "constant",
+        "name": "RESOURCE_MODULE",
+        "nameLocation": "822:15:127",
+        "scope": 73884,
+        "stateVariable": false,
+        "storageLocation": "default",
+        "typeDescriptions": {
+          "typeIdentifier": "t_bytes2",
+          "typeString": "bytes2"
+        },
+        "typeName": {
+          "id": 73860,
+          "name": "bytes2",
+          "nodeType": "ElementaryTypeName",
+          "src": "806:6:127",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes2",
+            "typeString": "bytes2"
+          }
+        },
+        "value": {
+          "hexValue": "6d64",
+          "id": 73861,
+          "isConstant": false,
+          "isLValue": false,
+          "isPure": true,
+          "kind": "string",
+          "lValueRequested": false,
+          "nodeType": "Literal",
+          "src": "840:4:127",
+          "typeDescriptions": {
+            "typeIdentifier": "t_stringliteral_1804a342ec28d0404df931f0fdb61c4c892bdd286e963437dcbd8dd87399412c",
+            "typeString": "literal_string \"md\""
+          },
+          "value": "md"
+        },
+        "visibility": "internal"
+      },
+      {
+        "id": 73865,
+        "nodeType": "VariableDeclaration",
+        "src": "929:38:127",
+        "nodes": [],
+        "constant": true,
+        "mutability": "constant",
+        "name": "RESOURCE_SYSTEM",
+        "nameLocation": "945:15:127",
+        "scope": 73884,
+        "stateVariable": false,
+        "storageLocation": "default",
+        "typeDescriptions": {
+          "typeIdentifier": "t_bytes2",
+          "typeString": "bytes2"
+        },
+        "typeName": {
+          "id": 73863,
+          "name": "bytes2",
+          "nodeType": "ElementaryTypeName",
+          "src": "929:6:127",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes2",
+            "typeString": "bytes2"
+          }
+        },
+        "value": {
+          "hexValue": "7379",
+          "id": 73864,
+          "isConstant": false,
+          "isLValue": false,
+          "isPure": true,
+          "kind": "string",
+          "lValueRequested": false,
+          "nodeType": "Literal",
+          "src": "963:4:127",
+          "typeDescriptions": {
+            "typeIdentifier": "t_stringliteral_4ba644d4d5fba50020e3397332b128744e5de794270f776b66b08f8fbb5d0357",
+            "typeString": "literal_string \"sy\""
+          },
+          "value": "sy"
+        },
+        "visibility": "internal"
+      },
+      {
+        "id": 73871,
+        "nodeType": "VariableDeclaration",
+        "src": "1028:70:127",
+        "nodes": [],
+        "constant": true,
+        "mutability": "constant",
+        "name": "MASK_RESOURCE_NAMESPACE",
+        "nameLocation": "1045:23:127",
+        "scope": 73884,
+        "stateVariable": false,
+        "storageLocation": "default",
+        "typeDescriptions": {
+          "typeIdentifier": "t_bytes32",
+          "typeString": "bytes32"
+        },
+        "typeName": {
+          "id": 73866,
+          "name": "bytes32",
+          "nodeType": "ElementaryTypeName",
+          "src": "1028:7:127",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          }
+        },
+        "value": {
+          "arguments": [
+            {
+              "id": 73869,
+              "name": "RESOURCE_NAMESPACE",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 73859,
+              "src": "1079:18:127",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes2",
+                "typeString": "bytes2"
+              }
+            }
+          ],
+          "expression": {
+            "argumentTypes": [
+              {
+                "typeIdentifier": "t_bytes2",
+                "typeString": "bytes2"
+              }
+            ],
+            "id": 73868,
+            "isConstant": false,
+            "isLValue": false,
+            "isPure": true,
+            "lValueRequested": false,
+            "nodeType": "ElementaryTypeNameExpression",
+            "src": "1071:7:127",
+            "typeDescriptions": {
+              "typeIdentifier": "t_type$_t_bytes32_$",
+              "typeString": "type(bytes32)"
+            },
+            "typeName": {
+              "id": 73867,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "1071:7:127",
+              "typeDescriptions": {}
+            }
+          },
+          "id": 73870,
+          "isConstant": false,
+          "isLValue": false,
+          "isPure": true,
+          "kind": "typeConversion",
+          "lValueRequested": false,
+          "nameLocations": [],
+          "names": [],
+          "nodeType": "FunctionCall",
+          "src": "1071:27:127",
+          "tryCall": false,
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          }
+        },
+        "visibility": "internal"
+      },
+      {
+        "id": 73877,
+        "nodeType": "VariableDeclaration",
+        "src": "1100:64:127",
+        "nodes": [],
+        "constant": true,
+        "mutability": "constant",
+        "name": "MASK_RESOURCE_MODULE",
+        "nameLocation": "1117:20:127",
+        "scope": 73884,
+        "stateVariable": false,
+        "storageLocation": "default",
+        "typeDescriptions": {
+          "typeIdentifier": "t_bytes32",
+          "typeString": "bytes32"
+        },
+        "typeName": {
+          "id": 73872,
+          "name": "bytes32",
+          "nodeType": "ElementaryTypeName",
+          "src": "1100:7:127",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          }
+        },
+        "value": {
+          "arguments": [
+            {
+              "id": 73875,
+              "name": "RESOURCE_MODULE",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 73862,
+              "src": "1148:15:127",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes2",
+                "typeString": "bytes2"
+              }
+            }
+          ],
+          "expression": {
+            "argumentTypes": [
+              {
+                "typeIdentifier": "t_bytes2",
+                "typeString": "bytes2"
+              }
+            ],
+            "id": 73874,
+            "isConstant": false,
+            "isLValue": false,
+            "isPure": true,
+            "lValueRequested": false,
+            "nodeType": "ElementaryTypeNameExpression",
+            "src": "1140:7:127",
+            "typeDescriptions": {
+              "typeIdentifier": "t_type$_t_bytes32_$",
+              "typeString": "type(bytes32)"
+            },
+            "typeName": {
+              "id": 73873,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "1140:7:127",
+              "typeDescriptions": {}
+            }
+          },
+          "id": 73876,
+          "isConstant": false,
+          "isLValue": false,
+          "isPure": true,
+          "kind": "typeConversion",
+          "lValueRequested": false,
+          "nameLocations": [],
+          "names": [],
+          "nodeType": "FunctionCall",
+          "src": "1140:24:127",
+          "tryCall": false,
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          }
+        },
+        "visibility": "internal"
+      },
+      {
+        "id": 73883,
+        "nodeType": "VariableDeclaration",
+        "src": "1166:64:127",
+        "nodes": [],
+        "constant": true,
+        "mutability": "constant",
+        "name": "MASK_RESOURCE_SYSTEM",
+        "nameLocation": "1183:20:127",
+        "scope": 73884,
+        "stateVariable": false,
+        "storageLocation": "default",
+        "typeDescriptions": {
+          "typeIdentifier": "t_bytes32",
+          "typeString": "bytes32"
+        },
+        "typeName": {
+          "id": 73878,
+          "name": "bytes32",
+          "nodeType": "ElementaryTypeName",
+          "src": "1166:7:127",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          }
+        },
+        "value": {
+          "arguments": [
+            {
+              "id": 73881,
+              "name": "RESOURCE_SYSTEM",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 73865,
+              "src": "1214:15:127",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes2",
+                "typeString": "bytes2"
+              }
+            }
+          ],
+          "expression": {
+            "argumentTypes": [
+              {
+                "typeIdentifier": "t_bytes2",
+                "typeString": "bytes2"
+              }
+            ],
+            "id": 73880,
+            "isConstant": false,
+            "isLValue": false,
+            "isPure": true,
+            "lValueRequested": false,
+            "nodeType": "ElementaryTypeNameExpression",
+            "src": "1206:7:127",
+            "typeDescriptions": {
+              "typeIdentifier": "t_type$_t_bytes32_$",
+              "typeString": "type(bytes32)"
+            },
+            "typeName": {
+              "id": 73879,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "1206:7:127",
+              "typeDescriptions": {}
+            }
+          },
+          "id": 73882,
+          "isConstant": false,
+          "isLValue": false,
+          "isPure": true,
+          "kind": "typeConversion",
+          "lValueRequested": false,
+          "nameLocations": [],
+          "names": [],
+          "nodeType": "FunctionCall",
+          "src": "1206:24:127",
+          "tryCall": false,
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          }
+        },
+        "visibility": "internal"
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 127
+}

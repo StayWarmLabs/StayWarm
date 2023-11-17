@@ -1,0 +1,82 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "node_modules/@latticexyz/store/src/version.sol",
+    "id": 91559,
+    "exportedSymbols": {
+      "STORE_VERSION": [
+        91558
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:236:103",
+    "nodes": [
+      {
+        "id": 91554,
+        "nodeType": "PragmaDirective",
+        "src": "32:25:103",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".21"
+        ]
+      },
+      {
+        "id": 91558,
+        "nodeType": "VariableDeclaration",
+        "src": "216:50:103",
+        "nodes": [],
+        "constant": true,
+        "mutability": "constant",
+        "name": "STORE_VERSION",
+        "nameLocation": "233:13:103",
+        "scope": 91559,
+        "stateVariable": false,
+        "storageLocation": "default",
+        "typeDescriptions": {
+          "typeIdentifier": "t_bytes32",
+          "typeString": "bytes32"
+        },
+        "typeName": {
+          "id": 91556,
+          "name": "bytes32",
+          "nodeType": "ElementaryTypeName",
+          "src": "216:7:103",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          }
+        },
+        "value": {
+          "hexValue": "312e302e302d756e61756469746564",
+          "id": 91557,
+          "isConstant": false,
+          "isLValue": false,
+          "isPure": true,
+          "kind": "string",
+          "lValueRequested": false,
+          "nodeType": "Literal",
+          "src": "249:17:103",
+          "typeDescriptions": {
+            "typeIdentifier": "t_stringliteral_b50c667dffae364f541802db30f2fd378df53c30d38e7fd752c2d158635d2943",
+            "typeString": "literal_string \"1.0.0-unaudited\""
+          },
+          "value": "1.0.0-unaudited"
+        },
+        "visibility": "internal"
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 103
+}

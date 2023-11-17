@@ -1,0 +1,79 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "src/codegen/index.sol",
+    "id": 84421,
+    "exportedSymbols": {
+      "Counter": [
+        85020
+      ],
+      "CounterTableId": [
+        84477
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:140:149",
+    "nodes": [
+      {
+        "id": 84417,
+        "nodeType": "PragmaDirective",
+        "src": "32:25:149",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".21"
+        ]
+      },
+      {
+        "id": 84420,
+        "nodeType": "ImportDirective",
+        "src": "108:63:149",
+        "nodes": [],
+        "absolutePath": "src/codegen/tables/Counter.sol",
+        "file": "./tables/Counter.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 84421,
+        "sourceUnit": 85021,
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 84418,
+              "name": "Counter",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 85020,
+              "src": "117:7:149",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          },
+          {
+            "foreign": {
+              "id": 84419,
+              "name": "CounterTableId",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 84477,
+              "src": "126:14:149",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 149
+}

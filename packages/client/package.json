@@ -1,14 +1,12 @@
 {
-  "name": "client",
-  "version": "0.0.0",
+  "name": "svelte",
   "private": true,
-  "license": "MIT",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "vite build",
     "dev": "wait-port localhost:8545 && vite",
-    "preview": "vite preview",
-    "test": "tsc --noEmit"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@latticexyz/common": "2.0.0-next.14",
@@ -24,7 +22,9 @@
     "viem": "1.14.0"
   },
   "devDependencies": {
-    "vite": "^4.2.1",
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "svelte": "^4.2.3",
+    "vite": "^5.0.0",
     "wait-port": "^1.0.4"
   }
 }

@@ -1,0 +1,1044 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220f73b9d68a2727f81ea544c25f9f1b03cf671bdccb6e0b47a64bb7f065407e11564736f6c63430008150033",
+    "sourceMap": "668:459:85:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;668:459:85;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220f73b9d68a2727f81ea544c25f9f1b03cf671bdccb6e0b47a64bb7f065407e11564736f6c63430008150033",
+    "sourceMap": "668:459:85:-:0;;;;;;;;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Provides functions to encode data into the ResourceId\",\"kind\":\"dev\",\"methods\":{},\"title\":\"ResourceIdLib Library\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"node_modules/@latticexyz/store/src/ResourceId.sol\":\"ResourceIdLib\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":3000},\"remappings\":[\":@latticexyz/=node_modules/@latticexyz/\",\":ds-test/=node_modules/ds-test/src/\",\":forge-std/=node_modules/forge-std/src/\"]},\"sources\":{\"node_modules/@latticexyz/store/src/ResourceId.sol\":{\"keccak256\":\"0x40983c580b8958e55db4520095934a535e98544ffe8228327e598973eb6647ed\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://839d658fa2bb2b1f09a08149d2bf0c26a26c301ad2dda8154fc99458085a695d\",\"dweb:/ipfs/Qmd5jHHYrgqraPqF8bjzT4xyjsoPk8K7pkxXLLfz6MRT6d\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.21+commit.d9974bed"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        "@latticexyz/=node_modules/@latticexyz/",
+        "ds-test/=node_modules/ds-test/src/",
+        "forge-std/=node_modules/forge-std/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 3000
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "node_modules/@latticexyz/store/src/ResourceId.sol": "ResourceIdLib"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "node_modules/@latticexyz/store/src/ResourceId.sol": {
+        "keccak256": "0x40983c580b8958e55db4520095934a535e98544ffe8228327e598973eb6647ed",
+        "urls": [
+          "bzz-raw://839d658fa2bb2b1f09a08149d2bf0c26a26c301ad2dda8154fc99458085a695d",
+          "dweb:/ipfs/Qmd5jHHYrgqraPqF8bjzT4xyjsoPk8K7pkxXLLfz6MRT6d"
+        ],
+        "license": "MIT"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "node_modules/@latticexyz/store/src/ResourceId.sol",
+    "id": 66605,
+    "exportedSymbols": {
+      "NAME_BITS": [
+        66547
+      ],
+      "ResourceId": [
+        66533
+      ],
+      "ResourceIdInstance": [
+        66604
+      ],
+      "ResourceIdLib": [
+        66584
+      ],
+      "TYPE_BITS": [
+        66539
+      ],
+      "TYPE_MASK": [
+        66554
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:1584:85",
+    "nodes": [
+      {
+        "id": 66531,
+        "nodeType": "PragmaDirective",
+        "src": "32:25:85",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".21"
+        ]
+      },
+      {
+        "id": 66533,
+        "nodeType": "UserDefinedValueTypeDefinition",
+        "src": "213:27:85",
+        "nodes": [],
+        "canonicalName": "ResourceId",
+        "name": "ResourceId",
+        "nameLocation": "218:10:85",
+        "underlyingType": {
+          "id": 66532,
+          "name": "bytes32",
+          "nodeType": "ElementaryTypeName",
+          "src": "232:7:85",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          }
+        }
+      },
+      {
+        "id": 66539,
+        "nodeType": "VariableDeclaration",
+        "src": "307:34:85",
+        "nodes": [],
+        "constant": true,
+        "mutability": "constant",
+        "name": "TYPE_BITS",
+        "nameLocation": "324:9:85",
+        "scope": 66605,
+        "stateVariable": false,
+        "storageLocation": "default",
+        "typeDescriptions": {
+          "typeIdentifier": "t_uint256",
+          "typeString": "uint256"
+        },
+        "typeName": {
+          "id": 66535,
+          "name": "uint256",
+          "nodeType": "ElementaryTypeName",
+          "src": "307:7:85",
+          "typeDescriptions": {
+            "typeIdentifier": "t_uint256",
+            "typeString": "uint256"
+          }
+        },
+        "value": {
+          "commonType": {
+            "typeIdentifier": "t_rational_16_by_1",
+            "typeString": "int_const 16"
+          },
+          "id": 66538,
+          "isConstant": false,
+          "isLValue": false,
+          "isPure": true,
+          "lValueRequested": false,
+          "leftExpression": {
+            "hexValue": "32",
+            "id": 66536,
+            "isConstant": false,
+            "isLValue": false,
+            "isPure": true,
+            "kind": "number",
+            "lValueRequested": false,
+            "nodeType": "Literal",
+            "src": "336:1:85",
+            "typeDescriptions": {
+              "typeIdentifier": "t_rational_2_by_1",
+              "typeString": "int_const 2"
+            },
+            "value": "2"
+          },
+          "nodeType": "BinaryOperation",
+          "operator": "*",
+          "rightExpression": {
+            "hexValue": "38",
+            "id": 66537,
+            "isConstant": false,
+            "isLValue": false,
+            "isPure": true,
+            "kind": "number",
+            "lValueRequested": false,
+            "nodeType": "Literal",
+            "src": "340:1:85",
+            "typeDescriptions": {
+              "typeIdentifier": "t_rational_8_by_1",
+              "typeString": "int_const 8"
+            },
+            "value": "8"
+          },
+          "src": "336:5:85",
+          "typeDescriptions": {
+            "typeIdentifier": "t_rational_16_by_1",
+            "typeString": "int_const 16"
+          }
+        },
+        "visibility": "internal"
+      },
+      {
+        "id": 66547,
+        "nodeType": "VariableDeclaration",
+        "src": "408:47:85",
+        "nodes": [],
+        "constant": true,
+        "mutability": "constant",
+        "name": "NAME_BITS",
+        "nameLocation": "425:9:85",
+        "scope": 66605,
+        "stateVariable": false,
+        "storageLocation": "default",
+        "typeDescriptions": {
+          "typeIdentifier": "t_uint256",
+          "typeString": "uint256"
+        },
+        "typeName": {
+          "id": 66541,
+          "name": "uint256",
+          "nodeType": "ElementaryTypeName",
+          "src": "408:7:85",
+          "typeDescriptions": {
+            "typeIdentifier": "t_uint256",
+            "typeString": "uint256"
+          }
+        },
+        "value": {
+          "commonType": {
+            "typeIdentifier": "t_uint256",
+            "typeString": "uint256"
+          },
+          "id": 66546,
+          "isConstant": false,
+          "isLValue": false,
+          "isPure": true,
+          "lValueRequested": false,
+          "leftExpression": {
+            "commonType": {
+              "typeIdentifier": "t_rational_256_by_1",
+              "typeString": "int_const 256"
+            },
+            "id": 66544,
+            "isConstant": false,
+            "isLValue": false,
+            "isPure": true,
+            "lValueRequested": false,
+            "leftExpression": {
+              "hexValue": "3332",
+              "id": 66542,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "437:2:85",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_32_by_1",
+                "typeString": "int_const 32"
+              },
+              "value": "32"
+            },
+            "nodeType": "BinaryOperation",
+            "operator": "*",
+            "rightExpression": {
+              "hexValue": "38",
+              "id": 66543,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "442:1:85",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_8_by_1",
+                "typeString": "int_const 8"
+              },
+              "value": "8"
+            },
+            "src": "437:6:85",
+            "typeDescriptions": {
+              "typeIdentifier": "t_rational_256_by_1",
+              "typeString": "int_const 256"
+            }
+          },
+          "nodeType": "BinaryOperation",
+          "operator": "-",
+          "rightExpression": {
+            "id": 66545,
+            "name": "TYPE_BITS",
+            "nodeType": "Identifier",
+            "overloadedDeclarations": [],
+            "referencedDeclaration": 66539,
+            "src": "446:9:85",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            }
+          },
+          "src": "437:18:85",
+          "typeDescriptions": {
+            "typeIdentifier": "t_uint256",
+            "typeString": "uint256"
+          }
+        },
+        "visibility": "internal"
+      },
+      {
+        "id": 66554,
+        "nodeType": "VariableDeclaration",
+        "src": "516:47:85",
+        "nodes": [],
+        "constant": true,
+        "mutability": "constant",
+        "name": "TYPE_MASK",
+        "nameLocation": "533:9:85",
+        "scope": 66605,
+        "stateVariable": false,
+        "storageLocation": "default",
+        "typeDescriptions": {
+          "typeIdentifier": "t_bytes32",
+          "typeString": "bytes32"
+        },
+        "typeName": {
+          "id": 66549,
+          "name": "bytes32",
+          "nodeType": "ElementaryTypeName",
+          "src": "516:7:85",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          }
+        },
+        "value": {
+          "arguments": [
+            {
+              "hexValue": "ffff",
+              "id": 66552,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "hexString",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "553:9:85",
+              "typeDescriptions": {
+                "typeIdentifier": "t_stringliteral_06d41322d79dfed27126569cb9a80eb0967335bf2f3316359d2a93c779fcd38a",
+                "typeString": "literal_string hex\"ffff\""
+              }
+            }
+          ],
+          "expression": {
+            "argumentTypes": [
+              {
+                "typeIdentifier": "t_stringliteral_06d41322d79dfed27126569cb9a80eb0967335bf2f3316359d2a93c779fcd38a",
+                "typeString": "literal_string hex\"ffff\""
+              }
+            ],
+            "id": 66551,
+            "isConstant": false,
+            "isLValue": false,
+            "isPure": true,
+            "lValueRequested": false,
+            "nodeType": "ElementaryTypeNameExpression",
+            "src": "545:7:85",
+            "typeDescriptions": {
+              "typeIdentifier": "t_type$_t_bytes32_$",
+              "typeString": "type(bytes32)"
+            },
+            "typeName": {
+              "id": 66550,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "545:7:85",
+              "typeDescriptions": {}
+            }
+          },
+          "id": 66553,
+          "isConstant": false,
+          "isLValue": false,
+          "isPure": true,
+          "kind": "typeConversion",
+          "lValueRequested": false,
+          "nameLocations": [],
+          "names": [],
+          "nodeType": "FunctionCall",
+          "src": "545:18:85",
+          "tryCall": false,
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          }
+        },
+        "visibility": "internal"
+      },
+      {
+        "id": 66584,
+        "nodeType": "ContractDefinition",
+        "src": "668:459:85",
+        "nodes": [
+          {
+            "id": 66583,
+            "nodeType": "FunctionDefinition",
+            "src": "964:161:85",
+            "nodes": [],
+            "body": {
+              "id": 66582,
+              "nodeType": "Block",
+              "src": "1044:81:85",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        "id": 66579,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "arguments": [
+                            {
+                              "id": 66570,
+                              "name": "typeId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 66558,
+                              "src": "1081:6:85",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes2",
+                                "typeString": "bytes2"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bytes2",
+                                "typeString": "bytes2"
+                              }
+                            ],
+                            "id": 66569,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1073:7:85",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_bytes32_$",
+                              "typeString": "type(bytes32)"
+                            },
+                            "typeName": {
+                              "id": 66568,
+                              "name": "bytes32",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "1073:7:85",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 66571,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1073:15:85",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "|",
+                        "rightExpression": {
+                          "components": [
+                            {
+                              "commonType": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              },
+                              "id": 66577,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "arguments": [
+                                  {
+                                    "id": 66574,
+                                    "name": "name",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 66560,
+                                    "src": "1100:4:85",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_bytes30",
+                                      "typeString": "bytes30"
+                                    }
+                                  }
+                                ],
+                                "expression": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes30",
+                                      "typeString": "bytes30"
+                                    }
+                                  ],
+                                  "id": 66573,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "nodeType": "ElementaryTypeNameExpression",
+                                  "src": "1092:7:85",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_type$_t_bytes32_$",
+                                    "typeString": "type(bytes32)"
+                                  },
+                                  "typeName": {
+                                    "id": 66572,
+                                    "name": "bytes32",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "1092:7:85",
+                                    "typeDescriptions": {}
+                                  }
+                                },
+                                "id": 66575,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "typeConversion",
+                                "lValueRequested": false,
+                                "nameLocations": [],
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "1092:13:85",
+                                "tryCall": false,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bytes32",
+                                  "typeString": "bytes32"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": ">>",
+                              "rightExpression": {
+                                "id": 66576,
+                                "name": "TYPE_BITS",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 66539,
+                                "src": "1109:9:85",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "src": "1092:26:85",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            }
+                          ],
+                          "id": 66578,
+                          "isConstant": false,
+                          "isInlineArray": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "TupleExpression",
+                          "src": "1091:28:85",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "src": "1073:46:85",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "expression": {
+                        "id": 66566,
+                        "name": "ResourceId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 66533,
+                        "src": "1057:10:85",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_userDefinedValueType$_ResourceId_$66533_$",
+                          "typeString": "type(ResourceId)"
+                        }
+                      },
+                      "id": 66567,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberLocation": "1068:4:85",
+                      "memberName": "wrap",
+                      "nodeType": "MemberAccess",
+                      "src": "1057:15:85",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_wrap_pure$_t_bytes32_$returns$_t_userDefinedValueType$_ResourceId_$66533_$",
+                        "typeString": "function (bytes32) pure returns (ResourceId)"
+                      }
+                    },
+                    "id": 66580,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1057:63:85",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                      "typeString": "ResourceId"
+                    }
+                  },
+                  "functionReturnParameters": 66565,
+                  "id": 66581,
+                  "nodeType": "Return",
+                  "src": "1050:70:85"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 66556,
+              "nodeType": "StructuredDocumentation",
+              "src": "694:267:85",
+              "text": " @notice Encodes given typeId and name into a ResourceId.\n @param typeId The type identifier to be encoded. Must be 2 bytes.\n @param name The name to be encoded. Must be 30 bytes.\n @return A ResourceId containing the encoded typeId and name."
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "encode",
+            "nameLocation": "973:6:85",
+            "parameters": {
+              "id": 66561,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 66558,
+                  "mutability": "mutable",
+                  "name": "typeId",
+                  "nameLocation": "987:6:85",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 66583,
+                  "src": "980:13:85",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes2",
+                    "typeString": "bytes2"
+                  },
+                  "typeName": {
+                    "id": 66557,
+                    "name": "bytes2",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "980:6:85",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes2",
+                      "typeString": "bytes2"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 66560,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "1003:4:85",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 66583,
+                  "src": "995:12:85",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes30",
+                    "typeString": "bytes30"
+                  },
+                  "typeName": {
+                    "id": 66559,
+                    "name": "bytes30",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "995:7:85",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes30",
+                      "typeString": "bytes30"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "979:29:85"
+            },
+            "returnParameters": {
+              "id": 66565,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 66564,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 66583,
+                  "src": "1032:10:85",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                    "typeString": "ResourceId"
+                  },
+                  "typeName": {
+                    "id": 66563,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 66562,
+                      "name": "ResourceId",
+                      "nameLocations": [
+                        "1032:10:85"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 66533,
+                      "src": "1032:10:85"
+                    },
+                    "referencedDeclaration": 66533,
+                    "src": "1032:10:85",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                      "typeString": "ResourceId"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1031:12:85"
+            },
+            "scope": 66584,
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ResourceIdLib",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": {
+          "id": 66555,
+          "nodeType": "StructuredDocumentation",
+          "src": "566:101:85",
+          "text": " @title ResourceIdLib Library\n @dev Provides functions to encode data into the ResourceId"
+        },
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          66584
+        ],
+        "name": "ResourceIdLib",
+        "nameLocation": "676:13:85",
+        "scope": 66605,
+        "usedErrors": [],
+        "usedEvents": []
+      },
+      {
+        "id": 66604,
+        "nodeType": "ContractDefinition",
+        "src": "1236:379:85",
+        "nodes": [
+          {
+            "id": 66603,
+            "nodeType": "FunctionDefinition",
+            "src": "1487:126:85",
+            "nodes": [],
+            "body": {
+              "id": 66602,
+              "nodeType": "Block",
+              "src": "1558:55:85",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 66598,
+                            "name": "resourceId",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 66589,
+                            "src": "1596:10:85",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                              "typeString": "ResourceId"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                              "typeString": "ResourceId"
+                            }
+                          ],
+                          "expression": {
+                            "id": 66596,
+                            "name": "ResourceId",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 66533,
+                            "src": "1578:10:85",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_userDefinedValueType$_ResourceId_$66533_$",
+                              "typeString": "type(ResourceId)"
+                            }
+                          },
+                          "id": 66597,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberLocation": "1589:6:85",
+                          "memberName": "unwrap",
+                          "nodeType": "MemberAccess",
+                          "src": "1578:17:85",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_unwrap_pure$_t_userDefinedValueType$_ResourceId_$66533_$returns$_t_bytes32_$",
+                            "typeString": "function (ResourceId) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 66599,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1578:29:85",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 66595,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "1571:6:85",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_bytes2_$",
+                        "typeString": "type(bytes2)"
+                      },
+                      "typeName": {
+                        "id": 66594,
+                        "name": "bytes2",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1571:6:85",
+                        "typeDescriptions": {}
+                      }
+                    },
+                    "id": 66600,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1571:37:85",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes2",
+                      "typeString": "bytes2"
+                    }
+                  },
+                  "functionReturnParameters": 66593,
+                  "id": 66601,
+                  "nodeType": "Return",
+                  "src": "1564:44:85"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 66586,
+              "nodeType": "StructuredDocumentation",
+              "src": "1267:217:85",
+              "text": " @notice Extracts the type identifier from a given ResourceId.\n @param resourceId The ResourceId from which the type identifier should be extracted.\n @return The extracted 2-byte type identifier."
+            },
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getType",
+            "nameLocation": "1496:7:85",
+            "parameters": {
+              "id": 66590,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 66589,
+                  "mutability": "mutable",
+                  "name": "resourceId",
+                  "nameLocation": "1515:10:85",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 66603,
+                  "src": "1504:21:85",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                    "typeString": "ResourceId"
+                  },
+                  "typeName": {
+                    "id": 66588,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 66587,
+                      "name": "ResourceId",
+                      "nameLocations": [
+                        "1504:10:85"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 66533,
+                      "src": "1504:10:85"
+                    },
+                    "referencedDeclaration": 66533,
+                    "src": "1504:10:85",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_userDefinedValueType$_ResourceId_$66533",
+                      "typeString": "ResourceId"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1503:23:85"
+            },
+            "returnParameters": {
+              "id": 66593,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 66592,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 66603,
+                  "src": "1550:6:85",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes2",
+                    "typeString": "bytes2"
+                  },
+                  "typeName": {
+                    "id": 66591,
+                    "name": "bytes2",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1550:6:85",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes2",
+                      "typeString": "bytes2"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1549:8:85"
+            },
+            "scope": 66604,
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ResourceIdInstance",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": {
+          "id": 66585,
+          "nodeType": "StructuredDocumentation",
+          "src": "1129:106:85",
+          "text": " @title ResourceIdInstance Library\n @dev Provides functions to extract data from a ResourceId."
+        },
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          66604
+        ],
+        "name": "ResourceIdInstance",
+        "nameLocation": "1244:18:85",
+        "scope": 66605,
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 85
+}
