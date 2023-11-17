@@ -8,8 +8,8 @@ import { setupNetwork } from "./setupNetwork";
 
 export type SetupResult = Awaited<ReturnType<typeof setup>>;
 
-export async function setup() {
-  const network = await setupNetwork();
+export async function setup(wallet: Record<string,string>) {
+  const network = await setupNetwork(wallet);
   const components = createClientComponents(network);
   const systemCalls = createSystemCalls(network, components);
 

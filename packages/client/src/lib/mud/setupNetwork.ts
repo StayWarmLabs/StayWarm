@@ -3,9 +3,12 @@
  * (https://viem.sh/docs/getting-started.html).
  * This line imports the functions we need from it.
  */
+import { get } from "svelte/store"
 import { createPublicClient, fallback, webSocket, http, createWalletClient, Hex, parseEther, ClientConfig } from "viem";
 import { createFaucetService } from "@latticexyz/services/faucet";
 import { encodeEntity, syncToRecs } from "@latticexyz/store-sync/recs";
+
+import { walletState } from "../metamask"
 
 import { getNetworkConfig } from "./getNetworkConfig";
 import { world } from "./world";
@@ -26,6 +29,14 @@ import mudConfig from "contracts/mud.config";
 
 export type SetupNetworkResult = Awaited<ReturnType<typeof setupNetwork>>;
 
+// const MMSDK = new MetaMaskSDK({
+//   dappMetadata: {
+//   name: "Stay Warm",
+//   url: "",
+//   base64Icon: "",
+//   }
+// });
+
 export async function setupNetwork() {
   const networkConfig = await getNetworkConfig();
 
@@ -45,10 +56,11 @@ export async function setupNetwork() {
    * Create a temporary wallet and a viem client for it
    * (see https://viem.sh/docs/clients/wallet.html).
    */
-  const burnerAccount = createBurnerAccount(networkConfig.privateKey as Hex);
+  // const burnerAccount = createBurnerAccount(networkConfig.privateKey as Hex);
+  const { account } = get(walletState)
   const burnerWalletClient = createWalletClient({
     ...clientOptions,
-    account: burnerAccount,
+    account: account,
   });
 
   /*
