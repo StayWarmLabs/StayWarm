@@ -17,8 +17,8 @@ export default mudConfig({
         startTime: "uint32",
         ethTotalAmount: "uint256",
         currentRound: "uint32",
-        ExecuteFuncSig: "bytes32",
-        ExecuteArgs: "bytes32",
+        executeFuncSig: "bytes32",
+        executeArgs: "bytes32",
       },
     },
     //
@@ -36,8 +36,8 @@ export default mudConfig({
       valueSchema: {
         proposer: "address",
         startTime: "uint32",
-        for: "uint32",
-        against: "uint32",
+        support: "uint32", // cannot use “for”, reserved keyword
+        reject: "uint32",
         executed: "bool",
         register: "bytes32[]",
         unregister: "bytes32[]",

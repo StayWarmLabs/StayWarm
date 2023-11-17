@@ -12,7 +12,7 @@
 
 {#if $isMetaMaskPresent}
   {#if Boolean($walletState.account)}
-    <p>{$walletState.account}</p>
+    <!-- <p>{$walletState.account}</p> -->
     <slot></slot>
   {:else}
     <button on:click={connect}>Connect Wallet</button>

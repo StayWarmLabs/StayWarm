@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ipld/car": "^5.2.4",
     "@latticexyz/common": "2.0.0-next.14",
     "@latticexyz/dev-tools": "2.0.0-next.14",
     "@latticexyz/recs": "2.0.0-next.14",
@@ -17,7 +18,12 @@
     "@latticexyz/store-sync": "2.0.0-next.14",
     "@latticexyz/utils": "2.0.0-next.14",
     "@latticexyz/world": "2.0.0-next.14",
+    "@ucanto/core": "^9.0.1",
+    "@ucanto/principal": "^9.0.0",
+    "@web3-storage/w3up-client": "^11.0.1",
     "contracts": "workspace:*",
+    "delegation": "link:@ucanto/core/delegation",
+    "ed25519": "link:@ucanto/principal/ed25519",
     "rxjs": "7.5.5",
     "viem": "1.14.0"
   },
