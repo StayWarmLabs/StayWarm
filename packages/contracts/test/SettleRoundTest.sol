@@ -116,9 +116,6 @@ contract SettleRoundTest is MudTest {
         console2.log("#####################");
 
         vm.prank(alice);
-        IWorld(worldAddress).settleRound();
-
-        vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 2
@@ -127,12 +124,6 @@ contract SettleRoundTest is MudTest {
         console2.log("#####################");
         console2.log("###### ROUND 2 ######");
         console2.log("#####################");
-
-        vm.prank(alice);
-        IWorld(worldAddress).settleRound();
-
-        vm.prank(alice);
-        IWorld(worldAddress).settleRound();
 
         vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
@@ -144,8 +135,6 @@ contract SettleRoundTest is MudTest {
         console2.log("#####################");
 
         vm.prank(alice);
-        IWorld(worldAddress).settleRound();
-        vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 4
@@ -154,8 +143,6 @@ contract SettleRoundTest is MudTest {
         console2.log("###### ROUND 4 ######");
         console2.log("#####################");
 
-        vm.prank(alice);
-        IWorld(worldAddress).settleRound();
         vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
@@ -170,8 +157,6 @@ contract SettleRoundTest is MudTest {
         console2.log("#####################");
 
         vm.prank(alice);
-        IWorld(worldAddress).settleRound();
-        vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 6
@@ -181,8 +166,6 @@ contract SettleRoundTest is MudTest {
         console2.log("#####################");
 
         vm.prank(alice);
-        IWorld(worldAddress).settleRound();
-        vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 7
@@ -190,9 +173,6 @@ contract SettleRoundTest is MudTest {
         console2.log("#####################");
         console2.log("###### ROUND 7 ######");
         console2.log("#####################");
-
-        vm.prank(alice);
-        IWorld(worldAddress).settleRound();
 
         // ROUND 8
         skip(Config.getRoundTimeLength());

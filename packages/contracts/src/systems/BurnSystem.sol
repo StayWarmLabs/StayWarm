@@ -5,9 +5,14 @@ import {System} from "@latticexyz/world/src/System.sol";
 import {Config, ConfigData} from "../codegen/index.sol";
 import {Player, PlayerData} from "../codegen/index.sol";
 import {PlayerStatus} from "../codegen/common.sol";
+import {IWorld} from "src/codegen/world/IWorld.sol";
+import {SystemSwitch} from "@latticexyz/world-modules/src/utils/SystemSwitch.sol";
 
 contract BurnSystem is System {
     function burn(uint256 burn_amount) public payable returns (bool) {
+        // call settle round before each tx
+        SystemSwitch.call(abi.encodeCall(IWorld(_world()).settleRound, ()));
+
         address player = _msgSender();
         PlayerData memory playerData = Player.get(player);
 

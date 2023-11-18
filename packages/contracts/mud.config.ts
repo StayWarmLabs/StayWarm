@@ -3,23 +3,23 @@ import { mudConfig } from "@latticexyz/world/register";
 export default mudConfig({
   systems: {
     BurnSystem: {
-      name: "BurnSystem",
+      name: "Burn",
       openAccess: true,
     },
     GovernSystem: {
-      name: "GovernSystem",
+      name: "Govern",
       openAccess: true,
     },
     JoinSystem: {
-      name: "JoinSystem",
+      name: "Join",
       openAccess: true,
     },
     SettleGameSystem: {
-      name: "SettleGameSystem",
+      name: "SettleGame",
       openAccess: true,
     },
     SettleRoundSystem: {
-      name: "SettleRoundSystem",
+      name: "SettleRound",
       openAccess: true,
     },
   },

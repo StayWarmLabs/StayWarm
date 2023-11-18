@@ -39,6 +39,9 @@ contract GovernSystem is System, IWorldErrors {
         public
         returns (uint96 proposalId)
     {
+        // call settle round before each tx
+        SystemSwitch.call(abi.encodeCall(IWorld(_world()).settleRound, ()));
+
         address player = _msgSender();
         // must be token holder
         require(Player.getFtBalance(player) > 0, "GovernSystem: Not FT Holder");
@@ -50,7 +53,10 @@ contract GovernSystem is System, IWorldErrors {
         Proposal.set(proposalId, player, uint32(block.timestamp), 0, 0, false, implAddr, systemName, uri);
     }
 
-    function vote(uint96 proposalId, uint256 power, bool support) public {
+    function vote(uint96 proposalId, uint256 votingPower, bool support) public {
+        // call settle round before each tx
+        SystemSwitch.call(abi.encodeCall(IWorld(_world()).settleRound, ()));
+
         address player = _msgSender();
         uint256 votingLength = Config.getVoteTimeLength();
         ProposalData memory proposalDetail = Proposal.get(proposalId);
@@ -58,21 +64,13 @@ contract GovernSystem is System, IWorldErrors {
         require(block.timestamp < proposalDetail.startTime + votingLength, "GovernSystem: Voting end");
 
         // decrease user balance
-        Player.setFtBalance(player, Player.getFtBalance(player) - power * power);
+        Player.setFtBalance(player, Player.getFtBalance(player) - votingPower * votingPower);
 
         // record result
         if (support) {
-            Proposal.setSupport(proposalId, proposalDetail.support + uint32(power));
+            Proposal.setSupport(proposalId, proposalDetail.support + uint32(votingPower));
         } else {
-            Proposal.setReject(proposalId, proposalDetail.reject + uint32(power));
-        }
-    }
-
-    function encodePlayerVoteId(address player, uint96 proposalId) public view returns (bytes32 id) {
-        bytes memory b = abi.encodePacked(player, proposalId);
-
-        assembly {
-            id := mload(add(b, 32))
+            Proposal.setReject(proposalId, proposalDetail.reject + uint32(votingPower));
         }
     }
 
@@ -80,7 +78,10 @@ contract GovernSystem is System, IWorldErrors {
      * @notice for now, only support upgrade system
      */
     function executeProposal(uint96 proposalId) public {
-        // check whether can be executed
+        // call settle round before each tx
+        SystemSwitch.call(abi.encodeCall(IWorld(_world()).settleRound, ()));
+
+        // check whether the proposal can be executed
         address player = _msgSender();
         uint256 votingLength = Config.getVoteTimeLength();
         ProposalData memory proposalDetail = Proposal.get(proposalId);

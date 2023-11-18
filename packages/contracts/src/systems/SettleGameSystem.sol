@@ -6,16 +6,16 @@ import {Config, ConfigData} from "../codegen/index.sol";
 import {Player, PlayerData} from "../codegen/index.sol";
 import {PlayerStatus} from "../codegen/common.sol";
 import {Game, GameData} from "../codegen/index.sol";
-
-// import {Counter} from "../codegen/index.sol";
-import "@latticexyz/world/src/modules/core/implementations/WorldRegistrationSystem.sol";
-import {ResourceId, ResourceIdInstance} from "@latticexyz/store/src/ResourceId.sol";
-import {WorldContextConsumer, WORLD_CONTEXT_CONSUMER_INTERFACE_ID} from "@latticexyz/world/src/WorldContext.sol";
+import {IWorld} from "src/codegen/world/IWorld.sol";
+import {SystemSwitch} from "@latticexyz/world-modules/src/utils/SystemSwitch.sol";
 
 contract SettleGameSystem is System {
     // return true if the game is over
     // return false if the game is not over
     function settleGame() public payable returns (bool) {
+        // call settle round before each tx
+        SystemSwitch.call(abi.encodeCall(IWorld(_world()).settleRound, ()));
+
         GameData memory gameData = Game.get();
         uint256 start_time = gameData.startTime;
         uint256 current_round = gameData.currentRound;
