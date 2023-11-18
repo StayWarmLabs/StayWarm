@@ -20,7 +20,6 @@ import {WorldContextConsumer, WORLD_CONTEXT_CONSUMER_INTERFACE_ID} from "@lattic
 
 
 contract BurnSystem is System {
-    uint public constant BURN_AMOUNT = 100;
 
     // ConfigData cfg = Config.get();
     // uint burn_amount = cfg.burnAmountPerRound;
@@ -29,12 +28,14 @@ contract BurnSystem is System {
         address player = _msgSender();
         PlayerData memory playerData = Player.get(player);
 
+        uint256 burn_amount = Config.getBurnAmountPerRound();
+
         require(playerData.status == PlayerStatus.ALIVE, "BurnSystem: player is not alive");
-        require(playerData.ftBalance >= BURN_AMOUNT, "BurnSystem: player does not have enough FT");
+        require(playerData.ftBalance >= burn_amount, "BurnSystem: player does not have enough FT");
 
         playerData.lastCheckedTime = uint32(block.timestamp);
-        playerData.burnedAmount += BURN_AMOUNT;
-        playerData.ftBalance -= BURN_AMOUNT;
+        playerData.burnedAmount += burn_amount;
+        playerData.ftBalance -= burn_amount;
 
         Player.set(player, playerData);
         return true;
