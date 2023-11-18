@@ -84,8 +84,8 @@ contract EliminationTest is MudTest {
         skip(Config.getRoundTimeLength());
 
         // gameData.currentRound += 1; in eliminate function
-        uint last_deadline = gameData.startTime + (gameData.currentRound + 1) * 1 days;
-        uint deadline = gameData.startTime + (gameData.currentRound + 2) * 1 days;
+        uint256 last_deadline = gameData.startTime + (gameData.currentRound + 1) * 1 days;
+        uint256 deadline = gameData.startTime + (gameData.currentRound + 2) * 1 days;
 
         console2.log("last_deadline: ", last_deadline);
         console2.log("deadline: ", deadline);
@@ -124,17 +124,17 @@ contract EliminationTest is MudTest {
 
         vm.prank(alice);
         IWorld(worldAddress).eliminate();
-    
+
         vm.prank(alice);
         IWorld(worldAddress).burn();
 
-        console2.log("alice status: ", uint(Player.get(address(0x1)).status));
+        console2.log("alice status: ", uint256(Player.get(address(0x1)).status));
         console2.log("alice balanced: ", Player.get(address(0x1)).ftBalance);
 
         console2.log("game current round: ", Game.getCurrentRound());
         console2.log("game start time: ", Game.getStartTime());
         console2.log("last deadline:", Game.getStartTime() + Game.getCurrentRound() * 1 days);
-        console2.log("deadline:", Game.getStartTime() + (Game.getCurrentRound()+1) * 1 days);
+        console2.log("deadline:", Game.getStartTime() + (Game.getCurrentRound() + 1) * 1 days);
         console2.log("current time:", block.timestamp);
 
         // ROUND 2
@@ -174,7 +174,7 @@ contract EliminationTest is MudTest {
         vm.prank(alice);
         IWorld(worldAddress).burn();
 
-        console2.log("alice status: ", uint(Player.get(address(0x1)).status));
+        console2.log("alice status: ", uint256(Player.get(address(0x1)).status));
         console2.log("alice balanced: ", Player.get(address(0x1)).ftBalance);
 
         // ROUND 7
@@ -183,14 +183,14 @@ contract EliminationTest is MudTest {
         IWorld(worldAddress).eliminate();
         // assert(IWorld(worldAddress).burn() == false); // cannot burn
 
-        console2.log("alice status: ", uint(Player.get(address(0x1)).status));
+        console2.log("alice status: ", uint256(Player.get(address(0x1)).status));
         console2.log("alice balanced: ", Player.get(address(0x1)).ftBalance);
 
         // ROUND 8
         vm.prank(alice);
         IWorld(worldAddress).eliminate();
-        
-        console2.log("alice status: ", uint(Player.get(address(0x1)).status));
+
+        console2.log("alice status: ", uint256(Player.get(address(0x1)).status));
         console2.log("alice balanced: ", Player.get(address(0x1)).ftBalance);
 
         assert(Player.get(address(0x1)).status == PlayerStatus.DEAD);

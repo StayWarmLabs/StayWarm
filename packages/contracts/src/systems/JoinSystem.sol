@@ -48,14 +48,12 @@ contract JoinSystem is System {
         GameData memory gameData = Game.get();
         address[] memory all_players = new address[](gameData.allPlayers.length + 1);
 
-
         for (uint256 i = 0; i < gameData.allPlayers.length; i++) {
             all_players[i] = gameData.allPlayers[i];
         }
 
         // console.log("all_players");
 
-        
         all_players[gameData.allPlayers.length] = player;
         gameData.allPlayers = all_players;
         gameData.ethTotalAmount += join_fee;

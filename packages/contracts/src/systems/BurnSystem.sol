@@ -18,9 +18,7 @@ import {WorldContextConsumer, WORLD_CONTEXT_CONSUMER_INTERFACE_ID} from "@lattic
 //   uint256 burnedAmount;
 // }
 
-
 contract BurnSystem is System {
-
     // ConfigData cfg = Config.get();
     // uint burn_amount = cfg.burnAmountPerRound;
 

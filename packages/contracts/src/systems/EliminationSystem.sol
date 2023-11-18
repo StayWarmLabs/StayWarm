@@ -19,22 +19,16 @@ import {WorldContextConsumer, WORLD_CONTEXT_CONSUMER_INTERFACE_ID} from "@lattic
 //   uint256 burnedAmount;
 // }
 
-
 contract EliminationSystem is System {
-
     // This function is called at every inital burning.
     function eliminate() public returns (bool) {
-        
         GameData memory gameData = Game.get();
         gameData.currentRound++;
         Game.set(gameData);
 
-        uint last_deadline = gameData.startTime + (gameData.currentRound - 1) * 1 days;
-        uint deadline = gameData.startTime + (gameData.currentRound) * 1 days;
+        uint256 last_deadline = gameData.startTime + (gameData.currentRound - 1) * 1 days;
+        uint256 deadline = gameData.startTime + (gameData.currentRound) * 1 days;
         address[] memory all_players = gameData.allPlayers;
-
-        // address player = _msgSender();
-        // PlayerData memory playerData = Player.get(player);
 
         // config
         uint256 burn_amount = Config.getBurnAmountPerRound();
@@ -45,9 +39,10 @@ contract EliminationSystem is System {
             PlayerData memory playerData = Player.get(playerAddr);
 
             if (playerData.status == PlayerStatus.ALIVE) {
-                if (playerData.lastCheckedTime > last_deadline
-                        && playerData.lastCheckedTime < deadline
-                        && playerData.burnedAmount >= burn_amount) {
+                if (
+                    playerData.lastCheckedTime > last_deadline && playerData.lastCheckedTime < deadline
+                        && playerData.burnedAmount >= burn_amount
+                ) {
                     playerData.burnedAmount = 0;
                 } else {
                     playerData.burnedAmount = 0;

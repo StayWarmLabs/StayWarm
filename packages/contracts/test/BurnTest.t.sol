@@ -52,7 +52,7 @@ contract BurnTest is MudTest {
         GameData memory gameData = Game.get();
         address[] memory all_players = gameData.allPlayers;
 
-        uint wait_time = Config.getGameStartWaitingTime();
+        uint256 wait_time = Config.getGameStartWaitingTime();
         console2.log(wait_time);
 
         skip(wait_time + 1);
@@ -68,7 +68,7 @@ contract BurnTest is MudTest {
 
         console2.log("lastCheckedTime: ", aliceData.lastCheckedTime);
         console2.log("startTime: ", gameData.startTime);
-        console2.log("deadLine: ", gameData.startTime + (gameData.currentRound+ 1) * 1 days);
+        console2.log("deadLine: ", gameData.startTime + (gameData.currentRound + 1) * 1 days);
         console2.log("ftBalance: ", aliceData.ftBalance);
         console2.log("burnedAmount: ", aliceData.burnedAmount);
 
@@ -78,6 +78,4 @@ contract BurnTest is MudTest {
         assert(aliceData.lastCheckedTime > gameData.startTime + gameData.currentRound * 1 days);
         assert(aliceData.lastCheckedTime < gameData.startTime + (gameData.currentRound + 1) * 1 days);
     }
-
-    
 }
