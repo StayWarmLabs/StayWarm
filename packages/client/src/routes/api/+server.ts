@@ -25,7 +25,7 @@ export const POST = async ({ request }) => {
   // Load client with specific private key
   const principal = Signer.parse(W3S_KEY)
   const client = await Client.create({ principal })
-  console.log(client)
+
   // Add proof that this agent has been delegated capabilities on the space
   const proof = await parseProof(W3S_PROOF)
   const space = await client.addSpace(proof)

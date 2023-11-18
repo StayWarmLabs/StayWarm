@@ -3,21 +3,22 @@
   import { onMount } from "svelte"
   import mudConfig from "contracts/mud.config";
   import Avatar from "./Avatar.svelte"
+  import Burn from "./Burn.svelte"
   import Proposals from "./Proposals.svelte"
-  import { count } from "../stores"
+  import { count, components, createComponentSystem } from "../stores"
 
-  let incrementFunction: Function
+  let joinFunction: Function
 
   let open = false
 
   onMount(async () => {
     const {
-    components,
-      systemCalls: { increment },
+      components: componentsValue,
+      systemCalls: { joinGame },
       network,
     } = await setup();
 
-    incrementFunction = () => {}
+    joinFunction = joinGame
 
     // https://vitejs.dev/guide/env-and-mode.html
     if (import.meta.env.DEV) {
@@ -34,17 +35,12 @@
         recsWorld: network.world,
       });
 
-      components.Game.update$.subscribe((update) => {
-        // const [nextValue, prevValue] = update.value;
+      components.set(componentsValue)
 
-        // game.set(Number(nextValue?.value))
-      })
-
-      // components.Counter.update$.subscribe((update) => {
-      //   const [nextValue, prevValue] = update.value;
-      //   // console.log("Counter updated", update, { nextValue, prevValue });
-      //   count.set(Number(nextValue?.value))
-      // });
+        // Create systems to listen to changes to components in our namespace
+      for (const componentKey of Object.keys($components)) {
+        createComponentSystem(componentKey)
+      }
     }
   })
 </script>
@@ -55,8 +51,8 @@
       Manage
     </button>
     <div class="funds">
-      <button on:click={() => incrementFunction()}>
-        Buy in
+      <button on:click={() => joinFunction(0.05)}>
+        Join
       </button>
     </div>
     <div class="">
@@ -69,20 +65,18 @@
 
   <div class="center">
     <Avatar />
-  
-    <button on:click={() => incrementFunction()}>
-      Burn 1
-    </button>
+
+    <Burn />
   </div>
 
   <div class="right" class:open>
-    Proposals
-
-    <Proposals/>
-
     <button class="open-right" on:click={() => open = !open}>
       Proposals
     </button>
+    
+    Proposals
+    <Proposals/>
+
   </div>
 </div>   
 

@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { count } from "../stores"
-
-  console.log($count)
+  import { player } from "../stores"
 
   enum states {
     UNINITIATED,
     ALIVE,
     DEAD
   }
-
-  $: state = states[Math.abs($count % 3)]
 </script>
 
-{state}
+{#if $player}
+  {states[$player.Player.status]}
+{/if}
+
+

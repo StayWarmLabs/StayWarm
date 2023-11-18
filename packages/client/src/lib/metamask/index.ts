@@ -2,19 +2,19 @@ import { writable } from "svelte/store";
 
 const getMetaMaskPresent = () =>
   typeof window !== "undefined" && typeof window.ethereum !== "undefined";
-
-const getLocalStorageState = () => {
-  // if not in browser, return empty object
-  if (typeof window === "undefined") {
-    return {};
-  }
-
-  return JSON.parse(localStorage.getItem("walletState") || "{}");
-};
-
-export const loaded = writable(false);
-export const isMetaMaskPresent = writable(getMetaMaskPresent());
-export const walletState = writable(getLocalStorageState());
+  
+  const getLocalStorageState = () => {
+    // if not in browser, return empty object
+    if (typeof window === "undefined") {
+      return {};
+    }
+    
+    return JSON.parse(localStorage.getItem("walletState") || "{}");
+  };
+  
+  export const loaded = writable(false);
+  export const isMetaMaskPresent = writable(getMetaMaskPresent());
+  export const walletState = writable(getLocalStorageState());
 
 export function MetaMaskStore() {
   const handleAccountsChanged = (newAccounts: any) => {

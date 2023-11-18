@@ -63,6 +63,4 @@ export default mudConfig({
   enums: {
     PlayerStatus: ["UNINITIATED", "ALIVE", "DEAD"],
   },
-
-  
 });

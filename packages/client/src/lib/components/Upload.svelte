@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { components } from "$lib/stores"
   let form: HTMLFormElement
 
   const submit = async () => {
