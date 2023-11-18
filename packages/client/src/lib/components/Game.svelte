@@ -4,12 +4,21 @@
   import { initBlockListener } from "$lib/mud/blockListener"
   import { getComponentValue } from "@latticexyz/recs";
   import { singletonEntity } from "@latticexyz/store-sync/recs";
+  import { fade } from "svelte/transition"
   import mudConfig from "contracts/mud.config";
   import Avatar from "./Avatar.svelte"
   import Burn from "./Burn.svelte"
   import Background from "./Background.svelte"
   import Proposals from "./Proposals.svelte"
-  import { count, components, network, player, burned, systemCalls, createComponentSystem } from "../stores"
+  import {
+    count,
+    components,
+    network,
+    player,
+    burned,
+    systemCalls,
+    createComponentSystem
+  } from "../stores"
 
   let open = false
   let progress = $components?.Config ? getComponentValue($components.Config, singletonEntity) : 0
@@ -55,9 +64,7 @@
       await tick()
 
       $components.SyncProgress.update$.subscribe(update => {
-        console.log("NEXT")
         const [next, prev] = update.value
-        console.log(next)
 
         progress = next.percentage || 0
 
@@ -72,6 +79,10 @@
 
 <Background />
 
+{#if open}
+  <div transition:fade={{ duration: 500 }} on:click={() => open = false} class="background-clicker"></div>
+{/if}
+
 {#if progress < 100}
   <div class="container">
     <div class="center">
@@ -81,49 +92,55 @@
     </div>
   </div>
 {:else}
-<div class="container">
-  <div class="left" class:open>
-    <button class="open-left" on:click={() => open = !open}>
-      Manage
-    </button>
-    <div class="funds">
-      {#if $player}
-        You have joined
-      {/if}
-      BURNED: {$burned}
-      {#if $burned}
-        You have burnt
-      {/if}
-      {#if $systemCalls?.joinGame && !$player}
-        <button on:click={() => $systemCalls.joinGame()}>
-          Join
+  <div in:fade={{ duration: 2000 }} class="container">
+    <div class="left" class:open>
+      {#if !open}
+        <button out:fade class="open-left" on:click={() => open = !open}>
+          Manage
         </button>
       {/if}
+      <div class="funds">
+        {#if $player}
+          You have joined
+
+          {#if $burned}
+            You have burnt
+          {/if}
+        {/if}
+        {#if $systemCalls?.joinGame && !$player}
+          <button on:click={() => $systemCalls.joinGame()}>
+            Join
+          </button>
+        {/if}
+      </div>
+      <div class="">
+        {#if count > -1}
+          {count}
+        {/if}
+      </div>
+
     </div>
-    <div class="">
-      {#if count > -1}
-        {count}
+
+    <div class="center">
+      <Avatar />
+
+      <Burn />
+    </div>
+
+    <div class="right" class:open>
+      {#if !open}
+        <button out:fade class="open-right" on:click={() => open = !open}>
+          Proposals
+        </button>
+      {/if}
+      
+      {#if $player}
+        <Proposals/>
+      {:else}
+        Add tokens to see proposals
       {/if}
     </div>
-
-  </div>
-
-  <div class="center">
-    <Avatar />
-
-    <Burn />
-  </div>
-
-  <div class="right" class:open>
-    <button class="open-right" on:click={() => open = !open}>
-      Proposals
-    </button>
-    
-    Proposals
-    <Proposals/>
-
-  </div>
-</div>  
+  </div>  
 {/if} 
 
 
@@ -134,12 +151,19 @@
     /* gap: 2rem; */
   }
 
+  .background-clicker {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 0;
+  }
+
   .left {
     position: fixed;
     left: 0;
     bottom: 0;
     height: 100vh;
-    width: 360px;
+    width: 46vw;
     background: #000;
     padding: 1rem;
     transform: translate(-100%, 0);
@@ -151,11 +175,12 @@
     right: 0;
     bottom: 0;
     height: 100vh;
-    width: 300px;
+    width: 46vw;
     background: #000;
     padding: 1rem;
     transform: translate(100%, 0);
     transition: transform 0.4s ease;
+    overflow-y: scroll;
   }
 
   .center {
@@ -171,6 +196,10 @@
     transform: translate(0, 0);
   }
 
+  .open-left,
+  .open-right {
+    font-size: 40px;
+  }
   .open-left {
     position: absolute;
     right: 0;

@@ -1,5 +1,5 @@
 {
-	"name": "mud-svelte",
+	"name": "client",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -35,7 +35,7 @@
 		"svelte-check": "^2.9.2",
 		"tslib": "^2.4.1",
 		"typescript": "^5.2.2",
-		"viem": "^1.19.3",
+		"viem": "1.14.0",
 		"vite": "^4.0.0",
 		"wait-port": "^1.0.4"
 	},
@@ -44,6 +44,7 @@
 		"@ipld/car": "^5.2.4",
 		"@ucanto/core": "^9.0.1",
 		"@ucanto/principal": "^9.0.0",
+		"@web3-storage/access": "^18.0.2",
 		"@web3-storage/w3up-client": "^11.0.1"
 	}
 }

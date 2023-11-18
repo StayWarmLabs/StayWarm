@@ -25,7 +25,10 @@
 </script>
 
 {#if $player && !$burned && config}
+  <!-- Based on tokens, value = Math.sqrt of the amount of tokens you wanna burn -->
+  <select>
+  </select>
   <button on:click={burn}>
-    Burn {config?.burnAmountPerRound}
+    Burn
   </button>
 {/if}

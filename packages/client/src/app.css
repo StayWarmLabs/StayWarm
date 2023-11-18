@@ -15,6 +15,18 @@
 
 * {
   box-sizing: border-box;
+  /* font-size: 20px; */
+  /* line-height: 30px; */
+}
+
+.form-group input {
+  width: 100%;
+  /* background: red; */
+}
+
+.form-group input[type=submit] {
+  width: 100%;
+  /* background: red !important; */
 }
 
 @media (prefers-color-scheme: light) {

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { range } from "$lib/math"
+  import { fade } from "svelte/transition"
 
   let blendWithNext = true
   const START_FRAME = 10
@@ -15,7 +16,7 @@
 
 </script>
 
-<div class="background">
+<div in:fade={{ duration: 2000 }} class="background">
   <div class="control">
     <p style:color="black">
       {completeValue}
@@ -43,6 +44,8 @@
     height: 100%;
     background-size: cover;
     background-position: center;
+    image-rendering: pixelated;
+    filter: sharpen(200);
   }
 
   .bg.top {

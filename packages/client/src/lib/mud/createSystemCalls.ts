@@ -35,21 +35,45 @@ export function createSystemCalls(
   { Game }: ClientComponents
 ) {
 
+  /**
+   * Join game
+   * @returns 
+   */
   const joinGame = async () => {
+    console.log("attempting to join")
     const tx = await worldContract.write.join({ value: parseEther("0.05")})
 
     await waitForTransaction(tx);
-    return getComponentValue(Game, singletonEntity);
+    console.log("transaction done")
+    const game = getComponentValue(Game, singletonEntity)
+    console.log(game)
+    return game;
   }
 
-  const burn = async () => {
-    const tx = await worldContract.write.burn()
+  /**
+   * Propose
+   * @param address 
+   * @param systemName 
+   * @param uri 
+   */
+  const propose = async (address: string, systemName: string, uri: string) => {
+    const tx = await worldContract.write.makeProposal([address, systemName, uri])
+
+    await waitForTransaction(tx);
+  }
+
+  /**
+   * Burn
+   */
+  const burn = async (amount = 1) => {
+    const tx = await worldContract.write.burn({ value: amount })
 
     await waitForTransaction(tx);
   }
 
   return {
     joinGame,
-    burn
+    burn,
+    propose
   };
 }

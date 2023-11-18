@@ -46,28 +46,34 @@ export function createComponentSystem(componentKey: string) {
   })
 }
 
-export const player = derived([entities, components, walletState], ([$entities, $components, $walletState]) => {
-  if (!$walletState.account) return false
+export const player = derived([components, blockNumber, walletState], ([$components, $blockNumber, $walletState]) => {
+  if (!$walletState.account || !$components?.Player) return {}
 
-  const address = encodeEntity({address: "address"}, { address: $walletState.account })
+  if ($blockNumber) {
+    const address = encodeEntity({address: "address"}, { address: $walletState.account })
+  
+    const p = getComponentValue($components?.Player, address)
+  
+    if (!p) return false
+  
+    return p
+  }
 
-  if (!$components?.Player) return
-
-  const p = getComponentValue($components?.Player, address)
-
-  if (!p) return false
-
-  return p
+  return {}
 })
 
-export const game = derived([entities, components, walletState], ([$entities, $components, $walletState]) => {
-  if (!$components?.Game) return
+export const game = derived([components, blockNumber], ([ $components, $blockNumber]) => {
+  if (!$components?.Game) return {}
 
-  const g = getComponentValue($components?.Game, singletonEntity)
+  if ($blockNumber) {
+    const g = getComponentValue($components?.Game, singletonEntity)
+  
+    if (!g) return false
+  
+    return g
+  }
 
-  if (!g) return false
-
-  return g
+  return {}
 })
 
 export const config = derived([entities, components, walletState], ([$entities, $components, $walletState]) => {
@@ -93,7 +99,7 @@ export const gameStarted = derived(([game, blockNumber]), ([$game, $blockNumber]
 
 
 export const burned = derived([game, config, player, blockNumber, network], (([$game, $config, $player, $blockNumber, $network]) => {
-  console.log("DEBUGGER", $game, $player)
+  // console.log("DEBUGGER", $game, $player)
   if (!$game || !$player) return false
 
 
@@ -102,7 +108,7 @@ export const burned = derived([game, config, player, blockNumber, network], (([$
     const lastDeadline = $game.startTime + ($game.currentRound) * day
     const deadline = $game.startTime + ($game.currentRound + 1) * day
   
-    console.log(lastDeadline, deadline, $player.lastCheckedTime)
+    // console.log(lastDeadline, deadline, $player.lastCheckedTime)
     
     if ($player.status === states.ALIVE) {
       if ($player.lastCheckedTime > lastDeadline && $player.lastCheckedTime < deadline && Number($player.burnedAmount) >= Number($config.burnAmountPerRound)) {
