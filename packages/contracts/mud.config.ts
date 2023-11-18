@@ -35,27 +35,28 @@ export default mudConfig({
       },
     },
     Proposal: {
-      keySchema: { id: "bytes32" },
+      keySchema: { id: "uint96" },
       valueSchema: {
         proposer: "address",
         startTime: "uint32",
         support: "uint32", // cannot use “for”, reserved keyword
         reject: "uint32",
         executed: "bool",
-        registerSystemId: "bytes32", //
+        implAddr: "address",
+        systemName: "string",
         uri: "string", // ipfs://Qmxxx
       },
     },
-    RegisterSystemDetail: {
-      keySchema: { id: "bytes32" },
+    PlayerVote: {
+      keySchema: { id: "bytes32" }, // uint160 address + uint96 proposal id
       valueSchema: {
-        implAddr: "address",
-        systemName: "string",
+        result: "VoteStatus", // true for support, false for reject
       },
     },
   },
   enums: {
     PlayerStatus: ["UNINITIATED", "ALIVE", "DEAD"],
+    VoteStatus: ["UNINITIATED", "SUPPORT", "REJECT"],
   },
   modules: [
     {

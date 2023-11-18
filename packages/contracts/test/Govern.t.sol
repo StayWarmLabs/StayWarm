@@ -16,12 +16,35 @@ import {MockBurn} from "src/mock/MockBurn.sol";
 import {ROOT_NAMESPACE_ID} from "@latticexyz/world/src/constants.sol";
 
 contract GovernTest is MudTest {
-    function testRegister() public {
+    address alice = vm.addr(30);
+    address bob = vm.addr(31);
+
+    function testUpgradeBurnSystem() public {
         MockBurn bs = new MockBurn();
 
-        // IWorld(worldAddress).transferOwnership(ROOT_NAMESPACE_ID, worldAddress);
-        IWorld(worldAddress).executeProposal("BurnSystem", address(bs));
+        uint256 join_fee = Config.getJoinFee();
 
-        assertEq(MockBurn(worldAddress).burn(), uint256(keccak256(abi.encodePacked("mock burn"))));
+        // join game
+        hoax(alice);
+        IWorld(worldAddress).join{value: join_fee}();
+        hoax(bob);
+        IWorld(worldAddress).join{value: join_fee}();
+
+        // skip to game start
+        skip(Config.getGameStartWaitingTime() + 100);
+
+        // alice make proposal
+        vm.prank(alice);
+        uint96 proposalId = IWorld(worldAddress).makeProposal(address(bs), "BurnSystem", "ipfs://");
+
+        // bob vote for
+        vm.prank(bob);
+        IWorld(worldAddress).vote(proposalId, true);
+
+        skip(Config.getVoteTimeLength() + 100);
+
+        IWorld(worldAddress).executeProposal(proposalId);
+
+        assertEq(MockBurn(worldAddress).burn(0), uint256(keccak256(abi.encodePacked("mock burn"))));
     }
 }

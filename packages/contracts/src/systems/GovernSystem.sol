@@ -4,8 +4,8 @@ pragma solidity >=0.8.21;
 import "forge-std/console2.sol";
 
 import {System} from "@latticexyz/world/src/System.sol";
-import {Player, Proposal, RegisterSystemDetail} from "src/codegen/index.sol";
-import {PlayerStatus} from "src/codegen/common.sol";
+import {Player, Proposal, ProposalData, Config, PlayerVote} from "src/codegen/index.sol";
+import {PlayerStatus, VoteStatus} from "src/codegen/common.sol";
 import {getUniqueEntity} from "@latticexyz/world-modules/src/modules/uniqueentity/getUniqueEntity.sol";
 import {ResourceId} from "@latticexyz/store/src/ResourceId.sol";
 import {RESOURCE_TABLE, RESOURCE_SYSTEM} from "@latticexyz/world/src/worldResourceTypes.sol";
@@ -35,41 +35,73 @@ contract GovernSystem is System, IWorldErrors {
     using ResourceIdInstance for ResourceId;
     using WorldResourceIdInstance for ResourceId;
 
-    function makeProposal(string calldata uri, RegisterSystemArgs memory rs) public {
+    function makeProposal(address implAddr, string memory systemName, string calldata uri)
+        public
+        returns (uint96 proposalId)
+    {
         address player = _msgSender();
         // must be token holder
         require(Player.getFtBalance(player) > 0, "GovernSystem: Not FT Holder");
         // must be alive
         require(Player.getStatus(player) == PlayerStatus.ALIVE, "GovernSystem: DEAD");
 
-        bytes32 proposalId = getUniqueEntity();
+        proposalId = uint96(uint256(getUniqueEntity()));
 
-        bytes32 rsId = getUniqueEntity();
-        RegisterSystemDetail.set(rsId, rs.implAddr, rs.systemName);
-
-        Proposal.set(proposalId, player, uint32(block.timestamp), 0, 0, false, rsId, uri);
+        Proposal.set(proposalId, player, uint32(block.timestamp), 0, 0, false, implAddr, systemName, uri);
     }
 
-    function executeProposal(string calldata name, address impl) public {
-        // check whether can be executed
+    function vote(uint96 proposalId, bool support) public {
+        address player = _msgSender();
+        uint256 votingLength = Config.getVoteTimeLength();
+        ProposalData memory proposalDetail = Proposal.get(proposalId);
+        // check whether time is in voting period
+        require(block.timestamp < proposalDetail.startTime + votingLength, "GovernSystem: Voting end");
 
-        // TODO
-        string memory systemName = name;
-        address systemAddress = impl;
+        // get player vote id
+        bytes32 playerVoteId = encodePlayerVoteId(player, proposalId);
+
+        // check whether voted
+        require(PlayerVote.get(playerVoteId) == VoteStatus.UNINITIATED, "GovernSystem: already vote");
+
+        // record result
+        if (support) {
+            PlayerVote.set(playerVoteId, VoteStatus.SUPPORT);
+            Proposal.setSupport(proposalId, proposalDetail.support + 1);
+        } else {
+            PlayerVote.set(playerVoteId, VoteStatus.REJECT);
+            Proposal.setReject(proposalId, proposalDetail.reject + 1);
+        }
+    }
+
+    function encodePlayerVoteId(address player, uint96 proposalId) public view returns (bytes32 id) {
+        bytes memory b = abi.encodePacked(player, proposalId);
+
+        assembly {
+            id := mload(add(b, 32))
+        }
+    }
+
+    /**
+     * @notice for now, only support upgrade system
+     */
+    function executeProposal(uint96 proposalId) public {
+        // check whether can be executed
+        address player = _msgSender();
+        uint256 votingLength = Config.getVoteTimeLength();
+        ProposalData memory proposalDetail = Proposal.get(proposalId);
+
+        // check whether voting is end
+        require(block.timestamp > proposalDetail.startTime + votingLength, "GovernSystem: Voting not end");
+
+        // check whether support is larger than reject
+        require(proposalDetail.support > proposalDetail.reject, "GovernSystem: proposal not pass");
 
         // get system resource id
         ResourceId systemId = ResourceId.wrap(
-            bytes32(abi.encodePacked(RESOURCE_SYSTEM, bytes14(0), bytes16(abi.encodePacked(systemName))))
+            bytes32(abi.encodePacked(RESOURCE_SYSTEM, bytes14(0), bytes16(abi.encodePacked(proposalDetail.systemName))))
         );
 
-        console2.log("address this: ", address(this));
-
-        console2.log("systemId: ");
-        console2.logBytes32(
-            bytes32(abi.encodePacked(RESOURCE_SYSTEM, bytes14(0), bytes16(abi.encodePacked(systemName))))
-        );
-
-        registerSystem(systemId, WorldContextConsumer(systemAddress), true);
+        registerSystem(systemId, WorldContextConsumer(proposalDetail.implAddr), true);
     }
 
     /**
