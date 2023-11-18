@@ -3,6 +3,7 @@
   import { onMount } from "svelte"
   import mudConfig from "contracts/mud.config";
   import Avatar from "./Avatar.svelte"
+  import Proposals from "./Proposals.svelte"
   import { count } from "../stores"
 
   let incrementFunction: Function
@@ -75,10 +76,12 @@
   </div>
 
   <div class="right" class:open>
-    Rules
+    Proposals
+
+    <Proposals/>
 
     <button class="open-right" on:click={() => open = !open}>
-      Rules
+      Proposals
     </button>
   </div>
 </div>   
