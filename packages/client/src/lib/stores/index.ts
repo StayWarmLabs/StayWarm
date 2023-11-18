@@ -18,7 +18,6 @@ export function createComponentSystem(componentKey: string) {
         : nextValue
 
     const entityID = update.entity
-    const propertyName = componentKey
 
     entities.update(value => {
       // Create an empty entity if it does not exist
@@ -26,9 +25,9 @@ export function createComponentSystem(componentKey: string) {
 
       // Set or delete
       if (newValue === undefined) {
-        delete value[entityID][propertyName]
+        delete value[entityID][componentKey]
       } else {
-        value[entityID][propertyName] = newValue
+        value[entityID][componentKey] = newValue
       }
 
       return value
@@ -41,7 +40,12 @@ export const player = derived([entities, walletState], ([$entities, $walletState
 
   const address = encodeEntity({address: "address"}, { address: $walletState.account })
 
+  // console.log(address)
+  
   const p = $entities[address]
+  
+  // console.log(p)
+
 
   if (!p) return false
 
@@ -49,7 +53,7 @@ export const player = derived([entities, walletState], ([$entities, $walletState
 })
 
 export const config = derived(entities, ($entities) => {
-  console.log($entities)
+  // console.log($entities)
 
   return {}
 })

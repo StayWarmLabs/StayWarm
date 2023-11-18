@@ -35,6 +35,8 @@ contract PostDeploy is Script {
     configData.joinFee = 0.05 ether;
     configData.initialBalance = 750;
 
+    Config.set(configData);
+
     vm.stopBroadcast();
   }
 }

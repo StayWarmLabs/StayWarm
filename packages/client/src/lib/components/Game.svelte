@@ -40,6 +40,7 @@
         // Create systems to listen to changes to components in our namespace
       for (const componentKey of Object.keys($components)) {
         createComponentSystem(componentKey)
+        // console.log("created ", componentKey, " system")
       }
     }
   })
