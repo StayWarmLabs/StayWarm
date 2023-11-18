@@ -75,7 +75,7 @@
       {#if $player}
         You have joined
       {/if}
-      {$burned}
+      BURNED: {$burned}
       {#if $burned}
         You have burnt
       {/if}
