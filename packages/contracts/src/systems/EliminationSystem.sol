@@ -21,7 +21,7 @@ import {WorldContextConsumer, WORLD_CONTEXT_CONSUMER_INTERFACE_ID} from "@lattic
 
 contract EliminationSystem is System {
     // This function is called at every inital burning.
-    function eliminate() public returns (bool) {
+    function eliminate() public {
         GameData memory gameData = Game.get();
         gameData.currentRound++;
         Game.set(gameData);
@@ -51,7 +51,5 @@ contract EliminationSystem is System {
                 Player.set(playerAddr, playerData);
             }
         }
-
-        return true;
     }
 }

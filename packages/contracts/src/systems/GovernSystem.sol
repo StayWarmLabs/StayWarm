@@ -35,25 +35,19 @@ contract GovernSystem is System, IWorldErrors {
     using ResourceIdInstance for ResourceId;
     using WorldResourceIdInstance for ResourceId;
 
-    function makeProposal(string calldata uri, RegisterSystemArgs[] memory rs) public {
+    function makeProposal(string calldata uri, RegisterSystemArgs memory rs) public {
         address player = _msgSender();
         // must be token holder
-        require(Player.getFtBalance(player) > 0, "No Token Holder");
+        require(Player.getFtBalance(player) > 0, "GovernSystem: Not FT Holder");
         // must be alive
-        require(Player.getStatus(player) == PlayerStatus.ALIVE, "DEAD");
+        require(Player.getStatus(player) == PlayerStatus.ALIVE, "GovernSystem: DEAD");
 
         bytes32 proposalId = getUniqueEntity();
 
-        bytes32[] memory registers = new bytes32[](rs.length);
+        bytes32 rsId = getUniqueEntity();
+        RegisterSystemDetail.set(rsId, rs.implAddr, rs.systemName);
 
-        for (uint256 i = 0; i < rs.length; i++) {
-            bytes32 rsId = getUniqueEntity();
-            RegisterSystemDetail.set(rsId, rs[i].implAddr, rs[i].systemName);
-
-            registers[i] = rsId;
-        }
-
-        Proposal.set(proposalId, player, uint32(block.timestamp), 0, 0, false, registers, uri);
+        Proposal.set(proposalId, player, uint32(block.timestamp), 0, 0, false, rsId, uri);
     }
 
     function executeProposal(string calldata name, address impl) public {

@@ -14,28 +14,6 @@ import {Player, PlayerData} from "../src/codegen/index.sol";
 import {PlayerStatus} from "../src/codegen/common.sol";
 import {Game, GameData} from "../src/codegen/index.sol";
 
-// Game: {
-//       keySchema: {},
-//       valueSchema: {
-//         startTime: "uint32",
-//         ethTotalAmount: "uint256",
-//         currentRound: "uint32",
-//         executeFuncSig: "bytes32",
-//         executeArgs: "bytes32",
-//         allPlayers: "address[]",
-//       },
-//     },
-//     //
-//     Player: {
-//       keySchema: { key: "address" },
-//       valueSchema: {
-//         status: "PlayerStatus",
-//         lastCheckedTime: "uint32",
-//         ftBalance: "uint256",
-//         burnedAmount: "uint256",
-//       },
-//     },
-
 contract BurnTest is MudTest {
     function testBurn() public {
         uint256 join_fee = Config.getJoinFee();
@@ -59,7 +37,7 @@ contract BurnTest is MudTest {
 
         vm.prank(alice);
 
-        bool test = IWorld(worldAddress).burn();
+        bool test = IWorld(worldAddress).burn(burn_amount);
 
         PlayerData memory aliceData = Player.get(all_players[0]);
         assert(aliceData.status == PlayerStatus.ALIVE);

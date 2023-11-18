@@ -55,10 +55,10 @@ contract EliminationTest is MudTest {
         skip(Config.getGameStartWaitingTime() + 1);
 
         vm.prank(alice);
-        bool alice_Burned = IWorld(worldAddress).burn();
+        bool alice_Burned = IWorld(worldAddress).burn(burn_amount);
 
         vm.prank(bob);
-        bool bob_Burned = IWorld(worldAddress).burn();
+        bool bob_Burned = IWorld(worldAddress).burn(burn_amount);
 
         PlayerData memory aliceData = Player.get(address(0x1));
         PlayerData memory bobData = Player.get(address(0x2));
@@ -105,7 +105,7 @@ contract EliminationTest is MudTest {
 
     function testEliminateAlice() public {
         uint256 join_fee = Config.getJoinFee();
-        // uint256 burn_amount = Config.getBurnAmountPerRound();
+        uint256 burn_amount = Config.getBurnAmountPerRound();
 
         address alice = address(0x1);
         vm.deal(alice, 10 ether);
@@ -117,7 +117,7 @@ contract EliminationTest is MudTest {
         skip(Config.getGameStartWaitingTime() + 1);
 
         vm.prank(alice);
-        IWorld(worldAddress).burn();
+        IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 1
         skip(Config.getRoundTimeLength());
@@ -126,7 +126,7 @@ contract EliminationTest is MudTest {
         IWorld(worldAddress).eliminate();
 
         vm.prank(alice);
-        IWorld(worldAddress).burn();
+        IWorld(worldAddress).burn(burn_amount);
 
         console2.log("alice status: ", uint256(Player.get(address(0x1)).status));
         console2.log("alice balanced: ", Player.get(address(0x1)).ftBalance);
@@ -144,35 +144,35 @@ contract EliminationTest is MudTest {
         IWorld(worldAddress).eliminate();
 
         vm.prank(alice);
-        IWorld(worldAddress).burn();
+        IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 3
         skip(Config.getRoundTimeLength());
         vm.prank(alice);
         IWorld(worldAddress).eliminate();
         vm.prank(alice);
-        IWorld(worldAddress).burn();
+        IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 4
         skip(Config.getRoundTimeLength());
         vm.prank(alice);
         IWorld(worldAddress).eliminate();
         vm.prank(alice);
-        IWorld(worldAddress).burn();
+        IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 5
         skip(Config.getRoundTimeLength());
         vm.prank(alice);
         IWorld(worldAddress).eliminate();
         vm.prank(alice);
-        IWorld(worldAddress).burn();
+        IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 6
         skip(Config.getRoundTimeLength());
         vm.prank(alice);
         IWorld(worldAddress).eliminate();
         vm.prank(alice);
-        IWorld(worldAddress).burn();
+        IWorld(worldAddress).burn(burn_amount);
 
         console2.log("alice status: ", uint256(Player.get(address(0x1)).status));
         console2.log("alice balanced: ", Player.get(address(0x1)).ftBalance);
