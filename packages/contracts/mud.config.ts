@@ -34,7 +34,6 @@ export default mudConfig({
         burnedAmount: "uint256",
       },
     },
-   
     Proposal: {
       keySchema: { id: "bytes32" },
       valueSchema: {
@@ -43,26 +42,26 @@ export default mudConfig({
         support: "uint32", // cannot use “for”, reserved keyword
         reject: "uint32",
         executed: "bool",
-        register: "bytes32[]",
-        unregister: "bytes32[]",
+        register: "bytes32[]", //
         uri: "string", // ipfs://Qmxxx
       },
     },
-    Register: {
+    RegisterSystemDetail: {
       keySchema: { id: "bytes32" },
       valueSchema: {
-        resourcesId: "bytes32",
         implAddr: "address",
-      },
-    },
-    Unregister: {
-      keySchema: { id: "bytes32" },
-      valueSchema: {
-        resourcesId: "bytes32",
+        systemName: "string",
       },
     },
   },
   enums: {
     PlayerStatus: ["UNINITIATED", "ALIVE", "DEAD"],
   },
+  modules: [
+    {
+      name: "UniqueEntityModule",
+      root: true,
+      args: [],
+    },
+  ],
 });
