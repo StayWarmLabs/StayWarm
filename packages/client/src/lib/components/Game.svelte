@@ -1,15 +1,18 @@
 <script lang="ts">
   import { setup } from "../mud/setup"
-  import { onMount } from "svelte"
-  import mudConfig from "contracts/mud.config";
+  import { onMount, tick } from "svelte"
   import { initBlockListener } from "$lib/mud/blockListener"
+  import { getComponentValue } from "@latticexyz/recs";
+  import { singletonEntity } from "@latticexyz/store-sync/recs";
+  import mudConfig from "contracts/mud.config";
   import Avatar from "./Avatar.svelte"
   import Burn from "./Burn.svelte"
   import Proposals from "./Proposals.svelte"
   import { count, components, network, player, burned, systemCalls, createComponentSystem } from "../stores"
 
   let open = false
-  let progress = 0
+  let progress = $components?.Config ? getComponentValue($components.Config, singletonEntity) : 0
+
 
   onMount(async () => {
     const {
@@ -18,6 +21,7 @@
       network: networkValue,
     } = await setup();
 
+    progress = $components?.Config ? getComponentValue($components.Config, singletonEntity) : 0
 
     // https://vitejs.dev/guide/env-and-mode.html
     if (import.meta.env.DEV) {
@@ -38,13 +42,15 @@
       systemCalls.set(systemCallsValue)
       network.set(networkValue)
 
-        // Create systems to listen to changes to components in our namespace
+      // Create systems to listen to changes to components in our namespace
       for (const componentKey of Object.keys($components)) {
         createComponentSystem(componentKey)
-        // console.log("created ", componentKey, " system")
       }
 
+      await tick()
+
       $components.SyncProgress.update$.subscribe(update => {
+        console.log("NEXT")
         const [next, prev] = update.value
         console.log(next)
 

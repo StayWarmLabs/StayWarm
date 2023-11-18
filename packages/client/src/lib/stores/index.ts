@@ -93,17 +93,21 @@ export const gameStarted = derived(([game, blockNumber]), ([$game, $blockNumber]
 
 
 export const burned = derived([game, config, player, blockNumber, network], (([$game, $config, $player, $blockNumber, $network]) => {
+  console.log("DEBUGGER", $game, $player)
   if (!$game || !$player) return false
 
-  const day = 60 * 60 * 24 * 1000 // in ms
-  const lastDeadline = $game.startTime + ($game.currentRound) * day
-  const deadline = $game.startTime + ($game.currentRound + 1) * day
 
-  // console.log(lastDeadline, deadline, $player.lastCheckedTime)
+  if ($blockNumber) {
+    const day = 60 * 60 * 24 * 1000 // in ms
+    const lastDeadline = $game.startTime + ($game.currentRound) * day
+    const deadline = $game.startTime + ($game.currentRound + 1) * day
   
-  if ($player.status === states.ALIVE) {
-    if ($player.lastCheckedTime > lastDeadline && $player.lastCheckedTime < deadline && Number($player.burnedAmount) >= Number($config.burnAmountPerRound)) {
-      return true
+    console.log(lastDeadline, deadline, $player.lastCheckedTime)
+    
+    if ($player.status === states.ALIVE) {
+      if ($player.lastCheckedTime > lastDeadline && $player.lastCheckedTime < deadline && Number($player.burnedAmount) >= Number($config.burnAmountPerRound)) {
+        return true
+      }
     }
   }
 
