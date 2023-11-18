@@ -7,7 +7,7 @@ import {getKeysWithValue} from "@latticexyz/world-modules/src/modules/keyswithva
 import {IWorld} from "../src/codegen/world/IWorld.sol";
 import {System} from "@latticexyz/world/src/System.sol";
 import {Config, ConfigData} from "../src/codegen/index.sol";
-import {Player, PlayerData} from "../src/codegen/index.sol";
+import {Player, PlayerData, Proposal} from "../src/codegen/index.sol";
 import {PlayerStatus} from "../src/codegen/common.sol";
 import {Game, GameData} from "../src/codegen/index.sol";
 import {IWorld} from "src/codegen/world/IWorld.sol";
@@ -19,7 +19,7 @@ contract GovernTest is MudTest {
     address alice = vm.addr(30);
     address bob = vm.addr(31);
 
-    function testUpgradeBurnSystem() public {
+    function testProposalAndExecute() public {
         MockBurn bs = new MockBurn();
 
         uint256 join_fee = Config.getJoinFee();
@@ -37,9 +37,19 @@ contract GovernTest is MudTest {
         vm.prank(alice);
         uint96 proposalId = IWorld(worldAddress).makeProposal(address(bs), "BurnSystem", "ipfs://");
 
-        // bob vote for
+        // bob vote for with 3 power
         vm.prank(bob);
-        IWorld(worldAddress).vote(proposalId, 1, true);
+        IWorld(worldAddress).vote(proposalId, 3, true);
+        assertEq(Player.getFtBalance(bob), Config.getInitialBalance() - 9);
+        assertEq(Proposal.getSupport(proposalId), 3);
+        assertEq(Proposal.getReject(proposalId), 0);
+
+        // alice vote againt with 2 power
+        vm.prank(alice);
+        IWorld(worldAddress).vote(proposalId, 2, false);
+        assertEq(Player.getFtBalance(alice), Config.getInitialBalance() - 4);
+        assertEq(Proposal.getSupport(proposalId), 3);
+        assertEq(Proposal.getReject(proposalId), 2);
 
         skip(Config.getVoteTimeLength() + 100);
 
