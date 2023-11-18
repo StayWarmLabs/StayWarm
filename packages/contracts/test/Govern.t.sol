@@ -39,7 +39,7 @@ contract GovernTest is MudTest {
 
         // bob vote for
         vm.prank(bob);
-        IWorld(worldAddress).vote(proposalId, true);
+        IWorld(worldAddress).vote(proposalId, 1, true);
 
         skip(Config.getVoteTimeLength() + 100);
 

@@ -47,16 +47,9 @@ export default mudConfig({
         uri: "string", // ipfs://Qmxxx
       },
     },
-    PlayerVote: {
-      keySchema: { id: "bytes32" }, // uint160 address + uint96 proposal id
-      valueSchema: {
-        result: "VoteStatus", // true for support, false for reject
-      },
-    },
   },
   enums: {
     PlayerStatus: ["UNINITIATED", "ALIVE", "DEAD"],
-    VoteStatus: ["UNINITIATED", "SUPPORT", "REJECT"],
   },
   modules: [
     {

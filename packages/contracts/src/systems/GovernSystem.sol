@@ -4,8 +4,8 @@ pragma solidity >=0.8.21;
 import "forge-std/console2.sol";
 
 import {System} from "@latticexyz/world/src/System.sol";
-import {Player, Proposal, ProposalData, Config, PlayerVote} from "src/codegen/index.sol";
-import {PlayerStatus, VoteStatus} from "src/codegen/common.sol";
+import {Player, Proposal, ProposalData, Config} from "src/codegen/index.sol";
+import {PlayerStatus} from "src/codegen/common.sol";
 import {getUniqueEntity} from "@latticexyz/world-modules/src/modules/uniqueentity/getUniqueEntity.sol";
 import {ResourceId} from "@latticexyz/store/src/ResourceId.sol";
 import {RESOURCE_TABLE, RESOURCE_SYSTEM} from "@latticexyz/world/src/worldResourceTypes.sol";
@@ -50,26 +50,21 @@ contract GovernSystem is System, IWorldErrors {
         Proposal.set(proposalId, player, uint32(block.timestamp), 0, 0, false, implAddr, systemName, uri);
     }
 
-    function vote(uint96 proposalId, bool support) public {
+    function vote(uint96 proposalId, uint256 power, bool support) public {
         address player = _msgSender();
         uint256 votingLength = Config.getVoteTimeLength();
         ProposalData memory proposalDetail = Proposal.get(proposalId);
         // check whether time is in voting period
         require(block.timestamp < proposalDetail.startTime + votingLength, "GovernSystem: Voting end");
 
-        // get player vote id
-        bytes32 playerVoteId = encodePlayerVoteId(player, proposalId);
-
-        // check whether voted
-        require(PlayerVote.get(playerVoteId) == VoteStatus.UNINITIATED, "GovernSystem: already vote");
+        // decrease user balance
+        Player.setFtBalance(player, Player.getFtBalance(player) - power * power);
 
         // record result
         if (support) {
-            PlayerVote.set(playerVoteId, VoteStatus.SUPPORT);
-            Proposal.setSupport(proposalId, proposalDetail.support + 1);
+            Proposal.setSupport(proposalId, proposalDetail.support + uint32(power));
         } else {
-            PlayerVote.set(playerVoteId, VoteStatus.REJECT);
-            Proposal.setReject(proposalId, proposalDetail.reject + 1);
+            Proposal.setReject(proposalId, proposalDetail.reject + uint32(power));
         }
     }
 
