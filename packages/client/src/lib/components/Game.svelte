@@ -7,12 +7,17 @@
   import mudConfig from "contracts/mud.config";
   import Avatar from "./Avatar.svelte"
   import Burn from "./Burn.svelte"
+  import Background from "./Background.svelte"
   import Proposals from "./Proposals.svelte"
   import { count, components, network, player, burned, systemCalls, createComponentSystem } from "../stores"
 
   let open = false
   let progress = $components?.Config ? getComponentValue($components.Config, singletonEntity) : 0
 
+
+  const onKeyDown = (e) => {
+    if (e.key === "Escape") open = false
+  }
 
   onMount(async () => {
     const {
@@ -62,6 +67,10 @@
     }
   })
 </script>
+
+<svelte:window on:keydown={onKeyDown} />
+
+<Background />
 
 {#if progress < 100}
   <div class="container">
