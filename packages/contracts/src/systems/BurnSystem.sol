@@ -32,6 +32,7 @@ contract BurnSystem is System {
 
         require(playerData.status == PlayerStatus.ALIVE, "BurnSystem: player is not alive");
         require(playerData.ftBalance >= burn_amount, "BurnSystem: player does not have enough FT");
+        require(playerData.burnedAmount < burn_amount, "BurnSystem: player has already burned");
 
         playerData.lastCheckedTime = uint32(block.timestamp);
         playerData.burnedAmount += burn_amount;
