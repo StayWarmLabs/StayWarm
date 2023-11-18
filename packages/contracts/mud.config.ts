@@ -21,6 +21,7 @@ export default mudConfig({
         currentRound: "uint32",
         executeFuncSig: "bytes32",
         executeArgs: "bytes32",
+        allPlayers: "address[]",
       },
     },
     //
@@ -33,6 +34,7 @@ export default mudConfig({
         burnedAmount: "uint256",
       },
     },
+   
     Proposal: {
       keySchema: { id: "bytes32" },
       valueSchema: {
