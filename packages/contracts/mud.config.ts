@@ -42,7 +42,7 @@ export default mudConfig({
         support: "uint32", // cannot use “for”, reserved keyword
         reject: "uint32",
         executed: "bool",
-        register: "bytes32[]", //
+        registerSystemId: "bytes32[]", //
         uri: "string", // ipfs://Qmxxx
       },
     },
