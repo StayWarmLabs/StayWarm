@@ -9,6 +9,8 @@ export default mudConfig({
         roundTimeLength: "uint32",
         voteTimeLength: "uint32",
         burnAmountPerRound: "uint256",
+        joinFee: "uint256",
+        initialBalance: "uint256",
       },
     },
     Game: {
@@ -61,4 +63,6 @@ export default mudConfig({
   enums: {
     PlayerStatus: ["UNINITIATED", "ALIVE", "DEAD"],
   },
+
+  
 });
