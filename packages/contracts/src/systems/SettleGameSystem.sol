@@ -19,10 +19,10 @@ import {WorldContextConsumer, WORLD_CONTEXT_CONSUMER_INTERFACE_ID} from "@lattic
 //   uint256 burnedAmount;
 // }
 
-contract PrizeDistributionSystem is System {
+contract SettleGameSystem is System {
     // return true if the game is over
     // return false if the game is not over
-    function prizeDistribute() public payable returns (bool) {
+    function settleGame() public payable returns (bool) {
         GameData memory gameData = Game.get();
         uint256 start_time = gameData.startTime;
         uint256 current_round = gameData.currentRound;

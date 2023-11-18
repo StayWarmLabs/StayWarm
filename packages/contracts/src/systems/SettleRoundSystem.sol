@@ -19,19 +19,34 @@ import {WorldContextConsumer, WORLD_CONTEXT_CONSUMER_INTERFACE_ID} from "@lattic
 //   uint256 burnedAmount;
 // }
 
-contract EliminationSystem is System {
-    // This function is called at every inital burning.
-    function eliminate() public {
+contract SettleRoundSystem is System {
+    // This function should be called once at every inital burning.
+    function settleRound() public {
+        // return if this function is called at this round or not
+        if (Game.getCurrentRound() != 0) {
+            if (block.timestamp < Game.getStartTime() + (Game.getCurrentRound() + 1) * Config.getRoundTimeLength()) {
+                return;
+            }
+
+            if (block.timestamp > Game.getStartTime() + (Game.getCurrentRound() + 2) * Config.getRoundTimeLength()) {
+                return;
+            }
+        }
+        // else {
+        //     if (block.timestamp < Game.getStartTime() + Config.getRoundTimeLength()) {
+        //         return;
+        //     }
+        // }
+        
+
         GameData memory gameData = Game.get();
         gameData.currentRound++;
         Game.set(gameData);
 
-        uint256 last_deadline = gameData.startTime + (gameData.currentRound - 1) * 1 days;
-        uint256 deadline = gameData.startTime + (gameData.currentRound) * 1 days;
+        uint256 last_deadline = gameData.startTime + (gameData.currentRound - 1) * Config.getRoundTimeLength();
+        uint256 deadline = gameData.startTime + (gameData.currentRound) * Config.getRoundTimeLength();
         address[] memory all_players = gameData.allPlayers;
 
-        // config
-        uint256 burn_amount = Config.getBurnAmountPerRound();
 
         for (uint32 i = 0; i < all_players.length; i++) {
             address playerAddr = all_players[i];
@@ -40,8 +55,9 @@ contract EliminationSystem is System {
 
             if (playerData.status == PlayerStatus.ALIVE) {
                 if (
-                    playerData.lastCheckedTime > last_deadline && playerData.lastCheckedTime < deadline
-                        && playerData.burnedAmount >= burn_amount
+                    playerData.lastCheckedTime > last_deadline
+                        && playerData.lastCheckedTime < deadline
+                        && playerData.burnedAmount >= Config.getBurnAmountPerRound()
                 ) {
                     playerData.burnedAmount = 0;
                 } else {
