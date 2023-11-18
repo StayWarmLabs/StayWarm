@@ -50,7 +50,7 @@ contract JoinSystem is System {
     for (uint i = 0; i < gameData.allPlayers.length; i++) {
       all_players[i] = gameData.allPlayers[i];
     }
-    all_players[all_players.length] = player;
+    all_players[gameData.allPlayers.length] = player;
     gameData.allPlayers = all_players;
 
     // gameData.numPlayers += 1;

@@ -27,8 +27,8 @@ contract EliminationSystem is System {
         GameData memory gameData = Game.get();
         uint start_time = gameData.startTime;
         uint current_round = gameData.currentRound;
-        uint last_deadline = start_time + (current_round - 1) * 1 days;
-        uint deadline = start_time + (current_round) * 1 days;
+        uint last_deadline = start_time + (current_round) * 1 days;
+        uint deadline = start_time + (current_round + 1) * 1 days;
         address[] memory all_players = gameData.allPlayers;
 
         // address player = _msgSender();

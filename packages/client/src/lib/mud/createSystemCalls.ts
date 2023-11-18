@@ -35,14 +35,21 @@ export function createSystemCalls(
   { Game }: ClientComponents
 ) {
 
-  const joinGame = async (amount: number) => {
-    const tx = await worldContract.write.join({ value: parseEther(`${amount}`)})
+  const joinGame = async () => {
+    const tx = await worldContract.write.join({ value: parseEther("0.05")})
 
     await waitForTransaction(tx);
     return getComponentValue(Game, singletonEntity);
   }
 
+  const burn = async () => {
+    const tx = await worldContract.write.burn()
+
+    await waitForTransaction(tx);
+  }
+
   return {
-    joinGame
+    joinGame,
+    burn
   };
 }

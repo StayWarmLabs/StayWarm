@@ -2,59 +2,88 @@
   import { setup } from "../mud/setup"
   import { onMount } from "svelte"
   import mudConfig from "contracts/mud.config";
+  import { initBlockListener } from "$lib/mud/blockListener"
   import Avatar from "./Avatar.svelte"
   import Burn from "./Burn.svelte"
   import Proposals from "./Proposals.svelte"
-  import { count, components, createComponentSystem } from "../stores"
-
-  let joinFunction: Function
+  import { count, components, network, player, burned, systemCalls, createComponentSystem } from "../stores"
 
   let open = false
+  let progress = 0
 
   onMount(async () => {
     const {
       components: componentsValue,
-      systemCalls: { joinGame },
-      network,
+      systemCalls: systemCallsValue,
+      network: networkValue,
     } = await setup();
 
-    joinFunction = joinGame
 
     // https://vitejs.dev/guide/env-and-mode.html
     if (import.meta.env.DEV) {
       const { mount: mountDevTools } = await import("@latticexyz/dev-tools");
       mountDevTools({
         config: mudConfig,
-        publicClient: network.publicClient,
-        walletClient: network.walletClient,
-        latestBlock$: network.latestBlock$,
-        storedBlockLogs$: network.storedBlockLogs$,
-        worldAddress: network.worldContract.address,
-        worldAbi: network.worldContract.abi,
-        write$: network.write$,
-        recsWorld: network.world,
+        publicClient: networkValue.publicClient,
+        walletClient: networkValue.walletClient,
+        latestBlock$: networkValue.latestBlock$,
+        storedBlockLogs$: networkValue.storedBlockLogs$,
+        worldAddress: networkValue.worldContract.address,
+        worldAbi: networkValue.worldContract.abi,
+        write$: networkValue.write$,
+        recsWorld: networkValue.world,
       });
 
       components.set(componentsValue)
+      systemCalls.set(systemCallsValue)
+      network.set(networkValue)
 
         // Create systems to listen to changes to components in our namespace
       for (const componentKey of Object.keys($components)) {
         createComponentSystem(componentKey)
         // console.log("created ", componentKey, " system")
       }
+
+      $components.SyncProgress.update$.subscribe(update => {
+        const [next, prev] = update.value
+        console.log(next)
+
+        progress = next.percentage || 0
+
+      })
+
+      initBlockListener()
     }
   })
 </script>
 
+{#if progress < 100}
+  <div class="container">
+    <div class="center">
+      <p>
+        Loading ... {progress}
+      </p>
+    </div>
+  </div>
+{:else}
 <div class="container">
   <div class="left" class:open>
     <button class="open-left" on:click={() => open = !open}>
       Manage
     </button>
     <div class="funds">
-      <button on:click={() => joinFunction(0.05)}>
-        Join
-      </button>
+      {#if $player}
+        You have joined
+      {/if}
+      {$burned}
+      {#if $burned}
+        You have burnt
+      {/if}
+      {#if $systemCalls?.joinGame && !$player}
+        <button on:click={() => $systemCalls.joinGame()}>
+          Join
+        </button>
+      {/if}
     </div>
     <div class="">
       {#if count > -1}
@@ -79,7 +108,8 @@
     <Proposals/>
 
   </div>
-</div>   
+</div>  
+{/if} 
 
 
 <style>

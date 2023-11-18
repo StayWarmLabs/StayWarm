@@ -1,23 +1,31 @@
 <script lang="ts">
-  import { components, entities } from "$lib/stores"
-  import { getComponentValue, getComponentValueStrict } from "@latticexyz/recs";
+  import { components, player, burned, game, systemCalls } from "$lib/stores"
+  import { getComponentValue } from "@latticexyz/recs";
   import { singletonEntity } from "@latticexyz/store-sync/recs";
 
-  // console.log(singletonEntity)
+  let config
 
   $: {
     if ($components?.Config) {
-      $components?.Config.update$.subscribe(update => {
-        console.log(update)
+      $components?.Config.update$.subscribe(() => {
+        config = getComponentValue($components.Config, singletonEntity)
       })
-      // console.log($components?.Config)
-      // console.log(getComponentValue($components?.Config, singletonEntity));
-      // console.log(getComponentValue($components?.Config, $components?.Config.id))
     }
   }
 
-  $: {
-    if ($components?.Config) {}
-    console.log($entities[$components?.Config.id])
+  const burn = async () => {
+    try {
+      await $systemCalls.burn()
+      console.log("You burned")
+    } catch (error) {
+      console.error(error)
+    }
+
   }
 </script>
+
+{#if $player && !$burned && config}
+  <button on:click={burn}>
+    Burn {config?.burnAmountPerRound}
+  </button>
+{/if}

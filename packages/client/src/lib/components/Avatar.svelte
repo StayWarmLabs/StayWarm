@@ -1,17 +1,9 @@
 <script lang="ts">
-  import { player } from "../stores"
-
-  // $: console.log("player", $player)
-
-  enum states {
-    UNINITIATED,
-    ALIVE,
-    DEAD
-  }
+  import { states, player } from "../stores"
 </script>
 
 {#if $player}
-  {states[$player.Player.status]}
+  {states[$player.status]}
 {/if}
 
 
