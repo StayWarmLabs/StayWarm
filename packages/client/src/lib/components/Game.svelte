@@ -16,7 +16,7 @@
       network,
     } = await setup();
 
-    incrementFunction = increment
+    incrementFunction = () => {}
 
     // https://vitejs.dev/guide/env-and-mode.html
     if (import.meta.env.DEV) {
@@ -137,5 +137,12 @@
     position: absolute;
     left: 0;
     transform: translate(-100%, 0) translate(-1rem, 0);
+  }
+
+  @media (prefers-color-scheme: light) {
+    .left,
+    .right {
+      background: #ddd;
+    }
   }
 </style>

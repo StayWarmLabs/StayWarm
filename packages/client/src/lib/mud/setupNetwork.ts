@@ -3,8 +3,11 @@
  * (https://viem.sh/docs/getting-started.html).
  * This line imports the functions we need from it.
  */
+import type { ClientConfig, Hex } from "viem"
+import type { ContractWrite } from "@latticexyz/common";
+
 import { get } from "svelte/store"
-import { createPublicClient, fallback, webSocket, http, createWalletClient, Hex, parseEther, ClientConfig } from "viem";
+import { createPublicClient, fallback, webSocket, http, createWalletClient, parseEther } from "viem";
 import { createFaucetService } from "@latticexyz/services/faucet";
 import { encodeEntity, syncToRecs } from "@latticexyz/store-sync/recs";
 
@@ -13,9 +16,9 @@ import { walletState } from "../metamask"
 import { getNetworkConfig } from "./getNetworkConfig";
 import { world } from "./world";
 import IWorldAbi from "contracts/out/IWorld.sol/IWorld.abi.json";
-import { createBurnerAccount, getContract, transportObserver, ContractWrite } from "@latticexyz/common";
+import { createBurnerAccount, getContract, transportObserver } from "@latticexyz/common";
 
-import { Subject, share } from "rxjs";
+import { share, Subject } from "rxjs";
 
 /*
  * Import our MUD config, which includes strong types for
