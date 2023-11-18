@@ -7,7 +7,7 @@ import {Player, PlayerData} from "../codegen/index.sol";
 import {PlayerStatus} from "../codegen/common.sol";
 import {Game, GameData} from "../codegen/index.sol";
 
-// import {Counter} from "../codegen/index.sol";
+import "forge-std/console2.sol";
 import "@latticexyz/world/src/modules/core/implementations/WorldRegistrationSystem.sol";
 import {ResourceId, ResourceIdInstance} from "@latticexyz/store/src/ResourceId.sol";
 import {WorldContextConsumer, WORLD_CONTEXT_CONSUMER_INTERFACE_ID} from "@latticexyz/world/src/WorldContext.sol";
@@ -22,31 +22,29 @@ import {WorldContextConsumer, WORLD_CONTEXT_CONSUMER_INTERFACE_ID} from "@lattic
 contract SettleRoundSystem is System {
     // This function should be called once at every inital burning.
     function settleRound() public {
-        // return if this function is called at this round or not
-        if (Game.getCurrentRound() != 0) {
-            if (block.timestamp < Game.getStartTime() + (Game.getCurrentRound() + 1) * Config.getRoundTimeLength()) {
-                return;
-            }
-
-            if (block.timestamp > Game.getStartTime() + (Game.getCurrentRound() + 2) * Config.getRoundTimeLength()) {
-                return;
-            }
+        uint256 gameStartTime = Game.getStartTime();
+        uint256 currentRound = Game.getCurrentRound();
+        // game not start
+        if (block.timestamp < gameStartTime) {
+            return;
         }
-        // else {
-        //     if (block.timestamp < Game.getStartTime() + Config.getRoundTimeLength()) {
-        //         return;
-        //     }
-        // }
-        
+
+        uint256 calCurrentRound = (block.timestamp - gameStartTime) / Config.getRoundTimeLength();
+
+        // console2.log("calCurrentRound: ", calCurrentRound);
+        // round count fetched
+        if (calCurrentRound == currentRound) {
+            return;
+        }
+
+        // console2.log("time to settle round");
 
         GameData memory gameData = Game.get();
-        gameData.currentRound++;
-        Game.set(gameData);
 
-        uint256 last_deadline = gameData.startTime + (gameData.currentRound - 1) * Config.getRoundTimeLength();
-        uint256 deadline = gameData.startTime + (gameData.currentRound) * Config.getRoundTimeLength();
+        uint256 lastRoundEnd = gameData.startTime + gameData.currentRound * Config.getRoundTimeLength();
+        uint256 currentRoundEnd = lastRoundEnd + Config.getRoundTimeLength();
+
         address[] memory all_players = gameData.allPlayers;
-
 
         for (uint32 i = 0; i < all_players.length; i++) {
             address playerAddr = all_players[i];
@@ -55,8 +53,7 @@ contract SettleRoundSystem is System {
 
             if (playerData.status == PlayerStatus.ALIVE) {
                 if (
-                    playerData.lastCheckedTime > last_deadline
-                        && playerData.lastCheckedTime < deadline
+                    playerData.lastCheckedTime > lastRoundEnd && playerData.lastCheckedTime < currentRoundEnd
                         && playerData.burnedAmount >= Config.getBurnAmountPerRound()
                 ) {
                     playerData.burnedAmount = 0;
@@ -67,5 +64,10 @@ contract SettleRoundSystem is System {
                 Player.set(playerAddr, playerData);
             }
         }
+
+        // increment round
+        Game.setCurrentRound(gameData.currentRound + 1);
+        // recusive run it, until no need to update it
+        settleRound();
     }
 }

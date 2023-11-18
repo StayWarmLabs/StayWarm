@@ -12,13 +12,6 @@ import "@latticexyz/world/src/modules/core/implementations/WorldRegistrationSyst
 import {ResourceId, ResourceIdInstance} from "@latticexyz/store/src/ResourceId.sol";
 import {WorldContextConsumer, WORLD_CONTEXT_CONSUMER_INTERFACE_ID} from "@latticexyz/world/src/WorldContext.sol";
 
-// struct PlayerData {
-//   PlayerStatus status;
-//   uint32 lastCheckedTime;
-//   uint256 ftBalance;
-//   uint256 burnedAmount;
-// }
-
 contract SettleGameSystem is System {
     // return true if the game is over
     // return false if the game is not over

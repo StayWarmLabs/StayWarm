@@ -37,12 +37,10 @@ contract BurnTest is MudTest {
 
         vm.prank(alice);
 
-        bool test = IWorld(worldAddress).burn(burn_amount);
+        IWorld(worldAddress).burn(burn_amount);
 
         PlayerData memory aliceData = Player.get(all_players[0]);
         assert(aliceData.status == PlayerStatus.ALIVE);
-
-        assertEq(test, true);
 
         console2.log("lastCheckedTime: ", aliceData.lastCheckedTime);
         console2.log("startTime: ", gameData.startTime);
