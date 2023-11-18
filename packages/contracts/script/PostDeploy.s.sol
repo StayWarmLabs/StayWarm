@@ -7,6 +7,8 @@ import { StoreSwitch } from "@latticexyz/store/src/StoreSwitch.sol";
 
 import { IWorld } from "../src/codegen/world/IWorld.sol";
 
+import { Config, ConfigData } from "../src/codegen/index.sol";
+
 contract PostDeploy is Script {
   function run(address worldAddress) external {
     // Specify a store so that you can use tables directly in PostDeploy
@@ -24,6 +26,27 @@ contract PostDeploy is Script {
     // uint32 newValue = IWorld(worldAddress).increment();
     // console.log("Increment via IWorld:", newValue);
 
+    ConfigData memory configData = Config.get();
+    // configData.gameStartWaitingTime = 1 days;
+    configData.gameStartWaitingTime = 2 days;
+    configData.roundTimeLength = 1 days;
+    configData.voteTimeLength = 1 days;
+    configData.burnAmountPerRound = 100;
+    configData.joinFee = 0.05 ether;
+    configData.initialBalance = 750;
+
     vm.stopBroadcast();
   }
 }
+
+
+// Config: {
+//       keySchema: {},
+//       valueSchema: {
+//         gameStartWaitingTime: "uint32",
+//         roundTimeLength: "uint32",
+//         voteTimeLength: "uint32",
+//         burnAmountPerRound: "uint256",
+//         joinFee: "uint256",
+//         initialBalance: "uint256",
+//       },

@@ -1,0 +1,92 @@
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.8.21;
+
+import {System} from "@latticexyz/world/src/System.sol";
+import {Config, ConfigData} from "../codegen/index.sol";
+import {Player, PlayerData} from "../codegen/index.sol";
+import {PlayerStatus} from "../codegen/common.sol";
+import {Game, GameData} from "../codegen/index.sol";
+
+// import {Counter} from "../codegen/index.sol";
+import "@latticexyz/world/src/modules/core/implementations/WorldRegistrationSystem.sol";
+import {ResourceId, ResourceIdInstance} from "@latticexyz/store/src/ResourceId.sol";
+import {WorldContextConsumer, WORLD_CONTEXT_CONSUMER_INTERFACE_ID} from "@latticexyz/world/src/WorldContext.sol";
+
+// struct PlayerData {
+//   PlayerStatus status;
+//   uint32 lastCheckedTime;
+//   uint256 ftBalance;
+//   uint256 burnedAmount;
+// }
+
+
+contract PrizeDistributionSystem is System {
+
+    // return true if the game is over
+    // return false if the game is not over
+    function prizeDistribute() public payable returns (bool) {
+        GameData memory gameData = Game.get();
+        uint start_time = gameData.startTime;
+        uint current_round = gameData.currentRound;
+        uint penultimate_deadline = start_time + (current_round - 2) * 1 days;
+        uint last_deadline = start_time + (current_round - 1) * 1 days;
+        address[] memory all_players = gameData.allPlayers;
+
+        uint numAlives = 0;
+        uint numLastAlives = 0;
+        
+        uint256 prize = address(this).balance;
+
+        // check the number of players
+        for (uint32 i = 0; i < all_players.length; i++) {
+            address playerAddr = all_players[i];
+
+            PlayerData memory playerData = Player.get(playerAddr);
+
+            if (playerData.status == PlayerStatus.ALIVE) {
+                numAlives++;
+            }
+
+            if (playerData.lastCheckedTime > penultimate_deadline
+                    && playerData.lastCheckedTime < last_deadline) {
+                numLastAlives++;
+            }
+        }
+
+        // if there is only one player, distribute the prize to the player
+        if (numAlives == 1) {
+            for (uint32 i = 0; i < all_players.length; i++) {
+                address playerAddr = all_players[i];
+
+                PlayerData memory playerData = Player.get(playerAddr);
+                if (playerData.status == PlayerStatus.ALIVE) {
+                    payable(playerAddr).transfer(prize);
+                }
+            }
+            return true;
+        }
+
+        // if there is no player,
+        // distribute the prize to the players who were alive in last round
+        
+        if (numAlives == 0) {
+            for (uint32 i = 0; i < all_players.length; i++) {
+                address playerAddr = all_players[i];
+
+                PlayerData memory playerData = Player.get(playerAddr);
+
+                if (playerData.status == PlayerStatus.DEAD) {
+                    payable(playerAddr).transfer(address(this).balance);
+                }
+
+                if (playerData.lastCheckedTime > penultimate_deadline
+                        && playerData.lastCheckedTime < last_deadline) {
+                    payable(playerAddr).transfer(prize / numLastAlives);
+                }
+            }
+            return true;
+        }
+
+        return false;
+    }
+}
