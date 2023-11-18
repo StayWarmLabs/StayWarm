@@ -10,6 +10,7 @@
   import Burn from "./Burn.svelte"
   import Background from "./Background.svelte"
   import Proposals from "./Proposals.svelte"
+  import Ruleset from "./Ruleset.svelte"
   import {
     count,
     components,
@@ -101,7 +102,7 @@
       {/if}
       <div class="funds">
         {#if $player}
-          You have joined
+          <Ruleset />
 
           {#if $burned}
             You have burnt

@@ -6,7 +6,6 @@
   // import Upload from "./Upload.svelte"
 
   let proposals = []
-  let executed = []
   
   // query for all named players at the center of the universe
   $: {
@@ -16,11 +15,13 @@
       ])
 
       proposals = [...matchingEntities].map(ent => getComponentValueStrict($components?.Proposal, ent))
-      executed = [...proposals].filter(prop => prop.executed)
 
-      $components.Proposal.update$.subscribe(update => {
-        const [next, previous] = update.value
-    
+      $components.Proposal.update$.subscribe(() => {
+        const matchingEntities2 = runQuery([
+          Has($components.Proposal)
+        ])
+
+        proposals = [...matchingEntities2].map(ent => getComponentValueStrict($components?.Proposal, ent))
       })
     }
   }
@@ -31,30 +32,37 @@
   Current proposals
 </h1>
 
-{#each proposals as proposal, i (proposal.proposer + i)}
-  <div class="card">
-    <div class="form-group">
-      <p class="proposer">
-        {proposal.proposer} proposed:
-      </p>
-      <p>
-        <IPFSString url={proposal.uri} />
-      </p>
-      <p class="overflow">
-        <a href="https://etherscan.io/address/{proposal.implAddr}" class="implementation">
-          {proposal.implAddr}
-        </a>
-      </p>
-      <p class="system">
-        {proposal.systemName}
-      </p>
+{#if proposals.length > 0}
+  {#each proposals as proposal, i (proposal.proposer + i)}
+    <div class="card">
+      <div class="form-group">
+        <p class="proposer">
+          {proposal.proposer} proposed:
+        </p>
+        <p>
+          <IPFSString url={proposal.uri} />
+        </p>
+        <p class="overflow">
+          <a href="https://etherscan.io/address/{proposal.implAddr}" class="implementation">
+            {proposal.implAddr}
+          </a>
+        </p>
+        <p class="system">
+          {proposal.systemName}
+        </p>
 
-      <div class="vote">
-        <QuadraticVote />
+        <div class="vote">
+          <QuadraticVote />
+        </div>
       </div>
     </div>
-  </div>
-{/each}
+  {/each}
+{:else}
+  <p>
+    No active proposals
+  </p>
+{/if}
+
 
 <!-- List proposals here -->
 <!-- <Upload /> -->
