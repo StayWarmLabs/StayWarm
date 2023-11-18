@@ -31,7 +31,10 @@ import {IWorldErrors} from "@latticexyz/world/src/IWorldErrors.sol";
 import {ResourceId, ResourceIdInstance} from "@latticexyz/store/src/ResourceId.sol";
 import {WorldResourceIdLib, WorldResourceIdInstance} from "@latticexyz/world/src/WorldResourceId.sol";
 
-contract GovernSystem is System, IWorldErrors {
+/**
+ * @notice remove voting confirmation from GovernSystem
+ */
+contract NonGovernSys is System, IWorldErrors {
     using ResourceIdInstance for ResourceId;
     using WorldResourceIdInstance for ResourceId;
 
@@ -86,10 +89,10 @@ contract GovernSystem is System, IWorldErrors {
         ProposalData memory proposalDetail = Proposal.get(proposalId);
 
         // check whether voting is end
-        require(block.timestamp > proposalDetail.startTime + votingLength, "GovernSystem: Voting not end");
+        // require(block.timestamp > proposalDetail.startTime + votingLength, "GovernSystem: Voting not end");
 
         // check whether support is larger than reject
-        require(proposalDetail.support > proposalDetail.reject, "GovernSystem: proposal not pass");
+        // require(proposalDetail.support > proposalDetail.reject, "GovernSystem: proposal not pass");
 
         // get system resource id
         ResourceId systemId = ResourceId.wrap(

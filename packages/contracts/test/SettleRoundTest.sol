@@ -36,8 +36,8 @@ import {Game, GameData} from "../src/codegen/index.sol";
 //       },
 //     },
 
-contract EliminationTest is MudTest {
-    function testEliminate() public {
+contract SettleRoundTest is MudTest {
+    function testSettleRound() public {
         uint256 join_fee = Config.getJoinFee();
         uint256 burn_amount = Config.getBurnAmountPerRound();
 
@@ -54,28 +54,20 @@ contract EliminationTest is MudTest {
         // skip until game start
         skip(Config.getGameStartWaitingTime() + 1);
 
+        console2.log("#####################");
+        console2.log("###### ROUND 0 ######");
+        console2.log("#####################");
+
         vm.prank(alice);
-        bool alice_Burned = IWorld(worldAddress).burn(burn_amount);
+        IWorld(worldAddress).burn(burn_amount);
 
         vm.prank(bob);
-        bool bob_Burned = IWorld(worldAddress).burn(burn_amount);
+        IWorld(worldAddress).burn(burn_amount);
 
         PlayerData memory aliceData = Player.get(address(0x1));
         PlayerData memory bobData = Player.get(address(0x2));
 
-        assertEq(alice_Burned, true);
-        assertEq(bob_Burned, true);
-
         GameData memory gameData = Game.get();
-
-        console2.log("startTime: ", gameData.startTime);
-        console2.log("deadLine: ", gameData.startTime + (gameData.currentRound + 1) * 1 days);
-        console2.log("Alice burned", alice_Burned);
-        console2.log("Bob burned: ", bob_Burned);
-
-        console2.log("Alice burned ammount: ", aliceData.burnedAmount);
-        console2.log("Bob burned ammount: ", bobData.burnedAmount);
-        console2.log("Config.getRoundTimeLength: ", Config.getRoundTimeLength());
 
         assertEq(aliceData.burnedAmount, burn_amount);
         assertEq(bobData.burnedAmount, burn_amount);
@@ -83,24 +75,17 @@ contract EliminationTest is MudTest {
         // call eliminate function next round.
         skip(Config.getRoundTimeLength());
 
-        // gameData.currentRound += 1; in eliminate function
-        uint256 last_deadline = gameData.startTime + (gameData.currentRound + 1) * 1 days;
-        uint256 deadline = gameData.startTime + (gameData.currentRound + 2) * 1 days;
-
-        console2.log("last_deadline: ", last_deadline);
-        console2.log("deadline: ", deadline);
-        console2.log("current time: ", block.timestamp);
+        console2.log("#####################");
+        console2.log("###### ROUND 1 ######");
+        console2.log("#####################");
 
         vm.prank(alice);
-        IWorld(worldAddress).eliminate();
+        IWorld(worldAddress).settleRound();
 
-        aliceData = Player.get(address(0x1));
-        bobData = Player.get(address(0x2));
-
-        assertEq(aliceData.burnedAmount, 0);
-        assertEq(bobData.burnedAmount, 0);
-        assert(aliceData.status == PlayerStatus.ALIVE);
-        assert(bobData.status == PlayerStatus.ALIVE);
+        assertEq(Player.getBurnedAmount(alice), 0);
+        assertEq(Player.getBurnedAmount(bob), 0);
+        assertEq(uint8(Player.getStatus(alice)), uint8(PlayerStatus.ALIVE));
+        assertEq(uint8(Player.getStatus(bob)), uint8(PlayerStatus.ALIVE));
     }
 
     function testEliminateAlice() public {
@@ -114,85 +99,109 @@ contract EliminationTest is MudTest {
 
         // ROUND 0
         // skip until game start
+
         skip(Config.getGameStartWaitingTime() + 1);
+
+        console2.log("#####################");
+        console2.log("###### ROUND 0 ######");
+        console2.log("#####################");
 
         vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 1
         skip(Config.getRoundTimeLength());
+        console2.log("#####################");
+        console2.log("###### ROUND 1 ######");
+        console2.log("#####################");
 
         vm.prank(alice);
-        IWorld(worldAddress).eliminate();
+        IWorld(worldAddress).settleRound();
 
         vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
-        console2.log("alice status: ", uint256(Player.get(address(0x1)).status));
-        console2.log("alice balanced: ", Player.get(address(0x1)).ftBalance);
-
-        console2.log("game current round: ", Game.getCurrentRound());
-        console2.log("game start time: ", Game.getStartTime());
-        console2.log("last deadline:", Game.getStartTime() + Game.getCurrentRound() * 1 days);
-        console2.log("deadline:", Game.getStartTime() + (Game.getCurrentRound() + 1) * 1 days);
-        console2.log("current time:", block.timestamp);
-
         // ROUND 2
         skip(Config.getRoundTimeLength());
 
+        console2.log("#####################");
+        console2.log("###### ROUND 2 ######");
+        console2.log("#####################");
+
         vm.prank(alice);
-        IWorld(worldAddress).eliminate();
+        IWorld(worldAddress).settleRound();
+
+        vm.prank(alice);
+        IWorld(worldAddress).settleRound();
 
         vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 3
         skip(Config.getRoundTimeLength());
+        console2.log("#####################");
+        console2.log("###### ROUND 3 ######");
+        console2.log("#####################");
+
         vm.prank(alice);
-        IWorld(worldAddress).eliminate();
+        IWorld(worldAddress).settleRound();
         vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 4
         skip(Config.getRoundTimeLength());
+        console2.log("#####################");
+        console2.log("###### ROUND 4 ######");
+        console2.log("#####################");
+
         vm.prank(alice);
-        IWorld(worldAddress).eliminate();
+        IWorld(worldAddress).settleRound();
         vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
+        console2.log("alice status: ", uint256(Player.get(address(0x1)).status));
+        console2.log("alice balanced: ", Player.get(address(0x1)).ftBalance);
+        console2.log("game current round: ", Game.getCurrentRound());
+
         // ROUND 5
         skip(Config.getRoundTimeLength());
+        console2.log("#####################");
+        console2.log("###### ROUND 5 ######");
+        console2.log("#####################");
+
         vm.prank(alice);
-        IWorld(worldAddress).eliminate();
+        IWorld(worldAddress).settleRound();
         vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
         // ROUND 6
         skip(Config.getRoundTimeLength());
+        console2.log("#####################");
+        console2.log("###### ROUND 6 ######");
+        console2.log("#####################");
+
         vm.prank(alice);
-        IWorld(worldAddress).eliminate();
+        IWorld(worldAddress).settleRound();
         vm.prank(alice);
         IWorld(worldAddress).burn(burn_amount);
 
-        console2.log("alice status: ", uint256(Player.get(address(0x1)).status));
-        console2.log("alice balanced: ", Player.get(address(0x1)).ftBalance);
-
         // ROUND 7
         skip(Config.getRoundTimeLength());
-        vm.prank(alice);
-        IWorld(worldAddress).eliminate();
-        // assert(IWorld(worldAddress).burn() == false); // cannot burn
+        console2.log("#####################");
+        console2.log("###### ROUND 7 ######");
+        console2.log("#####################");
 
-        console2.log("alice status: ", uint256(Player.get(address(0x1)).status));
-        console2.log("alice balanced: ", Player.get(address(0x1)).ftBalance);
+        vm.prank(alice);
+        IWorld(worldAddress).settleRound();
 
         // ROUND 8
-        vm.prank(alice);
-        IWorld(worldAddress).eliminate();
+        skip(Config.getRoundTimeLength());
+        console2.log("#####################");
+        console2.log("###### ROUND 8 ######");
+        console2.log("#####################");
 
-        console2.log("alice status: ", uint256(Player.get(address(0x1)).status));
-        console2.log("alice balanced: ", Player.get(address(0x1)).ftBalance);
+        IWorld(worldAddress).settleRound();
 
-        assert(Player.get(address(0x1)).status == PlayerStatus.DEAD);
+        assertEq(uint8(Player.getStatus(alice)), uint8(PlayerStatus.DEAD));
     }
 }

@@ -1,6 +1,28 @@
 import { mudConfig } from "@latticexyz/world/register";
 
 export default mudConfig({
+  systems: {
+    BurnSystem: {
+      name: "BurnSystem",
+      openAccess: true,
+    },
+    GovernSystem: {
+      name: "GovernSystem",
+      openAccess: true,
+    },
+    JoinSystem: {
+      name: "JoinSystem",
+      openAccess: true,
+    },
+    SettleGameSystem: {
+      name: "SettleGameSystem",
+      openAccess: true,
+    },
+    SettleRoundSystem: {
+      name: "SettleRoundSystem",
+      openAccess: true,
+    },
+  },
   tables: {
     Config: {
       keySchema: {},
@@ -47,16 +69,9 @@ export default mudConfig({
         uri: "string", // ipfs://Qmxxx
       },
     },
-    PlayerVote: {
-      keySchema: { id: "bytes32" }, // uint160 address + uint96 proposal id
-      valueSchema: {
-        result: "VoteStatus", // true for support, false for reject
-      },
-    },
   },
   enums: {
     PlayerStatus: ["UNINITIATED", "ALIVE", "DEAD"],
-    VoteStatus: ["UNINITIATED", "SUPPORT", "REJECT"],
   },
   modules: [
     {
