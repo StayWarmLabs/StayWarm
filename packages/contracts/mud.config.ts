@@ -1,6 +1,28 @@
 import { mudConfig } from "@latticexyz/world/register";
 
 export default mudConfig({
+  systems: {
+    BurnSystem: {
+      name: "BurnSystem",
+      openAccess: true,
+    },
+    GovernSystem: {
+      name: "GovernSystem",
+      openAccess: true,
+    },
+    JoinSystem: {
+      name: "JoinSystem",
+      openAccess: true,
+    },
+    SettleGameSystem: {
+      name: "SettleGameSystem",
+      openAccess: true,
+    },
+    SettleRoundSystem: {
+      name: "SettleRoundSystem",
+      openAccess: true,
+    },
+  },
   tables: {
     Config: {
       keySchema: {},
