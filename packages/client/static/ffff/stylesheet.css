@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Fluxisch Else';
+    src: url('FluxischElse-Bold.woff2') format('woff2'),
+        url('FluxischElse-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fluxisch Else';
+    src: url('FluxischElse-Regular.woff2') format('woff2'),
+        url('FluxischElse-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

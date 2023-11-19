@@ -19,8 +19,6 @@
 		callSettleSystem();
 	}
 
-	$: console.log('$blockNumber: ', $blockNumber);
-
 	const burn = async () => {
 		try {
 			await $systemCalls?.burn(100n);
@@ -41,8 +39,6 @@
 		console.log('$systemCalls: ', $systemCalls);
 
 		canSettle = await $systemCalls.canSettle();
-
-		console.log(canSettle);
 	};
 
 	// // call once at first

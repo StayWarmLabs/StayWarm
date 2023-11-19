@@ -29,7 +29,7 @@
 
 </script>
 
-{#if timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0}
+{#if timeLeft.hours > -1 && timeLeft.minutes > -1 && timeLeft.seconds > -1}
   <!-- Started -->
 {:else}
   <div in:fly={{ y: -20 }} class="">
@@ -43,7 +43,7 @@
 
 <style>
   .counter {
-    font-family: "Fira Code", monospaced;
+    font-family: "Fluxisch Else", "Fira Code", monospaced;
     font-weight: bold;
     color: orangered;
     font-size: 80px;

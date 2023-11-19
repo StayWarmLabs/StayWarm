@@ -16,6 +16,8 @@
 
 	$: console.log('completeValue:', completeValue);
 
+  $: console.log($timeLeft)
+
 </script>
 
 <div class="background">

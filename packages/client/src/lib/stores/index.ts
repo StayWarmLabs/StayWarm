@@ -120,7 +120,7 @@ export const timeLeft = derived([game, config, blockNumber], ([$game, $config, $
 			endTime += $config?.roundTimeLength;
 		}
 
-		return Math.ceil(endTime - now / 1000);
+		return Math.max(Math.ceil(endTime - now / 1000), 0);
 	}
 
 	return 0;

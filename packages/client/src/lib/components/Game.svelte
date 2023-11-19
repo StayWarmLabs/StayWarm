@@ -105,7 +105,7 @@
 
 <div class="game">
   <button class="settings-button" on:click={() => open = !open}>
-    Manage
+    Menu
   </button>
   <div class="container">
     <div class="left" class:open>
