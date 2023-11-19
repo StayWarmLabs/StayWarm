@@ -103,23 +103,29 @@ export const canSettle = derived([systemCalls], ([$systemCalls]) => {
 	return $systemCalls?.canSettle();
 });
 
-export const timeLeft = derived([game, config, blockNumber], ([$game, $config, $blockNumber]) => {
-	if (!$game) return 0;
+export const timeLeft = derived(
+	[game, player, config, blockNumber],
+	([$game, $player, $config, $blockNumber]) => {
+		if (!$game) return 0;
 
-	if ($blockNumber) {
-		let endTime = $game.startTime + ($game.currentRound + 1) * $config?.roundTimeLength;
-		const now = new Date().getTime() / 1000;
+		if ($blockNumber) {
+			const roundForPlayer = Math.ceil(
+				($player?.lastCheckedTime - $game.startTime) / $config?.roundTimeLength
+			);
+			let endTime = $game.startTime + ($game.currentRound + 1) * $config?.roundTimeLength;
+			const now = new Date().getTime() / 1000;
 
-		// at most add a period once
-		if (endTime < now) {
-			endTime += $config?.roundTimeLength;
+			// at most add a period once
+			if (endTime < now) {
+				endTime += $config?.roundTimeLength;
+			}
+
+			return Math.ceil(endTime - now);
 		}
 
-		return Math.ceil(endTime - now);
+		return 0;
 	}
-
-	return 0;
-});
+);
 
 export const burned = derived(
 	[game, config, player, blockNumber, network],
