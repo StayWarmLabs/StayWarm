@@ -1,48 +1,68 @@
 <script lang="ts">
-  import { components, player, burned, game, systemCalls } from "$lib/stores"
-  import { getComponentValue } from "@latticexyz/recs";
-  import { singletonEntity } from "@latticexyz/store-sync/recs";
-	import { parseEther } from "viem";
+	import type { ClientComponents } from '$lib/mud/createClientComponents';
+	import { components, player, blockNumber, systemCalls } from '$lib/stores';
+	import { getComponentValue } from '@latticexyz/recs';
+	import { singletonEntity } from '@latticexyz/store-sync/recs';
 
-  let config
+	let config: ClientComponents['Config'] | undefined;
+	let canSettle = false;
 
-  $: {
-    if ($components?.Config) {
-      $components?.Config.update$.subscribe(() => {
-        config = getComponentValue($components.Config, singletonEntity)
-      })
-    }
-  }
+	$: {
+		if ($components?.Config) {
+			$components?.Config.update$.subscribe(() => {
+				config = getComponentValue($components.Config, singletonEntity);
+			});
+		}
+	}
 
-  const burn = async () => {
-    try {
-      await $systemCalls.burn(parseEther("100"))
-    } catch (error) {
-      console.error(error)
-    }
+	$: if ($blockNumber % 10 === 0 && $systemCalls?.canSettle) {
+		callSettleSystem();
+	}
 
-  }
+	const burn = async () => {
+		try {
+			await $systemCalls.burn(100n);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const settleGame = async () => {
+		try {
+			await $systemCalls.settleGame();
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const callSettleSystem = async () => {
+		canSettle = await $systemCalls.canSettle();
+	};
 </script>
 
-{#if $player}
-  <button class="burn" on:click={burn}>
-    Burn
-  </button>
+{#if $player && !canSettle}
+	<button class="burn" on:click={burn}> Burn </button>
+{/if}
+{#if canSettle}
+	<button class="burn" on:click={settleGame}> Settle Game </button>
 {/if}
 
-<style>
-  .burn {
-    padding: 0.5rem 1rem;
-    background: orangered;
-    border: transparent;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-top: .5rem;
-    cursor: pointer;
-  }
+<!-- {#if $canSettle} -->
+<!-- {/if} -->
 
-  .burn:hover {
-    background: white;
-    color: orangered;
-  }
+<style>
+	.burn {
+		padding: 0.5rem 1rem;
+		background: orangered;
+		border: transparent;
+		font-size: 16px;
+		border-radius: 5px;
+		margin-top: 0.5rem;
+		cursor: pointer;
+	}
+
+	.burn:hover {
+		background: white;
+		color: orangered;
+	}
 </style>

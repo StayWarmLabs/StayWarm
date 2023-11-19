@@ -20,6 +20,7 @@
     player,
     burned,
     timeLeft,
+    blockNumber,
     systemCalls,
     createComponentSystem
   } from "../stores"
@@ -27,7 +28,6 @@
   let adding = false
   let open = false
   let progress = $components?.Config ? getComponentValue($components.Config, singletonEntity) : 0
-
 
   const onKeyDown = (e) => {
     if (e.key === "Escape") open = false
