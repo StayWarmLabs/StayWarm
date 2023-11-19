@@ -15,8 +15,6 @@
 
 * {
   box-sizing: border-box;
-  /* font-size: 20px; */
-  /* line-height: 30px; */
 }
 
 .form-group input {
@@ -27,6 +25,38 @@
 .form-group input[type=submit] {
   width: 100%;
   /* background: red !important; */
+}
+
+.vote {
+  display: flex;
+  justify-content: space-between;
+}
+
+.votes {
+  display: flex;
+  gap: .5rem;
+}
+
+.overflow {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.proposer {
+  word-wrap: break-word;
+}
+
+.vote button {
+  width: 60px;
+}
+
+.card {
+  padding: .5rem;
+  background: #444;
+  margin-bottom: 1rem;
 }
 
 @media (prefers-color-scheme: light) {

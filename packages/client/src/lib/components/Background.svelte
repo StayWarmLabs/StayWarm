@@ -16,7 +16,7 @@
 
 </script>
 
-<div in:fade={{ duration: 2000 }} class="background">
+<div class="background">
   <div class="control">
     <p style:color="black">
       {completeValue}
@@ -58,6 +58,6 @@
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0);
-    z-index: 2;
+    z-index: 20;
   }
 </style>

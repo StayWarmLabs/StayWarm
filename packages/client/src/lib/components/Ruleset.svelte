@@ -27,33 +27,19 @@
         Has($components.Systems)
       ])
 
-      rules = [...matchingEntities].map(ent => {
-        const systemAddress = getComponentValueStrict($components?.Systems, ent).system
+      const syss = ["govern", "burn", "settleround", "join", "settlegame"]
 
+      rules = [...matchingEntities].map(ent => {
         const systemAddressName = ent.slice(32, 64)
         const name = hexToUtf8(systemAddressName)
 
-
-        return ent
+        return { name, address: getComponentValueStrict($components?.Systems, ent) }
+      }).filter(({ name }) => {
+        return syss.some(s => name.toLowerCase().includes(s))
       })
 
-      $components.Systems.update$.subscribe(() => {
-        const matchingEntities2 = runQuery([
-          Has($components.Systems)
-        ])
-
-        rules = [...matchingEntities2].map(ent => getComponentValueStrict($components?.Systems, ent))
-      })
     }
   }
-
-  // Resources table
-  // 
-  // 1. get resource ID from table
-
-  // 2. parse utf
-
-  // sy + "" + "SYSTEM_NAME"
 </script>
 
 <h1>
@@ -65,8 +51,12 @@
     <div class="card">
       <div class="form-group">
         <p class="proposer">
-          {rule.proposer}
-        </p>
+          {rule.name}
+          <p class="overflow">
+            <a href="https://etherscan.io/address/{rule.address.system}" class="implementation">
+              {rule.address.system}
+            </a>
+          </p>
         <p>
           <!-- <IPFSString url={rule.uri} /> -->
         </p>
@@ -86,46 +76,3 @@
     No rules
   </p>
 {/if}
-
-
-<!-- List rules here -->
-<!-- <Upload /> -->
-
-<style>
-  .vote {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .vote {
-
-  }
-
-  .votes {
-    display: flex;
-    gap: .5rem;
-  }
-
-  .overflow {
-    white-space: nowrap;
-    width: 100%;
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-  }
-
-  .proposer {
-    word-wrap: break-word;
-  }
-
-  .vote button {
-    width: 60px;
-  }
-
-  .card {
-    padding: .5rem;
-    background: #444;
-    margin-bottom: 1rem;
-  }
-</style>
-

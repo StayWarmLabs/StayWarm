@@ -3,7 +3,9 @@
 </script>
 
 {#if $player}
-  {states[$player.status]}
+  <div class="">
+    {states[$player.status]}
+  </div>
 {/if}
 
 

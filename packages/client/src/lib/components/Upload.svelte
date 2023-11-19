@@ -1,7 +1,13 @@
 <script lang="ts">
+  import { fly } from "svelte/transition"
   import { systemCalls } from "$lib/stores"
+  import { createEventDispatcher } from "svelte"
+
+  export let adding = true
   let form: HTMLFormElement
   let loadingState = ""
+
+  const dispatch = createEventDispatcher()
 
   const submit = async () => {
     const data = new FormData(form)
@@ -27,15 +33,18 @@
     } finally {
       loadingState = "Proposal made"
       form.reset()
+      adding = false
       
       await new Promise(r => setTimeout(r, 2000));
       loadingState = ""
+
+      dispatch("close")
     }
     // create proposal
   }
 </script>
 
-<div class="new-proposal">
+<div transition:fly={{ x: 100 }} class="new-proposal">
   <div class="form-group">
     <h1>
       New proposal
@@ -54,11 +63,11 @@
       </label>
       <select disabled={loadingState !== ""} name="systemName">
         <!-- BurnSystem, GovernSystem, JoinSystem, SettleGameSystem, SettleRoundSystem -->
-        <option value="BurnSystem">BurnSystem</option>
-        <option value="GovernSystem">GovernSystem</option>
-        <option value="JoinSystem">JoinSystem</option>
-        <option value="SettleGameSystem">SettleGameSystem</option>
-        <option value="SettleRoundSystem">SettleRoundSystem</option>
+        <option value="Burn">Burn</option>
+        <option value="Govern">Govern</option>
+        <option value="Join">Join</option>
+        <option value="SettleGame">SettleGame</option>
+        <option value="SettleRound">SettleRound</option>
       </select>
     </div>
     <div class="form-group">
@@ -72,16 +81,18 @@
   {loadingState}
 </div>
 
-<div class="form-group">
-  <h1>
-    Current proposals
-  </h1>
-</div>
-
 
 <style>
   .new-proposal {
     transition: opacity 0.2s ease;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 50vw;
+    z-index: 999;
+    background: black;
+    padding: 1rem;
   }
   .new-proposal,
   .form-group {

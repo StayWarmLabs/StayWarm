@@ -1,11 +1,15 @@
 <script lang="ts">
   import { components, systemCalls } from "$lib/stores"
   import { Has, runQuery, getComponentValueStrict } from "@latticexyz/recs";
+  import { createEventDispatcher } from "svelte"
   import IPFSString from "./IPFSString.svelte"
   import QuadraticVote from "./QuadraticVote.svelte"
-  // import Upload from "./Upload.svelte"
+  import Upload from "./Upload.svelte"
+
+  const dispatch = createEventDispatcher()
 
   let proposals = []
+  let adding = false
   
   // query for all named players at the center of the universe
   $: {
@@ -28,80 +32,56 @@
 
 </script>
 
-<h1>
-  Current proposals
-</h1>
-
-{#if proposals.length > 0}
-  {#each proposals as proposal, i (proposal.proposer + i)}
-    <div class="card">
-      <div class="form-group">
-        <p class="proposer">
-          {proposal.proposer} proposed:
-        </p>
-        <p>
-          <IPFSString url={proposal.uri} />
-        </p>
-        <p class="overflow">
-          <a href="https://etherscan.io/address/{proposal.implAddr}" class="implementation">
-            {proposal.implAddr}
-          </a>
-        </p>
-        <p class="system">
-          {proposal.systemName}
-        </p>
-
-        <div class="vote">
-          <QuadraticVote />
+<div class="">
+  <h1>
+    Current proposals
+  </h1>
+  
+  {#if proposals.length > 0}
+    {#each proposals as proposal, i (proposal.proposer + i)}
+      <div class="card">
+        <div class="form-group">
+          <p class="proposer">
+            {proposal.proposer} proposed:
+          </p>
+          <p>
+            <IPFSString url={proposal.uri} />
+          </p>
+          <p class="overflow">
+            <a href="https://etherscan.io/address/{proposal.implAddr}" class="implementation">
+              {proposal.implAddr}
+            </a>
+          </p>
+          <p class="system">
+            Overwrites: {proposal.systemName}
+          </p>
+  
+          <div class="vote">
+            <QuadraticVote {proposal} />
+          </div>
         </div>
       </div>
-    </div>
-  {/each}
-{:else}
-  <p>
-    No active proposals
-  </p>
-{/if}
+    {/each}
+  {:else}
+    <p>
+      No active proposals
+    </p>
+  {/if}
 
+  <button class="add" on:click={() => dispatch("add")}>
+    +
+  </button>
 
-<!-- List proposals here -->
-<!-- <Upload /> -->
+</div>
 
 <style>
-  .vote {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .vote {
-
-  }
-
-  .votes {
-    display: flex;
-    gap: .5rem;
-  }
-
-  .overflow {
-    white-space: nowrap;
-    width: 100%;
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-  }
-
-  .proposer {
-    word-wrap: break-word;
-  }
-
-  .vote button {
-    width: 60px;
-  }
-
-  .card {
-    padding: .5rem;
-    background: #444;
-    margin-bottom: 1rem;
+  .add {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    z-index: 9999;
   }
 </style>
-

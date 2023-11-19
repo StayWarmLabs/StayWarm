@@ -9,6 +9,7 @@
   import Avatar from "./Avatar.svelte"
   import Burn from "./Burn.svelte"
   import Background from "./Background.svelte"
+  import Upload from "./Upload.svelte"
   import Proposals from "./Proposals.svelte"
   import Ruleset from "./Ruleset.svelte"
   import {
@@ -21,6 +22,7 @@
     createComponentSystem
   } from "../stores"
 
+  let adding = false
   let open = false
   let progress = $components?.Config ? getComponentValue($components.Config, singletonEntity) : 0
 
@@ -92,18 +94,19 @@
       </p>
     </div>
   </div>
-{:else}
-  <div in:fade={{ duration: 2000 }} class="container">
+{/if}
+
+
+<div class="game">
+  <button class="settings-button" on:click={() => open = !open}>
+    Manage
+  </button>
+  <div class="container">
     <div class="left" class:open>
-      {#if !open}
-        <button out:fade class="open-left" on:click={() => open = !open}>
-          Manage
-        </button>
-      {/if}
       <div class="funds">
         {#if $player}
           <Ruleset />
-
+  
           {#if $burned}
             You have burnt
           {/if}
@@ -119,15 +122,21 @@
           {count}
         {/if}
       </div>
-
+  
     </div>
-
+  
     <div class="center">
+      {#if $systemCalls?.joinGame && !$player}
+      <!-- <button on:click={() => $systemCalls.joinGame()}>
+        Join
+      </button> -->
+    {:else}
       <Avatar />
-
+  
       <Burn />
+    {/if}
     </div>
-
+  
     <div class="right" class:open>
       {#if !open}
         <button out:fade class="open-right" on:click={() => open = !open}>
@@ -136,20 +145,31 @@
       {/if}
       
       {#if $player}
-        <Proposals/>
+        <Proposals on:add={() => adding = true}/>
       {:else}
         Add tokens to see proposals
       {/if}
     </div>
   </div>  
-{/if} 
+</div>
+
+{#if adding}
+  <Upload on:close={() => adding = false} />
+{/if}
 
 
 <style>
-  .container {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* gap: 2rem; */
+
+.settings-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+}
+  .game {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
   }
 
   .background-clicker {
@@ -169,6 +189,8 @@
     padding: 1rem;
     transform: translate(-100%, 0);
     transition: transform 0.4s ease;
+    overflow-y: scroll;
+    z-index: 20;
   }
 
   .right {
@@ -182,6 +204,7 @@
     transform: translate(100%, 0);
     transition: transform 0.4s ease;
     overflow-y: scroll;
+    z-index: 20;
   }
 
   .center {
@@ -205,11 +228,13 @@
     position: absolute;
     right: 0;
     transform: translate(100%, 0) translate(1rem, 0);
+    z-index: 1000;
   }
   .open-right {
     position: absolute;
     left: 0;
     transform: translate(-100%, 0) translate(-1rem, 0);
+    z-index: 1000;
   }
 
   @media (prefers-color-scheme: light) {

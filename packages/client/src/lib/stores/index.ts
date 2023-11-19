@@ -47,19 +47,18 @@ export function createComponentSystem(componentKey: string) {
 }
 
 export const player = derived([components, blockNumber, walletState], ([$components, $blockNumber, $walletState]) => {
-  if (!$walletState.account || !$components?.Player) return {}
+  if (!$walletState.account || !$components?.Player) return false
 
-  if ($blockNumber) {
-    const address = encodeEntity({address: "address"}, { address: $walletState.account })
-  
-    const p = getComponentValue($components?.Player, address)
-  
-    if (!p) return false
-  
-    return p
-  }
+  if ($blockNumber) console.log("tick player")
+  const address = encodeEntity({address: "address"}, { address: $walletState.account })
 
-  return {}
+  const p = getComponentValue($components?.Player, address)
+  console.log(p)
+
+  if (!p) return false
+
+  return p
+
 })
 
 export const game = derived([components, blockNumber], ([ $components, $blockNumber]) => {
@@ -103,19 +102,16 @@ export const burned = derived([game, config, player, blockNumber, network], (([$
   if (!$game || !$player) return false
 
 
-  if ($blockNumber) {
-    const day = 60 * 60 * 24 * 1000 // in ms
-    const lastDeadline = $game.startTime + ($game.currentRound) * day
-    const deadline = $game.startTime + ($game.currentRound + 1) * day
+  if ($blockNumber) console.log("tick")
+  const day = 60 * 60 * 24 * 1000 // in ms
+  const lastDeadline = $game.startTime + ($game.currentRound) * day
+  const deadline = $game.startTime + ($game.currentRound + 1) * day
+
+  // console.log(lastDeadline, deadline, $player.lastCheckedTime)
   
-    // console.log(lastDeadline, deadline, $player.lastCheckedTime)
-    
-    if ($player.status === states.ALIVE) {
-      if ($player.lastCheckedTime > lastDeadline && $player.lastCheckedTime < deadline && Number($player.burnedAmount) >= Number($config.burnAmountPerRound)) {
-        return true
-      }
+  if ($player.status === states.ALIVE) {
+    if ($player.lastCheckedTime > lastDeadline && $player.lastCheckedTime < deadline && Number($player.burnedAmount) >= Number($config.burnAmountPerRound)) {
+      return true
     }
   }
-
-  return false
 }))
