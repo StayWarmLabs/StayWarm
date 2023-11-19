@@ -53,7 +53,7 @@ export function createComponentSystem(componentKey: string) {
 export const player = derived(
 	[components, blockNumber, walletState],
 	([$components, $blockNumber, $walletState]) => {
-		if (!$walletState.account || !$components?.Player) return false;
+		if (!$walletState.account || !$components?.Player) return;
 
 		if ($blockNumber) {
 		}
@@ -61,24 +61,18 @@ export const player = derived(
 
 		const p = getComponentValue($components?.Player, address);
 
-		if (!p) return {};
-
 		return p;
 	}
 );
 
 export const game = derived([components, blockNumber], ([$components, $blockNumber]) => {
-	if (!$components?.Game) return {};
+	if (!$components?.Game) return;
 
 	if ($blockNumber) {
 		const g = getComponentValue($components?.Game, singletonEntity);
 
-		if (!g) return {};
-
 		return g;
 	}
-
-	return {};
 });
 
 export const config = derived(
@@ -114,13 +108,14 @@ export const timeLeft = derived([game, config, blockNumber], ([$game, $config, $
 
 	if ($blockNumber) {
 		let endTime = $game.startTime + ($game.currentRound + 1) * $config?.roundTimeLength;
-		const now = new Date().getTime();
+		const now = new Date().getTime() / 1000;
 
+		// at most add a period once
 		if (endTime < now) {
 			endTime += $config?.roundTimeLength;
 		}
 
-		return Math.max(Math.ceil(endTime - now / 1000), 0);
+		return Math.ceil(endTime - now);
 	}
 
 	return 0;

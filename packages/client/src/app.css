@@ -66,6 +66,10 @@ a {
   width: 60px;
 }
 
+button {
+  font-size: 1rem;
+}
+
 .card {
   padding: .5rem;
   background: #444;

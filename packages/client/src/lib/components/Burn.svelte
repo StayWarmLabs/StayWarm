@@ -36,24 +36,22 @@
 	};
 
 	const callSettleSystem = async () => {
-		console.log('$systemCalls: ', $systemCalls);
-
-		canSettle = await $systemCalls.canSettle();
+		if ($systemCalls?.canSettle) {
+			canSettle = await $systemCalls.canSettle();
+		}
 	};
 
 	// // call once at first
-	// callSettleSystem();
+	callSettleSystem();
 </script>
 
-<!-- {#if $player} -->
+{#if $player && !canSettle}
 	<button class="burn" on:click={burn}> Burn </button>
-<!-- {/if} -->
+{/if}
+
 {#if canSettle}
 	<button class="burn" on:click={settleGame}> Settle Game </button>
 {/if}
-
-<!-- {#if $canSettle} -->
-<!-- {/if} -->
 
 <style>
 	.burn {

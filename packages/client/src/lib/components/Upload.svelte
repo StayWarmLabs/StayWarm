@@ -11,6 +11,11 @@
   let form: HTMLFormElement
   let loadingState = ""
 
+
+  const onKeyDown = (e) => {
+    if (e.key === "Escape") dispatch("close")
+  }
+
   const dispatch = createEventDispatcher()
 
   // TODO: use sendNotification function
@@ -41,7 +46,7 @@
     const data = new FormData(form)
     let uri = ""
 
-    loadingState = "Uploading propsal to IPFS"
+    loadingState = "Uploading propsoal to IPFS"
 
     try {
       const cid = await fetch("/api", { method: "POST", body: data })
@@ -71,6 +76,8 @@
     // create proposal
   }
 </script>
+
+<svelte:window on:keydown={onKeyDown} />
 
 <div transition:fly={{ x: 100 }} class="new-proposal">
   <div class="form-group">
@@ -138,11 +145,15 @@
     flex-direction: column;
     margin-bottom: 1rem;
   }
-  textarea {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  }
+
 
   .loading {
     opacity: 0.3;
+  }
+
+  @media (prefers-color-scheme : light) {
+    .new-proposal {
+      background: white;
+    }
   }
 </style>
