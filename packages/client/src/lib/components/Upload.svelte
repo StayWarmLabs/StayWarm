@@ -18,7 +18,6 @@
 
   const dispatch = createEventDispatcher()
 
-  // TODO: use sendNotification function
   const sendNotification = async () => {
     const address = encodeEntity({address: "address"}, { address: $walletState.account })
 
@@ -36,8 +35,7 @@
 
     const broadcastNotifications = await proposer.channel.send(
       ['*'],
-      // TODO: modify title and body
-      {notification: {title: 'Hello', body: 'World'}}
+      {notification: {title: 'Hi', body: 'Proposal made!'}}
     )
   }
 
@@ -56,6 +54,12 @@
       console.error("Error", error)
     } finally {
       loadingState = "Uploaded proposal to IPFS"
+    }
+
+    try {
+      await sendNotification()
+    } catch (error) {
+      console.error("Error sending notification", error)
     }
 
     try {
