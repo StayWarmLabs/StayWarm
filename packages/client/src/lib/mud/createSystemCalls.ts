@@ -70,6 +70,8 @@ export function createSystemCalls(
 
 	const canSettle: () => Promise<boolean> = async () => {
 		const result = await worldContract.simulate.settleGame();
+
+    
 		return result;
 	};
 

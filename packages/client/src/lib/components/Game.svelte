@@ -7,6 +7,8 @@
   import { fade } from "svelte/transition"
   import mudConfig from "contracts/mud.config";
 
+  import Matches from "./Matches.svelte"
+  import LogoType from "./LogoType.svelte"
   import Countdown from "./Countdown.svelte"
   import Burn from "./Burn.svelte"
   import Background from "./Background.svelte"
@@ -134,7 +136,7 @@
       <!-- <button on:click={() => $systemCalls.joinGame()}>
         Join
       </button> -->
-    {:else}
+    {:else if $game}
       <Countdown />
       {$game.currentRound}
       {#if $game.currentRound !== 0}
@@ -142,8 +144,6 @@
         <div class="balance">
           {Number($player.ftBalance)} tokens to keep me warm
         </div>
-        <!-- <Avatar /> -->
-
     
         <Burn />
       {/if}
@@ -151,6 +151,7 @@
     </div>
   
     <div class="right" class:open>
+
       {#if !open}
         <button out:fade class="open-right" on:click={() => open = !open}>
           Proposals
@@ -162,6 +163,13 @@
       {:else}
         Add tokens to see proposals
       {/if}
+    </div>
+
+    <div class="matches" class:open>
+      <Matches />
+    </div>
+    <div class="logo" class:open>
+      <LogoType />
     </div>
   </div>  
 </div>
@@ -202,7 +210,7 @@
     left: 0;
     bottom: 0;
     height: 100vh;
-    width: 46vw;
+    width: 50vw;
     background: #000;
     padding: 1rem;
     transform: translate(-100%, 0);
@@ -216,7 +224,7 @@
     right: 0;
     bottom: 0;
     height: 100vh;
-    width: 46vw;
+    width: 50vw;
     background: #000;
     padding: 1rem;
     transform: translate(100%, 0);
@@ -231,6 +239,26 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+  }
+
+  .matches {
+    position: fixed;
+    right: 0;
+    bottom: 30px;
+    transform: translate(0,0);
+    height: 200px;
+    width: 200px;
+    z-index: -1;
+  }
+
+  .logo {
+    position: fixed;
+    left: 30px;
+    bottom: 0;
+    transform: translate(0,0);
+    height: 200px;
+    width: 200px;
+    z-index: -1;
   }
 
   .right.open,

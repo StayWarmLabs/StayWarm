@@ -106,11 +106,21 @@
     </div>
     <input type="submit" value="Submit proposal">
   </form>
-  {loadingState}
+  <p>
+    {loadingState}
+  </p>
 </div>
 
-
 <style>
+
+  select,
+  input,
+  textarea {
+    font-size: 16px;
+  }
+  textarea {
+    padding: 0.5rem .5rem;
+  }
   .new-proposal {
     transition: opacity 0.2s ease;
     position: fixed;
