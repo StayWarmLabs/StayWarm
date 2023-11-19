@@ -1,12 +1,11 @@
 import { json } from "@sveltejs/kit"
 import { randomBytes } from 'crypto'
+import { bytesToHex } from "viem"
 import secp256k1 from "secp256k1"
 
 export const GET = async ({ fetch, url }) => {
   // generate privKey
   const address = url.searchParams.get("address")
-
-  let data = new FormData();
 
   if (!address) return
 
@@ -18,29 +17,22 @@ export const GET = async ({ fetch, url }) => {
   // get the public key in a compressed format
   const pubKey = secp256k1.publicKeyCreate(privKey)
   
+  const stringKey = bytesToHex(pubKey);
+
   // Fetch the proof payload
   const payload = {
     action: "create",
     platform: "ethereum",
     identity: address,
-    public_key: pubKey,
-  }
-  
-  for (let key in payload) {
-    data.append(key, payload[key])
-    console.log(payload[key])
+    public_key: stringKey,
   }
   
   try {
-    const response = await fetch("https://proof-service.next.id/v1/proof/payload", { method: "POST", body: data })
+    const response = await fetch("https://proof-service.next.id/v1/proof/payload", { method: "POST", body: JSON.stringify(payload) })
     const result = await response.json()
-    console.log(result)
     return json(result)
 
   } catch (error) {
-    console.error(error)
+    // console.error(error)
   }
-  
-  
-  
 }
