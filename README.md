@@ -74,3 +74,11 @@ cd packages/contracts
 pnpm run deploy:baseSepolia
 ```
 
+
+deploy on bubTest
+
+```bash
+cd packages/contracts
+forge script DeploySystem --sig "run()" --broadcast --rpc-url https://bubs.calderachain.xyz/http -vvv --gas-price 0 --legacy
+```
+
