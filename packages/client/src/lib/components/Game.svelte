@@ -19,6 +19,7 @@
     network,
     player,
     burned,
+    game,
     timeLeft,
     blockNumber,
     systemCalls,
