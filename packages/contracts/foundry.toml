@@ -26,3 +26,6 @@ eth_rpc_url = "https://follower.testnet-chain.linfra.xyz"
 [profile.baseSepolia]
 eth_rpc_url = "https://sepolia.base.org"
 
+
+[profile.scrollSepolia]
+eth_rpc_url = "https://rpc.ankr.com/scroll_sepolia_testnet"

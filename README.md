@@ -52,5 +52,25 @@ $ pnpm dev
 
 ## To test
 ```shell
+$ cd packages/contracts
 $ pnpm mud test
 ```
+
+## To deploy
+
+deploy on scroll sepolia
+
+```bash
+cd packages/contracts
+pnpm run deploy:scrollSepolia
+```
+
+
+deploy on base sepolia
+
+
+```bash
+cd packages/contracts
+pnpm run deploy:baseSepolia
+```
+
