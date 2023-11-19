@@ -35,7 +35,7 @@ contract GovernTest is MudTest {
 
         // alice make proposal
         vm.prank(alice);
-        uint96 proposalId = IWorld(worldAddress).makeProposal(address(bs), "BurnSystem", "ipfs://");
+        uint96 proposalId = IWorld(worldAddress).makeProposal(address(bs), "Burn", "ipfs://");
 
         // bob vote for with 3 power
         vm.prank(bob);
