@@ -1,7 +1,37 @@
 <script lang="ts">
   import { systemCalls } from "$lib/stores"
+
+  import * as PushAPI from '@pushprotocol/restapi';
+  import { walletState } from "../metamask";
+  import { encodeEntity } from "@latticexyz/store-sync/recs";
+
+
   let form: HTMLFormElement
   let loadingState = ""
+
+  // TODO: use sendNotification function
+  const sendNotification = async () => {
+    const address = encodeEntity({address: "address"}, { address: $walletState.account })
+
+    const proposer = await PushAPI.initizalize(address, {env: 'staging'})
+
+    // const inboxNotifications = await userAlice.notification.list('INBOX')
+    // const spamNotifications = await userAlice.notification.list('SPAM')
+
+    // Ethereum sepolia network
+    const pushChannelAddress = '0x1fBba7Fa7741CF7eBB0415E4d29A271Cb1D0AfDe';
+
+    await proposer.notification.subscribe(
+      'eip155:11155111:${pushChannelAddress}'
+    )
+
+    const broadcastNotifications = await proposer.channel.send(
+      ['*'],
+      // TODO: modify title and body
+      {notification: {title: 'Hello', body: 'World'}}
+    )
+  }
+
 
   const submit = async () => {
     const data = new FormData(form)
