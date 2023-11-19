@@ -89,6 +89,8 @@
 
 <Background />
 
+<img class="nouns" src="/black-rgb160px.png" alt="NounsDAO" >
+
 {#if open}
   <div transition:fade={{ duration: 500 }} on:click={() => open = false} class="background-clicker"></div>
 {/if}
@@ -219,6 +221,14 @@
     transition: transform 0.4s ease;
     overflow-y: scroll;
     z-index: 20;
+  }
+
+  .nouns {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 1;
+    width: 80px;
   }
 
   .right {
