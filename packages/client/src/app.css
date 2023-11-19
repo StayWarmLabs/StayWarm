@@ -57,6 +57,7 @@
   padding: .5rem;
   background: #444;
   margin-bottom: 1rem;
+  border-radius: 5px;
 }
 
 @media (prefers-color-scheme: light) {

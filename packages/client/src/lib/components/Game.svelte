@@ -19,7 +19,7 @@
     network,
     player,
     burned,
-    timeLeft,
+    game,
     systemCalls,
     createComponentSystem
   } from "../stores"
@@ -135,14 +135,17 @@
       </button> -->
     {:else}
       <Countdown />
+      {$game.currentRound}
+      {#if $game.currentRound !== 0}
 
-      <div class="balance">
-        {Number($player.ftBalance)} tokens to keep me warm
-      </div>
-      <!-- <Avatar /> -->
+        <div class="balance">
+          {Number($player.ftBalance)} tokens to keep me warm
+        </div>
+        <!-- <Avatar /> -->
 
-  
-      <Burn />
+    
+        <Burn />
+      {/if}
     {/if}
     </div>
   

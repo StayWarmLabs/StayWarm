@@ -46,6 +46,7 @@
 		"@ucanto/core": "^9.0.1",
 		"@ucanto/principal": "^9.0.0",
 		"@web3-storage/access": "^18.0.2",
-		"@web3-storage/w3up-client": "^11.0.1"
+		"@web3-storage/w3up-client": "^11.0.1",
+		"secp256k1": "^5.0.0"
 	}
 }
