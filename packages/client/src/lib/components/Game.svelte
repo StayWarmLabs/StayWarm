@@ -139,15 +139,15 @@
       </button> -->
     {:else if $game}
       <Countdown />
-      {$game.currentRound}
-      {#if $game.currentRound !== 0}
+      <!-- {$game?.currentRound} -->
+      <!-- {#if $game?.currentRound !== 0} -->
 
         <div class="balance">
-          {Number($player.ftBalance)} tokens to keep me warm
+          {Number($player?.ftBalance)} tokens to keep me warm
         </div>
     
         <Burn />
-      {/if}
+      <!-- {/if} -->
     {/if}
     </div>
   
