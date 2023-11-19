@@ -38,6 +38,9 @@
 	const callSettleSystem = async () => {
 		canSettle = await $systemCalls.canSettle();
 	};
+
+	// call once at first
+	callSettleSystem();
 </script>
 
 {#if $player && !canSettle}

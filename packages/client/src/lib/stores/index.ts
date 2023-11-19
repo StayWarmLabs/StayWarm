@@ -4,6 +4,7 @@ import { getComponentValue } from '@latticexyz/recs';
 import { singletonEntity, encodeEntity } from '@latticexyz/store-sync/recs';
 import type { SystemCalls } from '$lib/mud/createSystemCalls';
 import type { ClientComponents } from '$lib/mud/createClientComponents';
+import type { SetupNetworkResult } from '$lib/mud/setupNetwork';
 
 export enum states {
 	UNINITIATED,
@@ -13,7 +14,8 @@ export enum states {
 
 export const day = 60 * 60 * 24 * 1000; // in ms
 
-export const network = writable(null);
+export const network: Writable<SetupNetworkResult | undefined> =
+	writable<SetupNetworkResult>(undefined);
 export const blockNumber = writable(0);
 export const count = writable(-1);
 export const entities = writable({});

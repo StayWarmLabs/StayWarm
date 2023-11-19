@@ -52,8 +52,9 @@ contract SettleGameSystem is System {
                 if (playerData.status == PlayerStatus.ALIVE) {
                     payable(playerAddr).transfer(prize);
                 }
-                // delete player record
+                // delete player and game record
                 Player.deleteRecord(playerAddr);
+                Game.deleteRecord();
             }
             return true;
         }
@@ -79,6 +80,7 @@ contract SettleGameSystem is System {
                 }
                 // delete player record
                 Player.deleteRecord(playerAddr);
+                Game.deleteRecord();
             }
             return true;
         }
