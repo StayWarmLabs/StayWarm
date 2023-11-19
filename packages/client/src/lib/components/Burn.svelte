@@ -2,6 +2,7 @@
   import { components, player, burned, game, systemCalls } from "$lib/stores"
   import { getComponentValue } from "@latticexyz/recs";
   import { singletonEntity } from "@latticexyz/store-sync/recs";
+	import { parseEther } from "viem";
 
   let config
 
@@ -15,7 +16,7 @@
 
   const burn = async () => {
     try {
-      await $systemCalls.burn()
+      await $systemCalls.burn(parseEther("100"))
     } catch (error) {
       console.error(error)
     }

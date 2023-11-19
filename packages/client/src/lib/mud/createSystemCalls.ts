@@ -63,8 +63,8 @@ export function createSystemCalls(
   /**
    * Burn
    */
-  const burn = async (amount = 1) => {
-    const tx = await worldContract.write.burn({ value: amount })
+  const burn = async (amount :bigint) => {
+    const tx = await worldContract.write.burn([amount])
 
     await waitForTransaction(tx);
   }
