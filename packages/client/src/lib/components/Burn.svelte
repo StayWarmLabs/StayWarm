@@ -15,13 +15,15 @@
 		}
 	}
 
-	$: if ($blockNumber % 10 === 0 && $systemCalls?.canSettle) {
+	$: if ($blockNumber % 10 === 0 && $systemCalls?.canSettle()) {
 		callSettleSystem();
 	}
 
+	$: console.log('$blockNumber: ', $blockNumber);
+
 	const burn = async () => {
 		try {
-			await $systemCalls.burn(100n);
+			await $systemCalls?.burn(100n);
 		} catch (error) {
 			console.error(error);
 		}
@@ -29,25 +31,27 @@
 
 	const settleGame = async () => {
 		try {
-			await $systemCalls.settleGame();
+			await $systemCalls?.settleGame();
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
 	const callSettleSystem = async () => {
+		console.log('$systemCalls: ', $systemCalls);
+
 		canSettle = await $systemCalls.canSettle();
 
-    console.log(canSettle)
+		console.log(canSettle);
 	};
 
 	// // call once at first
 	// callSettleSystem();
 </script>
 
-{#if $player && !canSettle}
+<!-- {#if $player} -->
 	<button class="burn" on:click={burn}> Burn </button>
-{/if}
+<!-- {/if} -->
 {#if canSettle}
 	<button class="burn" on:click={settleGame}> Settle Game </button>
 {/if}

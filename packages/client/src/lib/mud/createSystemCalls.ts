@@ -84,11 +84,18 @@ export function createSystemCalls(
 		await waitForTransaction(tx);
 	};
 
+	const vote = async (id: number, power: number, support: boolean) => {
+		const tx = await worldContract.write.vote([BigInt(id), BigInt(power), support]);
+
+		await waitForTransaction(tx);
+	};
+
 	return {
 		joinGame,
 		burn,
 		propose,
 		settleGame,
-		canSettle
+		canSettle,
+		vote
 	};
 }

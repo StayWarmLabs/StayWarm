@@ -27,6 +27,7 @@
     systemCalls,
     createComponentSystem
   } from "../stores"
+	import { get } from "svelte/store";
 
   let adding = false
   let open = false
@@ -123,7 +124,7 @@
         {/if}
       </div>
       <div class="">
-        {#if count > -1}
+        {#if get(count) > -1}
           {count}
         {/if}
       </div>

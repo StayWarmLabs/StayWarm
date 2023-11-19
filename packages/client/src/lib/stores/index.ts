@@ -1,6 +1,6 @@
-import { writable, derived, get, type Writable } from 'svelte/store';
+import { writable, derived, get, type Writable, type Readable } from 'svelte/store';
 import { walletState } from '../metamask';
-import { getComponentValue } from '@latticexyz/recs';
+import { getComponentValue, type ComponentValue } from '@latticexyz/recs';
 import { singletonEntity, encodeEntity } from '@latticexyz/store-sync/recs';
 import type { SystemCalls } from '$lib/mud/createSystemCalls';
 import type { ClientComponents } from '$lib/mud/createClientComponents';
@@ -11,8 +11,6 @@ export enum states {
 	ALIVE,
 	DEAD
 }
-
-export const day = 60 * 60 * 24 * 1000; // in ms
 
 export const network: Writable<SetupNetworkResult | undefined> =
 	writable<SetupNetworkResult>(undefined);
@@ -62,9 +60,8 @@ export const player = derived(
 		const address = encodeEntity({ address: 'address' }, { address: $walletState.account });
 
 		const p = getComponentValue($components?.Player, address);
-		// console.log(p);
 
-		if (!p) return false;
+		if (!p) return {};
 
 		return p;
 	}
@@ -76,12 +73,12 @@ export const game = derived([components, blockNumber], ([$components, $blockNumb
 	if ($blockNumber) {
 		const g = getComponentValue($components?.Game, singletonEntity);
 
-		// if (!g) return {};
+		if (!g) return {};
 
 		return g;
 	}
 
-	// return {};
+	return {};
 });
 
 export const config = derived(
@@ -136,8 +133,8 @@ export const burned = derived(
 		if (!$game || !$player) return false;
 
 		if ($blockNumber) console.log('tick');
-		const lastDeadline = $game.startTime + $game.currentRound * day;
-		const deadline = $game.startTime + ($game.currentRound + 1) * day;
+		const lastDeadline = $game.startTime + $game.currentRound * $config.roundTimeLength;
+		const deadline = $game.startTime + ($game.currentRound + 1) * $config.roundTimeLength;
 
 		// console.log(lastDeadline, deadline, $player.lastCheckedTime)
 
