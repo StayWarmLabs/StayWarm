@@ -56,6 +56,13 @@ export default mudConfig({
         burnedAmount: "uint256",
       },
     },
+    PlayerVote: {
+      keySchema: { key: "bytes32" }, // address + proposal id
+      valueSchema: {
+        supportVote: "uint256",
+        rejectVote: "uint256",
+      },
+    },
     Proposal: {
       keySchema: { id: "uint96" },
       valueSchema: {

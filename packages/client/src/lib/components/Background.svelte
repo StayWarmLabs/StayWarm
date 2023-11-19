@@ -1,5 +1,6 @@
 <script lang="ts">
   import { range } from "$lib/math"
+  import { day, timeLeft } from "$lib/stores"
   import { fade } from "svelte/transition"
 
   let blendWithNext = true
@@ -8,21 +9,23 @@
 
   let value = 0
 
-  $: completeValue = range(0, 100, END_FRAME - 1, START_FRAME, value) // there are 29, but algo will round up
+  $: completeValue = range(0, day, START_FRAME, END_FRAME - 1, $timeLeft) // there are 29, but algo will round up
   $: opacity = completeValue - Math.floor(completeValue)
 
   $: bottomSource = Math.floor(completeValue)
   $: topSource = Math.ceil(completeValue)
 
+  $: console.log(completeValue)
+
 </script>
 
 <div class="background">
-  <div class="control">
+  <!-- <div class="control">
     <p style:color="black">
       {completeValue}
     </p>
     <input type="range" name="value" id="value" bind:value min={0} max={100}>
-  </div>
+  </div> -->
   
   <img style:opacity class="bg top" src="/background/{topSource}.png" alt="STAYWARM" >
   <img class="bg" src="/background/{bottomSource}.png" alt="STAYWARM" >

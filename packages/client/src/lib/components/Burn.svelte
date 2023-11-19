@@ -16,7 +16,6 @@
   const burn = async () => {
     try {
       await $systemCalls.burn()
-      console.log("You burned")
     } catch (error) {
       console.error(error)
     }
@@ -24,11 +23,25 @@
   }
 </script>
 
-{#if $player && !$burned && config}
-  <!-- Based on tokens, value = Math.sqrt of the amount of tokens you wanna burn -->
-  <select>
-  </select>
-  <button on:click={burn}>
+{#if $player}
+  <button class="burn" on:click={burn}>
     Burn
   </button>
 {/if}
+
+<style>
+  .burn {
+    padding: 0.5rem 1rem;
+    background: orangered;
+    border: transparent;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: .5rem;
+    cursor: pointer;
+  }
+
+  .burn:hover {
+    background: white;
+    color: orangered;
+  }
+</style>

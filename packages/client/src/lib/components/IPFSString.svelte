@@ -7,7 +7,6 @@
 
   onMount(async () => {
     const result = await fetch(gateway)
-    console.log(result)
 
     const str = await result.text()
 

@@ -40,13 +40,11 @@ export function createSystemCalls(
    * @returns 
    */
   const joinGame = async () => {
-    console.log("attempting to join")
     const tx = await worldContract.write.join({ value: parseEther("0.05")})
 
     await waitForTransaction(tx);
-    console.log("transaction done")
     const game = getComponentValue(Game, singletonEntity)
-    console.log(game)
+
     return game;
   }
 

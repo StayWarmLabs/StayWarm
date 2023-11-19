@@ -6,7 +6,8 @@
   import { singletonEntity } from "@latticexyz/store-sync/recs";
   import { fade } from "svelte/transition"
   import mudConfig from "contracts/mud.config";
-  import Avatar from "./Avatar.svelte"
+
+  import Countdown from "./Countdown.svelte"
   import Burn from "./Burn.svelte"
   import Background from "./Background.svelte"
   import Upload from "./Upload.svelte"
@@ -18,6 +19,7 @@
     network,
     player,
     burned,
+    timeLeft,
     systemCalls,
     createComponentSystem
   } from "../stores"
@@ -126,12 +128,19 @@
     </div>
   
     <div class="center">
+      
       {#if $systemCalls?.joinGame && !$player}
       <!-- <button on:click={() => $systemCalls.joinGame()}>
         Join
       </button> -->
     {:else}
-      <Avatar />
+      <Countdown />
+
+      <div class="balance">
+        {Number($player.ftBalance)} tokens to keep me warm
+      </div>
+      <!-- <Avatar /> -->
+
   
       <Burn />
     {/if}
@@ -156,10 +165,15 @@
 {#if adding}
   <Upload on:close={() => adding = false} />
 {/if}
-
-
 <style>
 
+
+.balance {
+  color: black;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
 .settings-button {
   position: fixed;
   top: 1rem;

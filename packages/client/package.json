@@ -42,6 +42,7 @@
 	"type": "module",
 	"dependencies": {
 		"@ipld/car": "^5.2.4",
+		"@pushprotocol/restapi": "^1.4.38",
 		"@ucanto/core": "^9.0.1",
 		"@ucanto/principal": "^9.0.0",
 		"@web3-storage/access": "^18.0.2",

@@ -10,6 +10,8 @@ export enum states {
   DEAD
 }
 
+export const day = 60 * 60 * 24 * 1000 // in ms
+
 export const network = writable(null)
 export const blockNumber = writable(0)
 export const count = writable(-1)
@@ -49,7 +51,7 @@ export function createComponentSystem(componentKey: string) {
 export const player = derived([components, blockNumber, walletState], ([$components, $blockNumber, $walletState]) => {
   if (!$walletState.account || !$components?.Player) return false
 
-  if ($blockNumber) console.log("tick player")
+  if ($blockNumber) {}
   const address = encodeEntity({address: "address"}, { address: $walletState.account })
 
   const p = getComponentValue($components?.Player, address)
@@ -96,6 +98,21 @@ export const gameStarted = derived(([game, blockNumber]), ([$game, $blockNumber]
   return false
 })
 
+export const timeLeft = derived(([game, blockNumber]), ([$game, $blockNumber]) => {
+  if (!$game) return 0
+
+  if ($blockNumber) {
+    const endTime = $game.startTime + ($game.currentRound + 1) * day
+    const now = new Date().getTime()
+
+    console.log(endTime, now / 1000)
+
+    return Math.ceil(endTime - now / 1000)
+  }
+
+  return 0
+})
+
 
 export const burned = derived([game, config, player, blockNumber, network], (([$game, $config, $player, $blockNumber, $network]) => {
   // console.log("DEBUGGER", $game, $player)
@@ -103,7 +120,6 @@ export const burned = derived([game, config, player, blockNumber, network], (([$
 
 
   if ($blockNumber) console.log("tick")
-  const day = 60 * 60 * 24 * 1000 // in ms
   const lastDeadline = $game.startTime + ($game.currentRound) * day
   const deadline = $game.startTime + ($game.currentRound + 1) * day
 

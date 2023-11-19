@@ -4,7 +4,7 @@ pragma solidity >=0.8.21;
 import "forge-std/console2.sol";
 
 import {System} from "@latticexyz/world/src/System.sol";
-import {Player, Proposal, ProposalData, Config} from "src/codegen/index.sol";
+import {Player, Proposal, ProposalData, Config, PlayerVote} from "src/codegen/index.sol";
 import {PlayerStatus} from "src/codegen/common.sol";
 import {getUniqueEntity} from "@latticexyz/world-modules/src/modules/uniqueentity/getUniqueEntity.sol";
 import {ResourceId} from "@latticexyz/store/src/ResourceId.sol";
@@ -63,14 +63,25 @@ contract GovernSystem is System, IWorldErrors {
         // check whether time is in voting period
         require(block.timestamp < proposalDetail.startTime + votingLength, "GovernSystem: Voting end");
 
-        // decrease user balance
-        Player.setFtBalance(player, Player.getFtBalance(player) - votingPower * votingPower);
+        bytes32 playerVoteId = encodePlayerVoteId(player, proposalId);
 
         // record result
         if (support) {
-            Proposal.setSupport(proposalId, proposalDetail.support + uint32(votingPower));
+            // get previous vote
+            uint256 preVote = PlayerVote.getSupportVote(playerVoteId);
+
+            // charge token or refund token
+            Player.setFtBalance(player, Player.getFtBalance(player) + preVote * preVote - votingPower * votingPower);
+
+            Proposal.setSupport(proposalId, uint32(proposalDetail.support + votingPower - preVote));
         } else {
-            Proposal.setReject(proposalId, proposalDetail.reject + uint32(votingPower));
+            // get previous vote
+            uint256 preVote = PlayerVote.getRejectVote(playerVoteId);
+
+            // charge token or refund token
+            Player.setFtBalance(player, Player.getFtBalance(player) + preVote * preVote - votingPower * votingPower);
+
+            Proposal.setReject(proposalId, uint32(proposalDetail.reject + votingPower - preVote));
         }
     }
 
@@ -193,5 +204,13 @@ contract GovernSystem is System, IWorldErrors {
 
         // Give caller access to the new namespace
         ResourceAccess._set(namespaceId, _msgSender(), true);
+    }
+
+    function encodePlayerVoteId(address player, uint96 proposalId) public view returns (bytes32 id) {
+        bytes memory b = abi.encodePacked(player, proposalId);
+
+        assembly {
+            id := mload(add(b, 32))
+        }
     }
 }
