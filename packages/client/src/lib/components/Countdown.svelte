@@ -31,7 +31,6 @@
 
 {#if timeLeft.hours > -1 && timeLeft.minutes > -1 && timeLeft.seconds > -1}
   <!-- Started -->
-{:else}
   <div in:fly={{ y: -20 }} class="">
     <p class="counter">
       {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
