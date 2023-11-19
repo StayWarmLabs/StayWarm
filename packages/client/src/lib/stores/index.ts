@@ -17,8 +17,9 @@ export const network = writable(null);
 export const blockNumber = writable(0);
 export const count = writable(-1);
 export const entities = writable({});
-export const components: Writable<ClientComponents> = writable<ClientComponents>();
-export const systemCalls: Writable<SystemCalls> = writable<SystemCalls>();
+export const components: Writable<ClientComponents | undefined> =
+	writable<ClientComponents>(undefined);
+export const systemCalls: Writable<SystemCalls | undefined> = writable<SystemCalls>(undefined);
 
 export function createComponentSystem(componentKey: string) {
 	get(components)[componentKey].update$.subscribe((update) => {
@@ -59,7 +60,7 @@ export const player = derived(
 		const address = encodeEntity({ address: 'address' }, { address: $walletState.account });
 
 		const p = getComponentValue($components?.Player, address);
-		console.log(p);
+		// console.log(p);
 
 		if (!p) return false;
 
@@ -73,12 +74,12 @@ export const game = derived([components, blockNumber], ([$components, $blockNumb
 	if ($blockNumber) {
 		const g = getComponentValue($components?.Game, singletonEntity);
 
-		if (!g) return false;
+		// if (!g) return {};
 
 		return g;
 	}
 
-	return {};
+	// return {};
 });
 
 export const config = derived(
@@ -105,14 +106,20 @@ export const gameStarted = derived([game, blockNumber], ([$game, $blockNumber]) 
 	return false;
 });
 
-export const timeLeft = derived([game, blockNumber], ([$game, $blockNumber]) => {
+export const canSettle = derived([systemCalls], ([$systemCalls]) => {
+	return $systemCalls?.canSettle();
+});
+
+export const timeLeft = derived([game, config, blockNumber], ([$game, $config, $blockNumber]) => {
 	if (!$game) return 0;
 
 	if ($blockNumber) {
-		const endTime = $game.startTime + ($game.currentRound + 1) * day;
+		let endTime = $game.startTime + ($game.currentRound + 1) * $config?.roundTimeLength;
 		const now = new Date().getTime();
 
-		console.log(endTime, now / 1000);
+		if (endTime < now) {
+			endTime += $config?.roundTimeLength;
+		}
 
 		return Math.ceil(endTime - now / 1000);
 	}

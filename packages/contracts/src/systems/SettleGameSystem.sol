@@ -52,13 +52,14 @@ contract SettleGameSystem is System {
                 if (playerData.status == PlayerStatus.ALIVE) {
                     payable(playerAddr).transfer(prize);
                 }
+                // delete player record
+                Player.deleteRecord(playerAddr);
             }
             return true;
         }
 
         // if there is no player,
         // distribute the prize to the players who were alive in last round
-
         if (numAlives == 0) {
             for (uint32 i = 0; i < all_players.length; i++) {
                 address playerAddr = all_players[i];
@@ -70,8 +71,14 @@ contract SettleGameSystem is System {
                 }
 
                 if (playerData.lastCheckedTime > penultimate_deadline && playerData.lastCheckedTime < last_deadline) {
-                    payable(playerAddr).transfer(prize / numLastAlives);
+                    if (numLastAlives != 0) {
+                        payable(playerAddr).transfer(prize / numLastAlives);
+                    } else {
+                        payable(playerAddr).transfer(prize / all_players.length);
+                    }
                 }
+                // delete player record
+                Player.deleteRecord(playerAddr);
             }
             return true;
         }
