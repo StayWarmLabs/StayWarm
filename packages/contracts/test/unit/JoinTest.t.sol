@@ -2,6 +2,7 @@
 pragma solidity >=0.8.21;
 
 import "forge-std/Test.sol";
+import "forge-std/console2.sol";
 import {MudTest} from "@latticexyz/world/test/MudTest.t.sol";
 import {getKeysWithValue} from "@latticexyz/world-modules/src/modules/keyswithvalue/getKeysWithValue.sol";
 
@@ -9,6 +10,7 @@ import {IWorld} from "../../src/codegen/world/IWorld.sol";
 
 import {System} from "@latticexyz/world/src/System.sol";
 import {Config, ConfigData} from "../../src/codegen/index.sol";
+import {Game, GameData} from "../../src/codegen/index.sol";
 import {Player, PlayerData} from "../../src/codegen/index.sol";
 import {PlayerStatus} from "../../src/codegen/common.sol";
 import {Game, GameData} from "../../src/codegen/index.sol";
@@ -63,5 +65,25 @@ contract JoinTest is MudTest {
         assertEq(gameData.ethTotalAmount, cfg.joinFee);
 
         assert(gameData.startTime > 0);
+    }
+
+    function testJoinFailed() public {
+        uint256 join_fee = Config.getJoinFee();
+
+        address alice = address(0x1);
+        vm.deal(alice, 10 ether);
+        vm.prank(alice);
+        IWorld(worldAddress).join{value: join_fee}();
+
+        skip(Config.getGameStartWaitingTime() + 1);
+
+        // failed to join
+        address bob = address(0x2);
+        vm.deal(bob, 10 ether);
+        vm.prank(bob);
+        assertEq(IWorld(worldAddress).join{value: join_fee}(), false);
+
+        assertEq(uint8(Player.getStatus(alice)), uint8(PlayerStatus.ALIVE));
+        assertEq(uint8(Player.getStatus(bob)), uint8(PlayerStatus.UNINITIATED));
     }
 }
