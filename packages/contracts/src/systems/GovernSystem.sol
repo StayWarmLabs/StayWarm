@@ -46,7 +46,7 @@ contract GovernSystem is System, IWorldErrors {
         // must be token holder
         require(Player.getFtBalance(player) > 0, "GovernSystem: Not FT Holder");
         // must be alive
-        require(Player.getStatus(player) == PlayerStatus.ALIVE, "GovernSystem: Player is DEAD");
+        require(Player.getStatus(player) == PlayerStatus.ALIVE, "GovernSystem(Proposal): Player is DEAD");
 
         proposalId = uint96(uint256(getUniqueEntity()));
 
@@ -60,6 +60,10 @@ contract GovernSystem is System, IWorldErrors {
         address player = _msgSender();
         uint256 votingLength = Config.getVoteTimeLength();
         ProposalData memory proposalDetail = Proposal.get(proposalId);
+
+        // check whether player is alive
+        require(Player.getStatus(player) == PlayerStatus.ALIVE, "GovernSystem(Voting): Player is DEAD");
+
         // check whether time is in voting period
         require(block.timestamp < proposalDetail.startTime + votingLength, "GovernSystem: Voting end");
 

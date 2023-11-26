@@ -1,11 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.21;
 
+import "forge-std/console2.sol";
+
 import {System} from "@latticexyz/world/src/System.sol";
 import {Config, ConfigData} from "../codegen/index.sol";
 import {Player, PlayerData} from "../codegen/index.sol";
 import {Game, GameData} from "../codegen/index.sol";
 import {PlayerStatus} from "../codegen/common.sol";
+import {IWorld} from "src/codegen/world/IWorld.sol";
+import {SystemSwitch} from "@latticexyz/world-modules/src/utils/SystemSwitch.sol";
 
 /**
  * @notice this system make the amount of token into a random things.
@@ -28,6 +32,10 @@ contract ChaosBurnSys is System {
     // Burn burn_amount of FT
     // Set new BurnAmountPerRound if it is the first time to burn in this round
     function burn(uint256 burn_amount) public payable returns (bool) {
+        console2.log("THIS IS CHAOS BURN");
+        // call settle round before each tx
+        SystemSwitch.call(abi.encodeCall(IWorld(_world()).settleRound, ()));
+
         address player = _msgSender();
         PlayerData memory playerData = Player.get(player);
         require(playerData.ftBalance > 0, "ChaosBurnSys: player does not have enough FT");
