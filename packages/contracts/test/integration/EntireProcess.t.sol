@@ -33,20 +33,26 @@ contract GovernTest is MudTest {
 
         uint256 join_fee = Config.getJoinFee();
         uint256 burn_amount = Config.getBurnAmountPerRound();
+        uint256 initial_balance = 10 ether;
 
         // join game
-        hoax(alice);
+        vm.deal(alice, initial_balance);
+        vm.prank(alice);
         IWorld(worldAddress).join{value: join_fee}();
-        hoax(bob);
+        vm.deal(bob, initial_balance);
+        vm.prank(bob);
         IWorld(worldAddress).join{value: join_fee}();
-        hoax(carol);
+        vm.deal(carol, initial_balance);
+        vm.prank(carol);
         IWorld(worldAddress).join{value: join_fee}();
-        hoax(dave);
+        vm.deal(dave, initial_balance);
+        vm.prank(dave);
         IWorld(worldAddress).join{value: join_fee}();
 
         // skip to game start
         skip(Config.getGameStartWaitingTime() + 1);
 
+        uint256 prize = Game.getEthTotalAmount();
 
         // check game status
         GameData memory gameData = Game.get();
@@ -202,6 +208,11 @@ contract GovernTest is MudTest {
 
         vm.prank(alice);
         IWorld(worldAddress).settleGame();
+
+        assert(address(alice).balance == initial_balance + prize - join_fee);
+        assert(address(bob).balance == initial_balance - join_fee);
+        assert(address(carol).balance == initial_balance - join_fee);
+        assert(address(dave).balance == initial_balance - join_fee);
 
     }
 }
