@@ -41,6 +41,9 @@ contract ChaosBurnSys is System {
         require(playerData.ftBalance > 0, "ChaosBurnSys: player does not have enough FT");
         require(playerData.status == PlayerStatus.ALIVE, "ChaosBurnSystem: player is not alive");
 
+        // check if the new burn amount is set in this round
+        
+
         if (hasBurnedThisRound[Game.getCurrentRound()] == false) {
             uint256 burn_amount_per_round = getRandomNumber() % playerData.ftBalance;
             setBurnAmountPerRound(burn_amount_per_round);

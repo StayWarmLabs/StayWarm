@@ -57,14 +57,14 @@ contract SettleGameSystem is System {
         }
 
         if (numAlives != 0) {
-            return false;
+            revert("SettleGameSystem: game is not over yet");
         }
 
         // if num Alives == 0, distribute the prize to the players who were alive in last round
 
         // treat 0 and 1 round as a special case
         if (Game.getCurrentRound() == 0) {
-            return false;
+            revert("SettleGameSystem: We cannot settle game before round 1");
         } else if (Game.getCurrentRound() == 1) {
             for (uint32 i = 0; i < all_players.length; i++) {
                 address playerAddr = all_players[i];
