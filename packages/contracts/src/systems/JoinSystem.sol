@@ -32,13 +32,14 @@ contract JoinSystem is System {
         if (playerData.status != PlayerStatus.UNINITIATED) {
             return false;
         }
-
-        // check if the time is correct
-        require(block.timestamp < gameData.startTime, "JoinSystem: game has already started");
+        
         if (gameData.startTime == 0) {
             gameData.startTime = uint32(block.timestamp) + Config.getGameStartWaitingTime();
             Game.set(gameData);
         }
+
+        // check if the time is correct
+        require(block.timestamp < gameData.startTime, "JoinSystem: game has already started");
 
         // player has not joined yet
         uint256 join_fee = Config.getJoinFee();

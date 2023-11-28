@@ -15,7 +15,8 @@ import {SystemSwitch} from "@latticexyz/world-modules/src/utils/SystemSwitch.sol
  * @notice this system make the amount of token into a random things.
  */
 contract ChaosBurnSys is System {
-    mapping(uint256 => bool) public hasBurnedThisRound;
+    // skip implementation to limit players to change burn_amount once per round.
+    // mapping(uint256 => bool) public hasBurnedThisRound;
 
     function getRandomNumber() internal view returns (uint256) {
         return uint256(keccak256(abi.encode(blockhash(block.number - 1), block.number, gasleft())));
@@ -24,7 +25,7 @@ contract ChaosBurnSys is System {
     function setBurnAmountPerRound(uint256 burn_amount) public payable returns (bool) {
         // require(hasBurnedThisRound[Game.getCurrentRound()] == false, "ChaosBurnSys: already burned this round");
         Config.setBurnAmountPerRound(burn_amount);
-        hasBurnedThisRound[Game.getCurrentRound()] = true;
+        // hasBurnedThisRound[Game.getCurrentRound()] = true;
         return true;
     }
 
@@ -44,10 +45,10 @@ contract ChaosBurnSys is System {
         // check if the new burn amount is set in this round
         
 
-        if (hasBurnedThisRound[Game.getCurrentRound()] == false) {
-            uint256 burn_amount_per_round = getRandomNumber() % playerData.ftBalance;
-            setBurnAmountPerRound(burn_amount_per_round);
-        }
+        // if (hasBurnedThisRound[Game.getCurrentRound()] == false) {
+        uint256 burn_amount_per_round = getRandomNumber() % playerData.ftBalance;
+        setBurnAmountPerRound(burn_amount_per_round);
+        // }
 
         require(playerData.ftBalance >= burn_amount, "ChaosBurnSystem: player does not have enough FT");
 

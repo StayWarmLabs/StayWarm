@@ -28,7 +28,7 @@ contract PostDeploy is Script {
 
         ConfigData memory configData = Config.get();
         // configData.gameStartWaitingTime = 1 days;
-        configData.gameStartWaitingTime = 10 seconds;
+        configData.gameStartWaitingTime = 60 seconds;
         configData.roundTimeLength = 60 seconds;
         configData.voteTimeLength = 60 seconds;
         configData.burnAmountPerRound = 100;
