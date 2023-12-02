@@ -2,6 +2,7 @@ name: nightly
 
 on:
   workflow_dispatch:
+  push:
 
 env:
   FOUNDRY_PROFILE: ci
@@ -44,8 +45,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: deploy on alt layer testnet
-        run: cd packages/contracts; pnpm run deploy:baseSepolia
+      #   - name: deploy on base sepolia testnet
+      #     run: cd packages/contracts; pnpm run deploy:baseSepolia
 
       - name: build
         run: pnpm build
