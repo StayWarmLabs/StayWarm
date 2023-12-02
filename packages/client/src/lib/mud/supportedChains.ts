@@ -10,11 +10,43 @@
  *
  */
 
-import type { MUDChain } from "@latticexyz/common/chains"
-import { latticeTestnet, mudFoundry } from "@latticexyz/common/chains";
+import type { MUDChain } from '@latticexyz/common/chains';
+import { latticeTestnet, mudFoundry } from '@latticexyz/common/chains';
+
+export const baseSepolia = /*#__PURE__*/ {
+	id: 84532,
+	network: 'base-sepolia',
+	name: 'Base Sepolia',
+	nativeCurrency: { name: 'Sepolia Ether', symbol: 'ETH', decimals: 18 },
+	rpcUrls: {
+		alchemy: {
+			http: ['https://base-sepolia.g.alchemy.com/v2'],
+			webSocket: ['wss://base-sepolia.g.alchemy.com/v2']
+		},
+		default: {
+			http: ['https://sepolia.base.org']
+		},
+		public: {
+			http: ['https://sepolia.base.org']
+		}
+	},
+	blockExplorers: {
+		etherscan: {
+			name: 'Basescan',
+			url: 'https://sepolia.basescan.org'
+		},
+		default: {
+			name: 'Basescan',
+			url: 'https://sepolia.basescan.org'
+		}
+	},
+
+	testnet: true,
+	sourceId: 5 // goerli
+};
 
 /*
  * See https://mud.dev/tutorials/minimal/deploy#run-the-user-interface
  * for instructions on how to add networks.
  */
-export const supportedChains: MUDChain[] = [mudFoundry, latticeTestnet];
+export const supportedChains: MUDChain[] = [mudFoundry, latticeTestnet, baseSepolia];
