@@ -6,13 +6,13 @@ import "forge-std/console2.sol";
 import {MudTest} from "@latticexyz/world/test/MudTest.t.sol";
 import {getKeysWithValue} from "@latticexyz/world-modules/src/modules/keyswithvalue/getKeysWithValue.sol";
 
-import {IWorld} from "../src/codegen/world/IWorld.sol";
+import {IWorld} from "../../src/codegen/world/IWorld.sol";
 
 import {System} from "@latticexyz/world/src/System.sol";
-import {Config, ConfigData} from "../src/codegen/index.sol";
-import {Player, PlayerData} from "../src/codegen/index.sol";
-import {PlayerStatus} from "../src/codegen/common.sol";
-import {Game, GameData} from "../src/codegen/index.sol";
+import {Config, ConfigData} from "../../src/codegen/index.sol";
+import {Player, PlayerData} from "../../src/codegen/index.sol";
+import {PlayerStatus} from "../../src/codegen/common.sol";
+import {Game, GameData} from "../../src/codegen/index.sol";
 
 // Game: {
 //       keySchema: {},
@@ -86,6 +86,56 @@ contract SettleRoundTest is MudTest {
         assertEq(Player.getBurnedAmount(bob), 0);
         assertEq(uint8(Player.getStatus(alice)), uint8(PlayerStatus.ALIVE));
         assertEq(uint8(Player.getStatus(bob)), uint8(PlayerStatus.ALIVE));
+    }
+
+    function testSettleRoundWithoutAction() public {
+        uint256 join_fee = Config.getJoinFee();
+        uint256 burn_amount = Config.getBurnAmountPerRound();
+
+        address alice = address(0x1);
+        vm.deal(alice, 10 ether);
+        vm.prank(alice);
+        IWorld(worldAddress).join{value: join_fee}();
+
+        address bob = address(0x2);
+        vm.deal(bob, 10 ether);
+        vm.prank(bob);
+        IWorld(worldAddress).join{value: join_fee}();
+
+        // skip until game start
+        skip(Config.getGameStartWaitingTime() + 1);
+
+        console2.log("#####################");
+        console2.log("###### ROUND 0 ######");
+        console2.log("#####################");
+
+        vm.prank(alice);
+        IWorld(worldAddress).settleRound();
+
+        assertEq(Player.getBurnedAmount(alice), 0);
+        assertEq(Player.getBurnedAmount(bob), 0);
+        assertEq(uint8(Player.getStatus(alice)), uint8(PlayerStatus.ALIVE));
+        assertEq(uint8(Player.getStatus(bob)), uint8(PlayerStatus.ALIVE));
+
+        vm.prank(bob);
+        IWorld(worldAddress).settleRound();
+
+        assertEq(Player.getBurnedAmount(alice), 0);
+        assertEq(Player.getBurnedAmount(bob), 0);
+        assertEq(uint8(Player.getStatus(alice)), uint8(PlayerStatus.ALIVE));
+        assertEq(uint8(Player.getStatus(bob)), uint8(PlayerStatus.ALIVE));
+
+        vm.prank(alice);
+        IWorld(worldAddress).burn(burn_amount);
+
+        vm.prank(alice);
+        IWorld(worldAddress).settleRound();
+
+        assertEq(Player.getBurnedAmount(alice), burn_amount);
+        assertEq(Player.getBurnedAmount(bob), 0);
+        assertEq(uint8(Player.getStatus(alice)), uint8(PlayerStatus.ALIVE));
+        assertEq(uint8(Player.getStatus(bob)), uint8(PlayerStatus.ALIVE));
+
     }
 
     function testEliminateAlice() public {

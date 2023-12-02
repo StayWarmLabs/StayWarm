@@ -28,12 +28,20 @@ contract PostDeploy is Script {
 
         ConfigData memory configData = Config.get();
         // configData.gameStartWaitingTime = 1 days;
-        configData.gameStartWaitingTime = 10 seconds;
+        configData.gameStartWaitingTime = 60 seconds;
         configData.roundTimeLength = 60 seconds;
         configData.voteTimeLength = 60 seconds;
         configData.burnAmountPerRound = 100;
         configData.joinFee = 0.05 ether;
         configData.initialBalance = 750;
+
+
+        // // for actual play
+        // assertEq(round_time_length, 1 days);
+        // assertEq(vote_time_length, 1 days);
+        // assertEq(burn_amount, 100);
+        // assertEq(join_fee, 0.05 ether);
+        // assertEq(initial_balance, 750);
 
         Config.set(configData);
 

@@ -2,14 +2,16 @@
 pragma solidity >=0.8.21;
 
 import "forge-std/Test.sol";
+import "forge-std/console2.sol";
+
 import {MudTest} from "@latticexyz/world/test/MudTest.t.sol";
 import {getKeysWithValue} from "@latticexyz/world-modules/src/modules/keyswithvalue/getKeysWithValue.sol";
-import {IWorld} from "../src/codegen/world/IWorld.sol";
+import {IWorld} from "../../src/codegen/world/IWorld.sol";
 import {System} from "@latticexyz/world/src/System.sol";
-import {Config, ConfigData} from "../src/codegen/index.sol";
-import {Player, PlayerData, Proposal} from "../src/codegen/index.sol";
-import {PlayerStatus} from "../src/codegen/common.sol";
-import {Game, GameData} from "../src/codegen/index.sol";
+import {Config, ConfigData} from "../../src/codegen/index.sol";
+import {Player, PlayerData, Proposal} from "../../src/codegen/index.sol";
+import {PlayerStatus} from "../../src/codegen/common.sol";
+import {Game, GameData} from "../../src/codegen/index.sol";
 import {IWorld} from "src/codegen/world/IWorld.sol";
 
 import {MockBurn} from "src/mock/MockBurn.sol";
@@ -31,11 +33,31 @@ contract GovernTest is MudTest {
         IWorld(worldAddress).join{value: join_fee}();
 
         // skip to game start
-        skip(Config.getGameStartWaitingTime() + 100);
+        skip(Config.getGameStartWaitingTime() + 1);
+
+
+        // check game status
+        GameData memory gameData = Game.get();
+        address[] memory all_players = gameData.allPlayers;
+
+        assertEq(all_players.length, 2);
+        // assertEq(all_players[0], _msgSender());
+
+        PlayerData memory alice_data = Player.get(all_players[0]);
+        assert(alice_data.status == PlayerStatus.ALIVE);
+
+        PlayerData memory bob_data = Player.get(all_players[1]);
+        assert(bob_data.status == PlayerStatus.ALIVE);
+
+
 
         // alice make proposal
+        console2.log("Mock Burn address: ", address(bs));
+
         vm.prank(alice);
         uint96 proposalId = IWorld(worldAddress).makeProposal(address(bs), "Burn", "ipfs://");
+
+        console2.log("proposalId: ", proposalId);
 
         // bob vote for with 3 power
         vm.prank(bob);
@@ -51,7 +73,7 @@ contract GovernTest is MudTest {
         assertEq(Proposal.getSupport(proposalId), 3);
         assertEq(Proposal.getReject(proposalId), 2);
 
-        skip(Config.getVoteTimeLength() + 100);
+        skip(Config.getVoteTimeLength() + 1);
 
         IWorld(worldAddress).executeProposal(proposalId);
 
