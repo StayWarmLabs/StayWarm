@@ -1,0 +1,64 @@
+name: nightly
+
+on:
+  workflow_dispatch:
+
+
+env:
+  FOUNDRY_PROFILE: ci
+  PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+
+permissions:
+  pull-requests: write
+  deployments: write
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: true
+
+    name: MUD project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          ref: "develop" # checkout develop
+
+      - uses: pnpm/action-setup@v2.2.4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: deploy on alt layer testnet
+        run: cd packages/contracts; pnpm run deploy:baseSepolia
+
+      - name: build
+        run: pnpm build
+
+      - name: Vercel Action
+        uses: amondnet/vercel-action@v25
+
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          vercel-org-id: ${{ secrets.ORG_ID}} #Required
+          vercel-project-id: ${{ secrets.PROJECT_ID}} #Required
+          working-directory: ./packages/client/dist
+          vercel-args: "--prod" #Optional
+          scope: ${{secrets.TEAM_SLUG}}
