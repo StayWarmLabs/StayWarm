@@ -13,16 +13,12 @@
 import type { MUDChain } from '@latticexyz/common/chains';
 import { latticeTestnet, mudFoundry } from '@latticexyz/common/chains';
 
-export const baseSepolia = /*#__PURE__*/ {
+export const baseSepolia = {
 	id: 84532,
 	network: 'base-sepolia',
 	name: 'Base Sepolia',
 	nativeCurrency: { name: 'Sepolia Ether', symbol: 'ETH', decimals: 18 },
 	rpcUrls: {
-		alchemy: {
-			http: ['https://base-sepolia.g.alchemy.com/v2'],
-			webSocket: ['wss://base-sepolia.g.alchemy.com/v2']
-		},
 		default: {
 			http: ['https://sepolia.base.org']
 		},
