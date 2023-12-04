@@ -7,7 +7,6 @@ on:
 env:
   FOUNDRY_PROFILE: ci
   PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-  W3S_KEY: ""
 
 permissions:
   pull-requests: write
@@ -49,8 +48,8 @@ jobs:
       #   - name: deploy on base sepolia testnet
       #     run: cd packages/contracts; pnpm run deploy:baseSepolia
 
-      - name: build
-        run: pnpm build
+      - name: build contracts output
+        run: cd packages/contracts; pnpm build
 
       - name: Vercel Action
         uses: amondnet/vercel-action@v25
@@ -59,6 +58,6 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
           vercel-org-id: ${{ secrets.ORG_ID}} #Required
           vercel-project-id: ${{ secrets.PROJECT_ID}} #Required
-          working-directory: ./packages/client/dist
+          working-directory: .
           vercel-args: "--prod" #Optional
           scope: ${{secrets.TEAM_SLUG}}
